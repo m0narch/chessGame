@@ -1,0 +1,43 @@
+c LinkedList<Position> positionsAtteignable(){
+	LinkedList<Position> position=new LinkedList<Position>();
+
+	for(int i=1;i<8;i++){
+		position.add(new Position(getPosition().x,getPosition().y+i));
+	}
+	for(int i=1;i<8;i++){
+		position.add(new Position(getPosition().x,getPosition().y-i));
+	}
+	for(int i=1;i<8;i++){
+		position.add(new Position(getPosition().x+i,getPosition().y));
+	}
+	for(int i=1;i<8;i++){
+		position.add(new Position(getPosition().x-i,getPosition().y));
+	}
+
+	return position;
+}
+
+public LinkedList<Position> positionsAtteignableEchiquier(Echiquier echiquier){
+	LinkedList<Position> position = this.positionsAtteignable();
+	LinkedList<Position> positionsEchiquier = new LinkedList<Position>();
+	int j=7;
+
+	for(int i=0;i<position.size();i++){
+		if(position.get(i).estValide()){
+			if(echiquier.Occupe(position.get(i))){
+				if(echiquier.MCouleur(position.get(i),this)==false){
+					positionsEchiquier.add(position.get(i));
+				}
+				i=j-1;
+				j=j+7;
+			}
+			else positionsEchiquier.add(position.get(i));
+		}
+		else {
+			i=j-1;
+			j=j+7;
+		}
+	}
+
+	return positionsEchiquier;
+}
