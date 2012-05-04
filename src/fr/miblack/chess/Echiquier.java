@@ -48,10 +48,6 @@ public class Echiquier
 			pieceList.remove(this.getPiecePosition( posArrivee ) );
 			for(Piece piece : pieceList)
 			{
-				if(true)
-				{
-					System.out.println();
-				}
 				if(piece.equals( pieceDepart ))
 				{
 					pieceDepart.setPos( posArrivee );
