@@ -1,5 +1,6 @@
 package fr.miblack.chess;
 import fr.miblack.chess.Echiquier;
+import fr.miblack.chess.GUI.Interface;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.*;
@@ -17,13 +18,14 @@ public class Partie
 	private int cpt_sans_prise=0;
 	private int cptSansMvmtPion=0;
 	private Echiquier myChessboard = new Echiquier();
+	private Interface myInterface;
 
 
-
-	public Partie(JoueurAbstract player1,JoueurAbstract player2)
+	public Partie(JoueurAbstract player1,JoueurAbstract player2,Interface myInterface)
 	{
 		listOfPlayer.add(player2);
 		listOfPlayer.add(player1);
+		this.myInterface=myInterface;
 		letsPlay(player1);
 	}
 
@@ -183,6 +185,7 @@ public class Partie
 	public boolean  coupValide(Piece pieceD,Position posD,Piece pieceA,Position posA,int coupSpecial)
 	{
 		//TODO verifier si c'est un coup spé !
+		//TODO ... OMG j'ai ça a faire aussi
 		return false;
 	}
 
@@ -243,6 +246,16 @@ public class Partie
 	public LinkedList<JoueurAbstract> getListOfPlayer()
 	{
 		return listOfPlayer;
+	}
+
+	public Interface getMyInterface()
+	{
+		return myInterface;
+	}
+
+	public void setMyInterface( Interface myInterface )
+	{
+		this.myInterface = myInterface;
 	}
 }
 	

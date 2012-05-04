@@ -3,6 +3,8 @@ package fr.miblack.chess.joueurs;
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Jouer;
 import fr.miblack.chess.Partie;
+import fr.miblack.chess.GUI.Interface;
+import fr.miblack.chess.GUI.Textuelle;
 import fr.miblack.chess.color.Couleur;
 
 
@@ -26,7 +28,23 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 
 	public Coup jouerCoup(Partie a)
 	{
-		Coup m = null;//=new Coup(p,a);
+		Interface monInterface=a.getMyInterface();
+		Coup m =saisirCoup(monInterface );
 		return m;
 	}
+	public Coup saisirCoup(Interface monInterface)
+	{
+		Coup coup = null;
+		try
+		{
+			if(monInterface instanceof Textuelle)
+				coup=((Textuelle)monInterface).saisirCoup(this, ((Textuelle) monInterface).getMyChessboard()  );
+		}
+		catch(NullPointerException e)
+		{
+			System.err.println("Coup invalide");
+		}
+		return	coup;
+	}
+
 }

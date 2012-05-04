@@ -1,5 +1,7 @@
 package fr.miblack.chess.joueurs;
 
+import fr.miblack.chess.Coup;
+import fr.miblack.chess.Partie;
 import fr.miblack.chess.color.Couleur;
 
 public  class JoueurAbstract 
@@ -25,5 +27,9 @@ public  class JoueurAbstract
 	public boolean equals(JoueurAbstract joueur)
 	{
 		return ( joueur.name.equals( this.name )&&joueur.color.equals( this.color ));
+	}
+	public Coup jouerCoup( Partie maPartie )
+	{
+		return null;
 	}
 }

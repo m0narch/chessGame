@@ -12,7 +12,7 @@ import fr.miblack.chess.joueurs.JoueurHumain;
 import fr.miblack.chess.joueurs.JoueurOrdinateur;
 import fr.miblack.chess.piece.Piece;
 
-public class Textuelle   
+public class Textuelle   extends Interface
 {
 	private Partie maPartie;
 	private JoueurAbstract player1;
@@ -72,19 +72,19 @@ public class Textuelle
 			case 1 :
 				player1=new JoueurHumain( p1, new Couleur( 0 ));
 				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;	
 
 			case 2 :
 				player1=new JoueurHumain( p1, new Couleur( 0 ));
 				player2=new JoueurHumain( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;	
 				
 			case 3 :
 				player1=new JoueurOrdinateur( p1, new Couleur( 0 ));
 				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;
 				
 			case 4 :
@@ -109,19 +109,19 @@ public class Textuelle
 			case 1 :
 				player1=new JoueurHumain( p1, new Couleur( 0 ));
 				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;	
 
 			case 2 :
 				player1=new JoueurHumain( p1, new Couleur( 0 ));
 				player2=new JoueurHumain( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;	
 				
 			case 3 :
 				player1=new JoueurOrdinateur( p1, new Couleur( 0 ));
 				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2);
+				this.maPartie=new Partie(player1,player2,this);
 				break;
 				
 			case 4 :
@@ -255,7 +255,9 @@ public class Textuelle
 			{
 				this.AfficherEchiquier();
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
-				monCoup=this.saisirCoup( p, this.getMaPartie().getMyChessboard() );
+				monCoup=p.jouerCoup( this.getMaPartie());
+				p.jouerCoup( maPartie );
+				//monCoup=this.saisirCoup( p, this.getMaPartie().getMyChessboard() );
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setplayerEnCours();
 				if(getMaPartie().estEnEchec(monCoup.getPosArrivee()))
