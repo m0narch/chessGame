@@ -27,6 +27,7 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 	public Coup jouerCoup(Partie a)
 	{
 		Coup m = null;//=new Coup(p,a);
+	//TODO Implémenter les IA !
 		return m;
 	}
 }

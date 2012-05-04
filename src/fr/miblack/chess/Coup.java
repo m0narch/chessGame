@@ -12,7 +12,7 @@ public class Coup
 	private Position posDepart;
 	private Position posArrivee;
 	private boolean estPrise;
-	
+	private Piece PiecePrise;
 	public Coup(Piece pieceDepart,Position posArrivee )
 	{
 		 this.setPieceDepart( pieceDepart );
@@ -138,6 +138,14 @@ public class Coup
 		//1.a2-a4  a7-a6
 		//2. ....
 		return msg;
+	}
+	public Piece getPiecePrise()
+	{
+		return PiecePrise;
+	}
+	public void setPiecePrise( Piece piecePrise )
+	{
+		PiecePrise = piecePrise;
 	}
 	
 }

@@ -32,6 +32,7 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 		Coup m =saisirCoup(monInterface );
 		return m;
 	}
+	
 	public Coup saisirCoup(Interface monInterface)
 	{
 		Coup coup = null;
@@ -46,5 +47,4 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 		}
 		return	coup;
 	}
-
 }

@@ -255,9 +255,10 @@ public class Textuelle   extends Interface
 			{
 				this.AfficherEchiquier();
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
-				monCoup=p.jouerCoup( this.getMaPartie());
-				p.jouerCoup( maPartie );
-				//monCoup=this.saisirCoup( p, this.getMaPartie().getMyChessboard() );
+				if(p instanceof JoueurHumain)
+					monCoup=((JoueurHumain) p).jouerCoup( this.getMaPartie());
+				else
+					monCoup=((JoueurOrdinateur) p).jouerCoup( this.getMaPartie());
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setplayerEnCours();
 				if(getMaPartie().estEnEchec(monCoup.getPosArrivee()))

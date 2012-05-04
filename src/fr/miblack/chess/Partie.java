@@ -257,6 +257,10 @@ public class Partie
 	{
 		this.myInterface = myInterface;
 	}
+	
+
+	
+	
 }
 	
 
