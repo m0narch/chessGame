@@ -43,12 +43,15 @@ public class Echiquier
 	public boolean realiserCoup(Piece pieceDepart ,Position posArrivee)
 	{
 		//TODO Pouvoir effectuer un coup
-		//
 		if(pieceList.contains( pieceDepart))
 		{
 			pieceList.remove(this.getPiecePosition( posArrivee ) );
 			for(Piece piece : pieceList)
 			{
+				if(true)
+				{
+					System.out.println();
+				}
 				if(piece.equals( pieceDepart ))
 				{
 					pieceDepart.setPos( posArrivee );
