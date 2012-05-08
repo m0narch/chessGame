@@ -1,6 +1,5 @@
 package fr.miblack.chess;
 
-import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,12 +12,14 @@ public class Coup
 	private Position posArrivee;
 	private boolean estPrise;
 	private Piece PiecePrise;
+	
 	public Coup(Piece pieceDepart,Position posArrivee )
 	{
 		 this.setPieceDepart( pieceDepart );
 		 this.setPosDepart  ( pieceDepart.getPos());
 		 this.setPosArrivee ( posArrivee  );
 	}
+	
 	public Coup(Piece pieceDepart,Position posArrivee,boolean prise)
 	{
 		 this.setPieceDepart( pieceDepart );
@@ -40,9 +41,7 @@ public class Coup
 	 */
 	public void setPieceDepart( Piece piece  )
 	{
-		
-			this.pieceDepart = piece ;
-
+		this.pieceDepart = piece ;
 	}
 
 	/**
@@ -69,7 +68,6 @@ public class Coup
 	 */
 	public Position getPosDepart()
 	{
-		
 		return posDepart;
 	}
 
@@ -107,10 +105,10 @@ public class Coup
 		Position posA;
 		if(matcher.find())
 		{
-					pieceD =party.getMyChessboard().getPiecePosition(Position.stringToPos(matcher.group(2)));
-					posA=Position.stringToPos( matcher.group(4) );
-					prise =matcher.group(3).equals("x");
-					return new Coup(pieceD, posA , prise);
+			pieceD =party.getMyChessboard().getPiecePosition(Position.stringToPos(matcher.group(2)));
+			posA=Position.stringToPos( matcher.group(4) );
+			prise =matcher.group(3).equals("x");
+			return new Coup(pieceD, posA , prise);
 		}
 		throw new RuntimeException("coup invalide");
 	}
@@ -130,15 +128,7 @@ public class Coup
 		return (pieceDepart.equals(autre.pieceDepart) && posArrivee.equals( autre.posArrivee )  && pieceDepart.getPos().equals( autre.posDepart ) );		
 	}
 	
-	public String miseEnFormeCoup(LinkedList<Coup> listOfCoup)
-	{
-		String msg="";
-		//TODO gérer la mise en forme de la liste de coup
-		// genre
-		//1.a2-a4  a7-a6
-		//2. ....
-		return msg;
-	}
+	
 	public Piece getPiecePrise()
 	{
 		return PiecePrise;

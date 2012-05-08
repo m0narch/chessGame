@@ -1,5 +1,6 @@
 package fr.miblack.chess.piece;
 import fr.miblack.chess.Coup;
+import fr.miblack.chess.Partie;
 import fr.miblack.chess.Position;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.Echiquier;
@@ -111,21 +112,24 @@ public abstract class Piece
 		return "";
 	}
 	
-	public LinkedList<Coup> getCoupPossible(Piece PieceDepart,Echiquier chess )
+	public LinkedList<Coup> getCoupPossible(Piece PieceDepart,Partie maPartie )
 	{
-		LinkedList<Position> myListOfPosAtteignable=PieceDepart.positionAccessibleChessboard( chess );
+		LinkedList<Position> myListOfPosAtteignable = PieceDepart.positionAccessibleChessboard( maPartie.getMyChessboard() );
 		LinkedList<Coup> listOfCoup=new LinkedList<Coup>();
 
 		for(Position position : myListOfPosAtteignable  )
 		{
-			if(!(chess.getPiecePosition( position ) instanceof Roi))
+			if(!maPartie.estEnEchec( position ))
 			{
-				if(PieceDepart.whatCanIEat( chess ).contains( position ))
-				{		
-					listOfCoup.add( new Coup(PieceDepart, position, true) );
-				}
-				else
-					listOfCoup.add( new Coup(PieceDepart, position, false) );	
+				if(!(maPartie.getMyChessboard().getPiecePosition( position ) instanceof Roi))
+				{
+					if(PieceDepart.whatCanIEat( maPartie.getMyChessboard() ).contains( position ))
+					{		
+						listOfCoup.add( new Coup(PieceDepart, position, true) );
+					}
+					else
+						listOfCoup.add( new Coup(PieceDepart, position, false) );	
+				}	
 			}
 		}
 		return listOfCoup;

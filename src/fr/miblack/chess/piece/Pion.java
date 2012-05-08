@@ -26,14 +26,15 @@ public class Pion extends Piece
 			{
 				myList.add(onePos);
 			}
+
 		}
 		if(this.asPlayed==0)
 		{
 			myList.add(Position.getPosition( getX(), getY()+(2*mult)));
 		}
 		return myList;
-
 	}
+
 	public  LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList=positionAccessibleCouleur(color.getColor());
@@ -43,13 +44,30 @@ public class Pion extends Piece
 	public LinkedList<Position> positionAccessibleChessboard(Echiquier chess)
 	{
 		LinkedList<Position> myList=positionAccessible() ;
+		int mult=1;
+		if(this.color.getColor()==0)
+		{
+			mult=-1;
+		}
+		if(this.asPlayed==0)
+		{
+			if(estValide( getY()+(1*mult) ))
+			{
+				if(chess.getPiecePosition( getX(), (getY()+(1*mult)) )!=null)
+				{
+					if(estValide( getY()+(2*mult) ))
+					{
+						myList.remove(Position.getPosition( getX(), getY()+(2*mult)));
+					}
+				}
+			}
+		}
 		for(Position onePos :positionAccessible())
 		{
 			if((chess.getPiecePosition(onePos)!=null)) 
 			{
 				myList.remove(onePos);
 			}
-			
 		}
 		myList.addAll(whatCanIEat(chess));
 		return myList;
@@ -64,28 +82,34 @@ public class Pion extends Piece
 		{
 			mult=-1;
 		}
-	    if((this.getX()+1)<=7)
-		 {
-			 if(chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult))!=null)
-			 {
-				if(!verifColor(chess,this.getX()+1,this.getY()+(1*mult)) )
+		if((this.getX()+1)<=7)
+		{
+			if(estValide( this.getY()+(1*mult) ))
+			{
+				if(chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult))!=null)
 				{
-					if(!(chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult) ) instanceof Roi))
-					 myList.add(Position.getPosition(this.getX()+1,this.getY()+(1*mult)));
+					if(!verifColor(chess,this.getX()+1,this.getY()+(1*mult)) )
+					{
+						if(!(chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult) ) instanceof Roi))
+							myList.add(Position.getPosition(this.getX()+1,this.getY()+(1*mult)));
+					}
 				}
-			 }
-		 }
-		 if((this.getX()-1)>=0)
-		 {
-			 if(chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult))!=null)
-			 {
-				if(!verifColor(chess,this.getX()-1,this.getY()+(1*mult)))
+			}
+		}
+		if((this.getX()-1)>=0)
+		{
+			if(estValide( this.getY()+(1*mult) ))
+			{
+				if(chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult))!=null)
 				{
-					if(!(chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult) ) instanceof Roi))
-					 myList.add(Position.getPosition(this.getX()-1,this.getY()+(1*mult)));
+					if(!verifColor(chess,this.getX()-1,this.getY()+(1*mult)))
+					{
+						if(!(chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult) ) instanceof Roi))
+							myList.add(Position.getPosition(this.getX()-1,this.getY()+(1*mult)));
+					}
 				}
-			 }
-		 }
+			}
+		}
 		return myList;
 	}
 
@@ -99,11 +123,11 @@ public class Pion extends Piece
 			return "p";
 		//return "♙";
 	}
-	
+
 	public String getNom()
 	{
 		return "";
 	}
 
-	
+
 }

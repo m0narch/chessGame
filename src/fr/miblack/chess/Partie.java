@@ -4,12 +4,14 @@ import fr.miblack.chess.GUI.Interface;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.*;
+
 import java.util.*;
 
 public class Partie
 {
 
 	private LinkedList<Coup> listOfMove=new LinkedList<Coup>();
+
 	private LinkedList<Coup> listOfMoveCancelled=new LinkedList<Coup>();
 	private LinkedList<JoueurAbstract> listOfPlayer =new LinkedList<JoueurAbstract>();
 
@@ -24,7 +26,7 @@ public class Partie
 	public Partie(JoueurAbstract player1,JoueurAbstract player2,Interface myInterface)
 	{
 		listOfPlayer.add(player2);
-		listOfPlayer.add(player1);
+		listOfPlayer.addFirst( player1 );
 		this.myInterface=myInterface;
 		letsPlay(player1);
 	}
@@ -34,19 +36,20 @@ public class Partie
 		return myChessboard;
 	}
 
-	public Coup cancelLastMove(JoueurAbstract p)
+	public Coup annulerDernierCoup()
 	{
-		
+		Coup last=listOfMove.getLast();
 		listOfMoveCancelled.add(listOfMove.getLast());
-		 
+		last.getPieceDepart().setPos(last.getPosDepart());
 		return listOfMove.removeLast();
 	}
 
-	public Coup replayLastCanceledMove()
+	public Coup rejouerDernierCoup()
 	{
 		listOfMove.add( listOfMoveCancelled.getLast() );
 		return listOfMoveCancelled.removeLast();
 	}
+	
 	public boolean estPat()
 	{
 		boolean stalemate=false;
@@ -74,19 +77,89 @@ public class Partie
 		}
 		return check;
 	}
+	
+	public boolean estEnEchec(JoueurAbstract p)
+	{
+		boolean check=false;
+	//	TODO A voir utiliser whatCanIEat plutot que pos accessible
+		Piece roiPiece = null;
+		for(Piece onePiece : this.myChessboard.getPieceList())
+		{
+			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
+			{
+				roiPiece=onePiece;
+			}
+		}
+		for(Piece onePiece : this.myChessboard.getPieceList())
+		{
+			if(!p.getColor().equals( onePiece.getColor() ))
+			{
+				if(onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
+				{
+					check=true;
+				}
+			}
+		}
+		return check;
+	}	
 
 	public boolean estEchecEtMat(Position laPos)
 	{
 		boolean mat=false;
-		/**TODO 
-		   if(estEnEchec())
-		 * {	
-		 * 	regarder si chaque posAtteignagble == check' Si oui :> mat , si non !mat
-		 * }
-		 */
-	//	this.estEnEchec()
+		
+		if(estEnEchec(laPos))
+		{	
+			for(Position onePos : getMyChessboard().getPiecePosition( laPos ).positionAccessibleChessboard( getMyChessboard() ))
+			{
+				if(estEnEchec( onePos ))
+				{
+					mat=true;
+				}
+				else
+				{
+					mat=false;
+				}
+			}
+			return mat;
+			//TODO regarder si chaque posAtteignagble == check' Si oui :> mat , si non !mat
+		}
 		return mat;
 	}
+	//TODO Finir la fonction
+	public boolean estEchecEtMat(JoueurAbstract p)
+	{
+		boolean mat=false;
+		
+		if(estEnEchec(p))
+		{	
+			Piece roiPiece = null;
+			for(Piece onePiece : this.myChessboard.getPieceList())
+			{
+				if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
+				{
+					roiPiece=onePiece;
+				}
+			}
+			for(Piece onePiece : this.myChessboard.getPieceList())
+			{
+				if(!p.getColor().equals( onePiece.getColor() ))
+				{
+					if(!onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
+						//Il faut verif que le roi n'a pas de position qui lui permet d'éviter l'échec
+					{
+						mat=false;
+					}
+					else
+					{
+						mat=true;
+					}
+				}
+			}
+			//TODO regarder si chaque posAtteignagble == check' Si oui :> mat , si non !mat
+		}
+		return mat;
+	}
+	
 
 	public boolean isDraw()
 	{
@@ -121,7 +194,7 @@ public class Partie
 		{
 			if(onePiece.getColor().equals( p.getColor()))
 			{
-				listCoup.addAll(onePiece.getCoupPossible( onePiece, myChessboard ));
+				listCoup.addAll(onePiece.getCoupPossible( onePiece,this));
 			}
 		}
 		//TODO ici juste les coups normaux sont géré
@@ -258,9 +331,13 @@ public class Partie
 		this.myInterface = myInterface;
 	}
 	
+	public LinkedList<Coup> getListOfMove()
+	{
+		return listOfMove;
+	}
+	
 
-	
-	
+
 }
 	
 

@@ -29,7 +29,13 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 	public Coup jouerCoup(Partie a)
 	{
 		Interface monInterface=a.getMyInterface();
-		Coup m =saisirCoup(monInterface );
+		Coup m;
+		do
+		{
+			m =saisirCoup(monInterface );
+		}while(a.estEnEchec( m.getPosDepart() ));
+		if(monInterface instanceof Textuelle)
+			((Textuelle)monInterface).getMaPartie().addMove( m );
 		return m;
 	}
 	

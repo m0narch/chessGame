@@ -28,12 +28,12 @@ public class Tour extends Piece implements Ligne
 		{
 			for (int j = 0; j < 8; j++) 
 			{
-				if((i==this.getPos().getX())&& j!=this.getPos().getY())
+				if((i==this.getX())&& j!=this.getY())
 				{
 					myList.add(Position.getPosition(i,j));
 					continue;
 				}
-				if((j==this.getPos().getY())&& i!=this.getPos().getX())
+				if((j==this.getY())&& i!=this.getX())
 				{
 					myList.add(Position.getPosition(i,j));
 					continue;
@@ -156,8 +156,8 @@ public class Tour extends Piece implements Ligne
 	
 	public LinkedList<Position> whatCanIEat(Echiquier chess)
 	{
-		LinkedList<Position> myList=positionAccessibleChessboard(chess) ;
-		for(Position onePos:positionAccessibleChessboard(chess))
+		LinkedList<Position> myList = positionAccessibleChessboard(chess) ;
+		for(Position onePos : positionAccessibleChessboard(chess))
 		{
 			if(chess.getPiecePosition(onePos)==null)
 			{	
@@ -168,7 +168,6 @@ public class Tour extends Piece implements Ligne
 				if(chess.getPiecePosition(onePos) instanceof Roi)
 				{
 					myList.remove(onePos);
-
 				}
 			}
 

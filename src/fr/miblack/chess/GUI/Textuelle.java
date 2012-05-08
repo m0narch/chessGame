@@ -70,20 +70,20 @@ public class Textuelle   extends Interface
 		switch(ret)
 		{
 			case 1 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
+				player1=new JoueurHumain( p1, new Couleur( 1 ));
+				player2=new JoueurOrdinateur( p2, new Couleur( 0 ));
 				this.maPartie=new Partie(player1,player2,this);
 				break;	
 
 			case 2 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ));
-				player2=new JoueurHumain( p2, new Couleur( 1 ));
+				player1=new JoueurHumain( p1, new Couleur( 1 ));
+				player2=new JoueurHumain( p2, new Couleur( 0 ));
 				this.maPartie=new Partie(player1,player2,this);
 				break;	
 				
 			case 3 :
-				player1=new JoueurOrdinateur( p1, new Couleur( 0 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
+				player1=new JoueurOrdinateur( p1, new Couleur( 1 ));
+				player2=new JoueurOrdinateur( p2, new Couleur( 0 ));
 				this.maPartie=new Partie(player1,player2,this);
 				break;
 				
@@ -255,16 +255,22 @@ public class Textuelle   extends Interface
 			{
 				this.AfficherEchiquier();
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
+				if(getMaPartie().estEnEchec(p))
+				{
+					System.out.println("Le roi de "+getMaPartie().getplayerEnCours()+" est en echecs");
+				}
 				if(p instanceof JoueurHumain)
-					monCoup=((JoueurHumain) p).jouerCoup( this.getMaPartie());
+				{
+						monCoup=((JoueurHumain) p).jouerCoup( this.getMaPartie());
+				}
 				else
-					monCoup=((JoueurOrdinateur) p).jouerCoup( this.getMaPartie());
+				{
+						monCoup=((JoueurOrdinateur) p).jouerCoup( this.getMaPartie());
+				}
+				
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setplayerEnCours();
-				if(getMaPartie().estEnEchec(monCoup.getPosArrivee()))
-				{
-					System.out.println("Le roi de "+getMaPartie().getplayerEnCours().toString()+" est en echecs");
-				}
+				
 			}
 		}
 	}

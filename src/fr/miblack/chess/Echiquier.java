@@ -9,7 +9,7 @@ public class Echiquier
 
 	private LinkedList<Piece> pieceList = new LinkedList<Piece>();
 
-	
+
 
 	public Piece getPiecePosition(Position pos)
 	{
@@ -34,7 +34,7 @@ public class Echiquier
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Effectuer un coup,
 	 * @param pieceDepart posArrivee
@@ -62,32 +62,35 @@ public class Echiquier
 		else
 			return false;
 	}
-	
+
 	public boolean realiserCoup(Coup myCoup)
 	{
-		//TODO Pouvoir effectuer un coup
-
-			Piece pieceD=null;
-			Position posA=null;
-			try
-			{
-				pieceD=myCoup.getPieceDepart();
-				posA= myCoup.getPosArrivee();
+		//TODO Pouvoir effectuer un coup complet
+		Piece pieceD=null;
+		Position posA=null;
+		try
+		{
+			pieceD=myCoup.getPieceDepart();
+			posA= myCoup.getPosArrivee();
+			myCoup.setPiecePrise( this.getPiecePosition( posA ) );
 			if(pieceList.contains( pieceD ))
 			{
-				pieceList.remove(this.getPiecePosition( posA ) );
-				for(Piece piece : pieceList)
+				if(pieceD.positionAccessibleChessboard( this ).contains( posA ))
 				{
-					if(piece.equals( pieceD ))
+					pieceList.remove(this.getPiecePosition( posA ) );
+					for(Piece piece : pieceList)
 					{
-						pieceD.setPos( posA );
-						pieceList.remove(piece );
-						pieceList.add(pieceD );
-						break;
+						if(piece.equals( pieceD ))
+						{
+							pieceD.setPos( posA );
+							pieceList.remove(piece );
+							pieceList.add(pieceD );
+							break;
+						}
 					}
+					pieceD.setPlayed();
+					return true;
 				}
-				pieceD.setPlayed();
-				return true;
 			}
 			else
 				return false;
@@ -96,9 +99,9 @@ public class Echiquier
 		{
 			System.out.println(e.getMessage());
 		}
-			return false;
+		return false;
 	}
-	
+
 	public Coup moveRoque(boolean little)
 	{
 		Coup m=null;// = new Coup();
@@ -111,7 +114,7 @@ public class Echiquier
 			return m;
 		}
 	}
-	
+
 	public Object clone() 
 	{
 		return pieceList.clone();
