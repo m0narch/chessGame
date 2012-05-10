@@ -10,13 +10,10 @@ import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.joueurs.JoueurHumain;
 import fr.miblack.chess.joueurs.JoueurOrdinateur;
-import fr.miblack.chess.piece.Piece;
 
 public class Textuelle   extends Interface
 {
-	private Partie maPartie;
-	private JoueurAbstract player1;
-	private JoueurAbstract player2;
+
 	
 	public Textuelle()
 	{
@@ -155,19 +152,7 @@ public class Textuelle   extends Interface
 		}
 	}
 
-	public Partie getMaPartie() 
-	{
-		return maPartie;
-	}
-	public Piece getPiecePosition(int x,int y)
-	{
-		return this.getMaPartie().getMyChessboard().getPiecePosition(x, y);
-	}
-
-	public Echiquier getMyChessboard()
-	{
-		return this.getMaPartie().getMyChessboard();
-	}
+	
 
 	public int affichageMenuPrincipal()
 	{

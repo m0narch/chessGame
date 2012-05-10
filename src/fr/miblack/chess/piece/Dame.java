@@ -65,4 +65,11 @@ public class Dame extends Piece implements Diagonale,Ligne
 	{
 		return "D";
 	}
+	
+	public Piece clone() 
+	{
+		
+		Dame maPiece =new Dame(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 }

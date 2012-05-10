@@ -38,11 +38,12 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 	public Coup jouerCoup(Partie a)
 	{
 		Coup m;
+	//	Interface monInterface=a.getMyInterface();
 		do
 		{
 			m =selectionCoupAleatoire(a);
-		}while(a.estEnEchec( m.getPosDepart() ));
-		 
+		}while((a.seraEnEchec(m.getPosDepart(), m.getPosArrivee())));
+		System.out.println(m);
 		return m;
 	}
 	
@@ -57,7 +58,6 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 			{
 				size=1;
 			}
-
 			int var =rand.nextInt(size);
 			return listOfTheRandom.get( var );
 		}

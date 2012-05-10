@@ -190,4 +190,9 @@ public class Tour extends Piece implements Ligne
 	{
 		return "T";
 	}
+	public Piece clone() 
+	{
+		Tour maPiece =new Tour(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 }

@@ -8,9 +8,7 @@ public class Echiquier
 
 
 	private LinkedList<Piece> pieceList = new LinkedList<Piece>();
-
-
-
+	private Piece piecePourTest;
 	public Piece getPiecePosition(Position pos)
 	{
 		for(Piece onePiece :this.pieceList)
@@ -36,13 +34,12 @@ public class Echiquier
 	}
 
 	/**
-	 * Effectuer un coup,
+	 * Deplacer la piece un coup,
 	 * @param pieceDepart posArrivee
 	 * @return
 	 */
 	public boolean realiserCoup(Piece pieceDepart ,Position posArrivee)
 	{
-		//TODO Pouvoir effectuer un coup
 		if(pieceList.contains( pieceDepart))
 		{
 			pieceList.remove(this.getPiecePosition( posArrivee ) );
@@ -63,9 +60,43 @@ public class Echiquier
 			return false;
 	}
 
+	public boolean deplacerPiecePourTest(Position posDepart,Position posArrivee)
+	{
+		Piece pieceD=null;
+		boolean prise=false;
+		pieceD= this.getPiecePosition(posDepart);
+		
+		piecePourTest=this.getPiecePosition(posArrivee);
+		if(piecePourTest!=null)
+		{
+			 prise=true;
+		}
+		if(prise)
+		{
+			pieceList.remove(piecePourTest );
+		}
+		pieceD.setPos( posArrivee );
+		pieceList.remove(pieceD );
+		pieceList.add(pieceD );
+		return prise;
+	}
+	
+	public void annulerDeplacerPiecePourTest(Position posDepart,Position posArrivee,boolean isPrise)
+	{
+		Piece pieceD=null;
+		pieceD=this.getPiecePosition(posArrivee);
+		pieceD.setPos( posDepart );
+		if(isPrise)
+		{
+			piecePourTest.setPos(posArrivee);
+			pieceList.add(piecePourTest );
+		}
+		pieceList.remove(pieceD );
+		pieceList.add(pieceD );
+	}
+	//TODO verif !!!!
 	public boolean realiserCoup(Coup myCoup)
 	{
-		//TODO Pouvoir effectuer un coup complet
 		Piece pieceD=null;
 		Position posA=null;
 		try
@@ -97,14 +128,13 @@ public class Echiquier
 		}
 		catch(RuntimeException e)
 		{
-			System.out.println(e.getMessage());
 		}
 		return false;
 	}
-
+	//TODO Penser au roque
 	public Coup moveRoque(boolean little)
 	{
-		Coup m=null;// = new Coup();
+		Coup m=null;
 		if(little)
 		{
 			return m;
@@ -185,6 +215,7 @@ public class Echiquier
 	{
 		return Position.getPosition(x, y);
 	}
+	
 
 	public LinkedList<Piece> getPieceList()
 	{

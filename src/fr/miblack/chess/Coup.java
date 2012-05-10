@@ -1,9 +1,12 @@
 package fr.miblack.chess;
 
+import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.Piece;
+import fr.miblack.chess.piece.Roi;
 
 public class Coup
 {
@@ -84,8 +87,6 @@ public class Coup
 	
 	public String toString()
 	{
-		//Pattern myRegex=Pattern.compile("[FDRCPTfdrcpt][a-h][1-8][-x?][FDRCPTfdrcpt][a-h][1-8] ");
-		//Piece pieceD =party.getMyChessboard().getPiecePosition(posDepart);
 		if(isEstPrise())
 		{
 			return ""+pieceDepart.getNom()+posDepart.toStringPos()+"x"+posArrivee.toStringPos();
@@ -94,6 +95,27 @@ public class Coup
 			return ""+pieceDepart.getNom()+posDepart.toStringPos()+"-"+posArrivee.toStringPos();
 	}
 
+	public boolean metEnEchec(JoueurAbstract p,Echiquier chess)
+	{
+		boolean echec=false;
+		Piece maPiece=pieceDepart;
+		if(maPiece!=null)
+		{
+			LinkedList<Position> listPos =maPiece.positionAccessibleChessboard( chess );
+			for(Position onePos :listPos)
+			{
+				if(chess.getPiecePosition(onePos)!=null)
+				{
+					if(chess.getPiecePosition(onePos) instanceof Roi)
+					{
+						echec=true;
+					}
+				}
+			}
+		}
+		return echec;
+	}
+		
 	//TODO Réussir la regex du coup simplifié
 	//TODO ... gérer the fuc***** prise en passant 
 	public static Coup parseStringToCoupCompl(String myString,Partie party)

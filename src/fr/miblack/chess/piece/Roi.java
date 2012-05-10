@@ -105,4 +105,9 @@ public class Roi extends Piece
 	{
 		return "R";
 	}
+	public Piece clone() 
+	{
+		Roi maPiece =new Roi(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 }

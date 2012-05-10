@@ -5,7 +5,7 @@ import fr.miblack.chess.Position;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.Echiquier;
 import java.util.*;
-public abstract class Piece
+public abstract class Piece implements Cloneable
 {
 	/*  List of unicode char : BLACK : ♟ ♞ ♝ ♜ ♛ ♚ WHITE : ♙ ♘ ♗ ♖ ♕ ♔ **/
 	protected Couleur color;
@@ -139,6 +139,8 @@ public abstract class Piece
 	{
 		return (this.pos.equals( autre.getPos() ) && color.equals( autre.getColor() ) && (this.valeur==autre.getValeur()));
 	}
+
+
 }
 
 

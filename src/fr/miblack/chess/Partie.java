@@ -77,11 +77,34 @@ public class Partie
 		}
 		return check;
 	}
+	public boolean seraEnEchec(Position laPosD,Position laPosA)
+	{
+		boolean prise=this.getMyChessboard().deplacerPiecePourTest(laPosD, laPosA);
+		
+		for(Piece laPiece : this.getMyChessboard().getPieceList())
+		{
+			if(laPiece instanceof Roi)
+			{
+				if(laPiece.getColor()!=this.playerEnCours.getColor())
+				{
+					for(Position laPos :laPiece.positionAccessibleChessboard(getMyChessboard()))
+					{
+						if(laPos.equals(laPosA))
+						{
+							this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
+							return true;
+						}
+					}
+				}
+			}
+		}
+		this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
+		return false;
+	}
 	
 	public boolean estEnEchec(JoueurAbstract p)
 	{
 		boolean check=false;
-	//	TODO A voir utiliser whatCanIEat plutot que pos accessible
 		Piece roiPiece = null;
 		for(Piece onePiece : this.myChessboard.getPieceList())
 		{
@@ -335,9 +358,9 @@ public class Partie
 	{
 		return listOfMove;
 	}
+
+
 	
-
-
 }
 	
 

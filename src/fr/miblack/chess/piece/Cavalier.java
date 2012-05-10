@@ -96,4 +96,10 @@ public class Cavalier extends Piece
 	{
 		return "C";
 	}
+	
+	public Piece clone() 
+	{
+		Cavalier maPiece =new Cavalier(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 }

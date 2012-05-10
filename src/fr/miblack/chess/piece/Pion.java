@@ -30,7 +30,13 @@ public class Pion extends Piece
 		}
 		if(this.asPlayed==0)
 		{
+			try
+			{
 			myList.add(Position.getPosition( getX(), getY()+(2*mult)));
+			}
+			catch(Exception e)
+			{
+			}
 		}
 		return myList;
 	}
@@ -128,6 +134,10 @@ public class Pion extends Piece
 	{
 		return "";
 	}
-
+	public Piece clone() 
+	{
+		Pion maPiece =new Pion(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 
 }

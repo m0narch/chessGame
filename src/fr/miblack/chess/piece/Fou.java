@@ -153,5 +153,10 @@ public class Fou extends Piece implements Diagonale
 	{
 		return "F";
 	}
+	public Piece clone() 
+	{
+		Fou maPiece =new Fou(this.getColor(),this.getPos(),this.getValeur());
+		return maPiece;
+	}
 
 }
