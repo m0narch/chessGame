@@ -234,7 +234,7 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(true) //FIXME Changer la cond pour gestion pat echec etc
+		while(!getMaPartie().estEchecEtMat( getMaPartie().getPlayerEnCours() )) //FIXME Changer la cond pour gestion pat echec etc
 		{
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
@@ -242,7 +242,7 @@ public class Textuelle   extends Interface
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
 				if(getMaPartie().estEnEchec(p))
 				{
-					System.out.println("Le roi de "+getMaPartie().getplayerEnCours()+" est en echecs");
+					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs");
 				}
 				if(p instanceof JoueurHumain)
 				{
@@ -254,7 +254,7 @@ public class Textuelle   extends Interface
 				}
 				
 				this.getMyChessboard().realiserCoup( monCoup );
-				this.getMaPartie().setplayerEnCours();
+				this.getMaPartie().setPlayerEnCours();
 				
 			}
 		}

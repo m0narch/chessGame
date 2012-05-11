@@ -101,7 +101,8 @@ public class Partie
 		this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
 		return false;
 	}
-	
+	//Le null Supress n'est pas obligatoire car un joueur à TOUJOURS un roi
+	@SuppressWarnings( "null" )
 	public boolean estEnEchec(JoueurAbstract p)
 	{
 		boolean check=false;
@@ -124,8 +125,8 @@ public class Partie
 			}
 		}
 		return check;
-	}	
-
+	}
+	
 	public boolean estEchecEtMat(Position laPos)
 	{
 		boolean mat=false;
@@ -144,45 +145,24 @@ public class Partie
 				}
 			}
 			return mat;
-			//TODO regarder si chaque posAtteignagble == check' Si oui :> mat , si non !mat
-		}
-		return mat;
-	}
-	//TODO Finir la fonction
-	public boolean estEchecEtMat(JoueurAbstract p)
-	{
-		boolean mat=false;
-		
-		if(estEnEchec(p))
-		{	
-			Piece roiPiece = null;
-			for(Piece onePiece : this.myChessboard.getPieceList())
-			{
-				if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
-				{
-					roiPiece=onePiece;
-				}
-			}
-			for(Piece onePiece : this.myChessboard.getPieceList())
-			{
-				if(!p.getColor().equals( onePiece.getColor() ))
-				{
-					if(!onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
-						//Il faut verif que le roi n'a pas de position qui lui permet d'éviter l'échec
-					{
-						mat=false;
-					}
-					else
-					{
-						mat=true;
-					}
-				}
-			}
-			//TODO regarder si chaque posAtteignagble == check' Si oui :> mat , si non !mat
 		}
 		return mat;
 	}
 	
+	@SuppressWarnings( "null" )
+	public boolean estEchecEtMat(JoueurAbstract p)
+	{
+		Piece roiPiece = null;
+		for(Piece onePiece : this.myChessboard.getPieceList())
+		{
+			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
+			{
+				roiPiece=onePiece;
+			}
+		}
+
+		return estEchecEtMat(roiPiece.getPos());
+	}
 
 	public boolean isDraw()
 	{
@@ -325,12 +305,12 @@ public class Partie
 		this.cpt_sans_prise--;
 	}
 
-	public JoueurAbstract getplayerEnCours()
+	public JoueurAbstract getPlayerEnCours()
 	{
 		return playerEnCours;
 	}
 
-	public void setplayerEnCours()
+	public void setPlayerEnCours()
 	{
 		if(playerEnCours.equals( listOfPlayer.getFirst() ))
 		{

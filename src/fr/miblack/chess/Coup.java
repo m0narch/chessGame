@@ -19,14 +19,14 @@ public class Coup
 	public Coup(Piece pieceDepart,Position posArrivee )
 	{
 		 this.setPieceDepart( pieceDepart );
-		 this.setPosDepart  ( pieceDepart.getPos());
+		 this.setPosDepart  ( pieceDepart.getPos().clone());
 		 this.setPosArrivee ( posArrivee  );
 	}
 	
 	public Coup(Piece pieceDepart,Position posArrivee,boolean prise)
 	{
 		 this.setPieceDepart( pieceDepart );
-		 this.setPosDepart  ( pieceDepart.getPos());
+		 this.setPosDepart  ( pieceDepart.getPos().clone());
 		 this.setPosArrivee ( posArrivee  );
 		 this.setEstPrise	( prise );
 	}

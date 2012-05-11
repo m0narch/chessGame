@@ -39,8 +39,9 @@ public abstract class Piece implements Cloneable
 
 	public void setPlayed()
 	{
-		this.asPlayed++;
+		this.asPlayed=asPlayed+1;
 	}
+	
 	public void unSetPlayed()
 	{
 		this.asPlayed--;

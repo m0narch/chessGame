@@ -55,11 +55,11 @@ public class Pion extends Piece
 		{
 			mult=-1;
 		}
-		if(this.asPlayed==0)
+		if(this.getPlayed()==0)
 		{
 			if(estValide( getY()+(1*mult) ))
 			{
-				if(chess.getPiecePosition( getX(), (getY()+(1*mult)) )!=null)
+				if(chess.getPiecePosition( getX(), (getY()+((-1)*mult)) )==null)
 				{
 					if(estValide( getY()+(2*mult) ))
 					{
@@ -119,6 +119,8 @@ public class Pion extends Piece
 		return myList;
 	}
 
+		
+	
 	@Override
 	public String toString()
 	{

@@ -64,16 +64,12 @@ public class Echiquier
 	{
 		Piece pieceD=null;
 		boolean prise=false;
-		pieceD= this.getPiecePosition(posDepart);
-		
+		pieceD=this.getPiecePosition(posDepart);
 		piecePourTest=this.getPiecePosition(posArrivee);
 		if(piecePourTest!=null)
 		{
 			 prise=true;
-		}
-		if(prise)
-		{
-			pieceList.remove(piecePourTest );
+			 pieceList.remove(piecePourTest);
 		}
 		pieceD.setPos( posArrivee );
 		pieceList.remove(pieceD );
@@ -85,13 +81,14 @@ public class Echiquier
 	{
 		Piece pieceD=null;
 		pieceD=this.getPiecePosition(posArrivee);
+		pieceList.remove(pieceD );
 		pieceD.setPos( posDepart );
 		if(isPrise)
 		{
 			piecePourTest.setPos(posArrivee);
 			pieceList.add(piecePourTest );
 		}
-		pieceList.remove(pieceD );
+		piecePourTest=null;
 		pieceList.add(pieceD );
 	}
 	//TODO verif !!!!
@@ -99,6 +96,7 @@ public class Echiquier
 	{
 		Piece pieceD=null;
 		Position posA=null;
+		piecePourTest=null;
 		try
 		{
 			pieceD=myCoup.getPieceDepart();
@@ -113,13 +111,14 @@ public class Echiquier
 					{
 						if(piece.equals( pieceD ))
 						{
+							pieceD.setPlayed();
 							pieceD.setPos( posA );
 							pieceList.remove(piece );
 							pieceList.add(pieceD );
 							break;
 						}
 					}
-					pieceD.setPlayed();
+					
 					return true;
 				}
 			}
@@ -145,40 +144,7 @@ public class Echiquier
 		}
 	}
 
-	public Object clone() 
-	{
-		return pieceList.clone();
-	}
-
-	public boolean contains(Object o) 
-	{
-		return pieceList.contains(o);
-	}
-
-	public boolean equals(Object arg0) 
-	{
-		return pieceList.equals(arg0);
-	}
-
-	public Piece get(int index) 
-	{
-		return pieceList.get(index);
-	}
-
-	public Piece getFirst() 
-	{
-		return pieceList.getFirst();
-	}
-
-	public Piece getLast() 
-	{
-		return pieceList.getLast();
-	}
-
-	public boolean remove(Object arg0) 
-	{
-		return pieceList.remove(arg0);
-	}
+	
 
 	public int size() 
 	{

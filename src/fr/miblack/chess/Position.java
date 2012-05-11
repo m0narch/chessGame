@@ -126,7 +126,8 @@ public class Position
 	{
 		return listPos;
 	}
-
-
-	
+	public Position clone()
+	{
+		return new Position(this.x,this.y);
+	}
 }
