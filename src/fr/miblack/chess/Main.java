@@ -6,15 +6,10 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-			if(args.length==0)
-			{
-				Textuelle guiTxt=new Textuelle();
-				guiTxt.jouerPartie();
-			}
-			
-		
+		if(args.length==0)
+		{
+			Textuelle guiTxt=new Textuelle();
+			guiTxt.jouerPartie();
+		}
 	}
-
-
-
 }

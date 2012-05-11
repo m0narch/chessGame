@@ -71,6 +71,7 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 				size=1;
 			}
 			int var =rand.nextInt(size);
+			var=rand.nextInt(size);
 			return listOfTheRandom.get( var );
 		}
 		throw new RuntimeException("Plus de coups possible !");

@@ -1,6 +1,8 @@
 package fr.miblack.chess.GUI;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Echiquier;
@@ -201,7 +203,7 @@ public class Textuelle   extends Interface
 			{
 				monCoup=Coup.parseStringToCoupCompl( strCoup, maPartie );
 			}
-			catch(NullPointerException e)
+			catch(RuntimeException e)
 			{
 				System.out.println("Le coup est invalide");
 				continue;
@@ -222,38 +224,47 @@ public class Textuelle   extends Interface
 	{
 		int i=taille+1;
 		Scanner sc=new Scanner(System.in);
-
 		while(i<0 || i>taille)
 		{
-			i=sc.nextInt();
-			if(i<0 || i>taille)
+			try
+			{
+				
+					i=sc.nextInt();
+					if(i<0 || i>taille)
+						System.out.println("Mauvaise valeur !");
+			}
+			catch(Exception e)
+			{
+				i=-1;
 				System.out.println("Mauvaise valeur !");
+a			}
 		}
 		return i;
 	}
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(getMaPartie().getCpt_sans_prise()<50) //FIXME Changer la cond pour gestion pat echec etc
+		while(getMaPartie().getCpt_sans_prise()<49) //FIXME Changer la cond pour gestion pat echec etc
 		{
-			if(getMaPartie().getCpt_sans_prise()>=49 )
-			{
-				System.out.println("Fin de partie , partie nulle");
-				break;
-			}
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
 				this.AfficherEchiquier();
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
+
 				if(getMaPartie().estEnEchec(p))
 				{
 					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
+					if(getMaPartie().estEchecEtMat( p ) )
+					{
+						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est echecs et mat !");
+						System.exit(0);
+					}
 				}
-				if(getMaPartie().estEchecEtMat( p ) )
-				{
-					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est echecs et mat !");
-					break;
-				}
+				else
+					if(getMaPartie().estEchecEtMat( p ) )
+					{
+						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est pat !");
+					}
 				if(p instanceof JoueurHumain)
 				{
 						System.out.println("C'est au joueur humain "+p.toString()+" de jouer !");
@@ -267,6 +278,10 @@ public class Textuelle   extends Interface
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setPlayerEnCours();
 			}
+		}
+		if(getMaPartie().getCpt_sans_prise()>=49 )
+		{
+			System.out.println("Fin de partie , partie nulle");
 		}
 	}
 	

@@ -172,6 +172,7 @@ public class Partie
 	{
 		Piece roiPiece = null;
 		boolean mat=false;
+		//1boolean prise=false;
 		for(Piece onePiece : this.myChessboard.getPieceList())
 		{
 			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
@@ -179,30 +180,47 @@ public class Partie
 				roiPiece=onePiece;
 			}
 		}
+	//	System.out.println(roiPiece.getPos().toStringPos());
 		LinkedList<Position> posKingAccess=roiPiece.positionAccessibleChessboard( getMyChessboard() );
 		for(Position posA :posKingAccess)
 		{
-			boolean prise=this.getMyChessboard().deplacerPiecePourTest(roiPiece.getPos().clone(), posA);
+			mat=seraEnEchec(roiPiece.getPos().clone(),posA);
+			if(mat==false)
+			{
+				return mat;
+			}
+			/*System.out.println("Avant "+roiPiece.getPos().toStringPos());
+			prise=this.getMyChessboard().deplacerPiecePourTest(roiPiece.getPos(), posA.clone());
+			System.out.println("Après "+roiPiece.getPos().toStringPos());
 			for(Piece laPiece : this.getMyChessboard().getPieceList())
 			{
-				for(Position laPos : laPiece.positionAccessibleChessboard( getMyChessboard() ))
+				if(laPiece.getColor()!=p.getColor())
 				{
-					if(laPos.equals( posA ))
+					for(Position laPos : laPiece.positionAccessibleChessboard( getMyChessboard() ))
 					{
-						mat=true;
+						if(laPos.equals( posA ))
+						{
+							mat=true;
+						}
+						else
+						{
+							mat=false;
+							System.out.println("Finalement pendant: "+roiPiece.getPos().toStringPos());
+							this.getMyChessboard().annulerDeplacerPiecePourTest(posA, roiPiece.getPos(),prise);
+							System.out.println("Finalement pendant après: "+roiPiece.getPos().toStringPos());
+							return mat;
+						}
 					}
-					else
+					if(laPiece instanceof Pion)
 					{
-						mat=false;
-						return mat;
+						mat=mat || ((Pion )laPiece).metEnEchec(this.myChessboard);
 					}
-				}
-				if(laPiece instanceof Pion)
-				{
-					mat=mat || ((Pion )laPiece).metEnEchec(this.myChessboard);
 				}
 			}
+			System.out.println("Finalement avant: "+roiPiece.getPos().toStringPos());
 			this.getMyChessboard().annulerDeplacerPiecePourTest(roiPiece.getPos().clone(), posA,prise);
+			System.out.println("Finalement après: "+roiPiece.getPos().toStringPos());
+*/
 		}
 		return mat;
 	}
