@@ -4,24 +4,24 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import fr.miblack.chess.Coup;
-import fr.miblack.chess.Jouer;
 import fr.miblack.chess.Partie; 
+import fr.miblack.chess.GUI.Interface;
 import fr.miblack.chess.color.Couleur;
 
 
-public class JoueurOrdinateur extends JoueurAbstract implements Jouer
+public class JoueurOrdinateur extends JoueurAbstract 
 {
 
 	private int niveau;
 	
-	public JoueurOrdinateur(String p1,Couleur a) 
+	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface) 
 	{
-		super(p1,a);
+		super(p1,a,monInterface);
 	}
 	
-	public JoueurOrdinateur(String p1,Couleur a,int niveau) 
+	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface,int niveau) 
 	{
-		super(p1,a);
+		super(p1,a,monInterface);
 		this.niveau=niveau;
 	}
 
@@ -37,26 +37,7 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 
 	public Coup jouerCoup(Partie a)
 	{
-		boolean mauvaisChoix=false;
-		Coup m;
-	 	do
-	 	{
-			m =selectionCoupAleatoire(a);
-			if(a.seraEnEchec(m.getPosDepart(),m.getPosArrivee()))
-			{
-				mauvaisChoix=true;
-			}
-			else
-				mauvaisChoix=false;
-		}while(mauvaisChoix );
-		System.out.println(m);
-		if(m.isEstPrise())
-		{
-			a.setCpt_sans_prise();
-		}
-		else
-			a.upCpt_sans_prise();
-		return m;
+		return	selectionCoupAleatoire( a );
 	}
 	
 	public Coup selectionCoupAleatoire(Partie a) 

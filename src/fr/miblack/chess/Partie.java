@@ -1,6 +1,5 @@
 package fr.miblack.chess;
 import fr.miblack.chess.Echiquier;
-import fr.miblack.chess.GUI.Interface;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.*;
@@ -20,14 +19,12 @@ public class Partie
 	private int cpt_sans_prise=0;
 	private int cptSansMvmtPion=0;
 	private Echiquier myChessboard = new Echiquier();
-	private Interface myInterface;
 
 
-	public Partie(JoueurAbstract player1,JoueurAbstract player2,Interface myInterface)
+	public Partie(JoueurAbstract player1,JoueurAbstract player2 )
 	{
 		listOfPlayer.add(player2);
 		listOfPlayer.addFirst( player1 );
-		this.myInterface=myInterface;
 		letsPlay(player1);
 	}
 
@@ -53,7 +50,7 @@ public class Partie
 	public boolean estPat()
 	{
 		boolean stalemate=false;
-
+		//TODO a faire
 		return stalemate;
 	}
 
@@ -180,7 +177,6 @@ public class Partie
 				roiPiece=onePiece;
 			}
 		}
-	//	System.out.println(roiPiece.getPos().toStringPos());
 		LinkedList<Position> posKingAccess=roiPiece.positionAccessibleChessboard( getMyChessboard() );
 		for(Position posA :posKingAccess)
 		{
@@ -189,38 +185,6 @@ public class Partie
 			{
 				return mat;
 			}
-			/*System.out.println("Avant "+roiPiece.getPos().toStringPos());
-			prise=this.getMyChessboard().deplacerPiecePourTest(roiPiece.getPos(), posA.clone());
-			System.out.println("Après "+roiPiece.getPos().toStringPos());
-			for(Piece laPiece : this.getMyChessboard().getPieceList())
-			{
-				if(laPiece.getColor()!=p.getColor())
-				{
-					for(Position laPos : laPiece.positionAccessibleChessboard( getMyChessboard() ))
-					{
-						if(laPos.equals( posA ))
-						{
-							mat=true;
-						}
-						else
-						{
-							mat=false;
-							System.out.println("Finalement pendant: "+roiPiece.getPos().toStringPos());
-							this.getMyChessboard().annulerDeplacerPiecePourTest(posA, roiPiece.getPos(),prise);
-							System.out.println("Finalement pendant après: "+roiPiece.getPos().toStringPos());
-							return mat;
-						}
-					}
-					if(laPiece instanceof Pion)
-					{
-						mat=mat || ((Pion )laPiece).metEnEchec(this.myChessboard);
-					}
-				}
-			}
-			System.out.println("Finalement avant: "+roiPiece.getPos().toStringPos());
-			this.getMyChessboard().annulerDeplacerPiecePourTest(roiPiece.getPos().clone(), posA,prise);
-			System.out.println("Finalement après: "+roiPiece.getPos().toStringPos());
-*/
 		}
 		return mat;
 	}
@@ -389,16 +353,7 @@ public class Partie
 		return listOfPlayer;
 	}
 
-	public Interface getMyInterface()
-	{
-		return myInterface;
-	}
 
-	public void setMyInterface( Interface myInterface )
-	{
-		this.myInterface = myInterface;
-	}
-	
 	public LinkedList<Coup> getListOfMove()
 	{
 		return listOfMove;

@@ -66,21 +66,21 @@ public class Textuelle   extends Interface
 		switch(ret)
 		{
 			case 1 :
-				player1=new JoueurHumain( p1, new Couleur( 1 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 0 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurHumain( p1, new Couleur( 1 ),this);
+				player2=new JoueurOrdinateur( p2, new Couleur( 0 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;	
 
 			case 2 :
-				player1=new JoueurHumain( p1, new Couleur( 1 ));
-				player2=new JoueurHumain( p2, new Couleur( 0 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurHumain( p1, new Couleur( 1 ),this);
+				player2=new JoueurHumain( p2, new Couleur( 0 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;	
 				
 			case 3 :
-				player1=new JoueurOrdinateur( p1, new Couleur( 1 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 0 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurOrdinateur( p1, new Couleur( 1 ),this);
+				player2=new JoueurOrdinateur( p2, new Couleur( 0 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;
 				
 			case 4 :
@@ -103,21 +103,21 @@ public class Textuelle   extends Interface
 		switch(ret)
 		{
 			case 1 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurHumain( p1, new Couleur( 0 ),this);
+				player2=new JoueurOrdinateur( p2, new Couleur( 1 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;	
 
 			case 2 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ));
-				player2=new JoueurHumain( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurHumain( p1, new Couleur( 0 ),this);
+				player2=new JoueurHumain( p2, new Couleur( 1 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;	
 				
 			case 3 :
-				player1=new JoueurOrdinateur( p1, new Couleur( 0 ));
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ));
-				this.maPartie=new Partie(player1,player2,this);
+				player1=new JoueurOrdinateur( p1, new Couleur( 0 ),this);
+				player2=new JoueurOrdinateur( p2, new Couleur( 1 ),this);
+				this.maPartie=new Partie(player1,player2);
 				break;
 				
 			case 4 :
@@ -241,7 +241,7 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(getMaPartie().getCpt_sans_prise()<49) //FIXME Changer la cond pour gestion pat echec etc
+		while(!getMaPartie().isDraw()) //FIXME Changer la cond pour gestion pat echec etc
 		{
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
@@ -266,18 +266,18 @@ public class Textuelle   extends Interface
 				if(p instanceof JoueurHumain)
 				{
 						System.out.println("C'est au joueur humain "+p.toString()+" de jouer !");
-						monCoup=((JoueurHumain) p).jouerCoup( this.getMaPartie());
+						monCoup= p.jouerCoup( this.getMaPartie());
 				}
 				else
 				{
 						System.out.println("C'est au joueur machine "+p.toString()+" de jouer !");
-						monCoup=((JoueurOrdinateur) p).jouerCoup( this.getMaPartie());
+						monCoup= p.jouerCoup( this.getMaPartie());
 				}
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setPlayerEnCours();
 			}
 		}
-		if(getMaPartie().getCpt_sans_prise()>=49 )
+		if(getMaPartie().isDraw() )
 		{
 			System.out.println("Fin de partie , partie nulle");
 		}
@@ -300,7 +300,6 @@ public class Textuelle   extends Interface
 				}
 			}
 			System.out.print(Couleur.ANSI_RESET);
-
 			System.out.print(" " +(y+1)+"\n");
 		}
 		System.out.println("");
@@ -309,10 +308,34 @@ public class Textuelle   extends Interface
 		{
 			System.out.print((char)(i+97));
 		}
-
 		System.out.println("");
 		return a;
 	}
 
+	@Override
+	public Coup jouerCoup( Partie g )
+	{
+		JoueurAbstract p=g.getPlayerEnCours();
+		Interface monInterface=this;
+		Coup m;
+		boolean mauvaisChoix=false;
+		do
+		{
+			if(mauvaisChoix)
+			{
+				System.out.println("Mauvais choix de coup");
+			}
+			m=saisirCoup(p, monInterface.getMyChessboard()  );
+
+			if(g.seraEnEchec(m.getPosDepart(),m.getPosArrivee()))
+			{
+				mauvaisChoix=true;
+			}
+			else
+				mauvaisChoix=false;
+		}while(mauvaisChoix);
+	
+		return m;
+	}
 
 }

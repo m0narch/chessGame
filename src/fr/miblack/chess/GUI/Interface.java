@@ -1,11 +1,13 @@
 package fr.miblack.chess.GUI;
 
+import fr.miblack.chess.Coup;
 import fr.miblack.chess.Echiquier;
+import fr.miblack.chess.Jouer;
 import fr.miblack.chess.Partie;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.Piece;
 
-public class Interface
+public abstract class Interface implements Jouer
 {
 	protected  Partie maPartie;
 	protected JoueurAbstract player1;
@@ -23,4 +25,7 @@ public class Interface
 	{
 		return this.getMaPartie().getMyChessboard();
 	}
+	@Override
+	public abstract Coup jouerCoup( Partie g );
+	 
 }
