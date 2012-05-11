@@ -127,9 +127,7 @@ public class Coup
 		Position posA;
 		if(matcher.find())
 		{
-			System.out.println("Matché");
 			pieceD =party.getMyChessboard().getPiecePosition(Position.stringToPos(matcher.group(2)));
-			System.out.println("La piece de dépar est "+ pieceD);
 			posA=Position.stringToPos( matcher.group(4) );
 			prise =matcher.group(3).equals("x");
 			return new Coup(pieceD, posA , prise);

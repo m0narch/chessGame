@@ -1,9 +1,6 @@
 package fr.miblack.chess.GUI;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
-
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.Partie;
@@ -154,7 +151,7 @@ public class Textuelle   extends Interface
 		}
 	}
 
-	
+
 
 	public int affichageMenuPrincipal()
 	{
@@ -237,7 +234,7 @@ public class Textuelle   extends Interface
 			{
 				i=-1;
 				System.out.println("Mauvaise valeur !");
-a			}
+			}
 		}
 		return i;
 	}
@@ -249,22 +246,23 @@ a			}
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
 				this.AfficherEchiquier();
-				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
-
 				if(getMaPartie().estEnEchec(p))
 				{
-					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
 					if(getMaPartie().estEchecEtMat( p ) )
 					{
 						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est echecs et mat !");
 						System.exit(0);
 					}
+					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
 				}
 				else
+				{
 					if(getMaPartie().estEchecEtMat( p ) )
 					{
 						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est pat !");
-					}
+					}	
+				}
+				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
 				if(p instanceof JoueurHumain)
 				{
 						System.out.println("C'est au joueur humain "+p.toString()+" de jouer !");
