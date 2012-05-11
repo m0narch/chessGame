@@ -234,7 +234,8 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(!getMaPartie().estEchecEtMat( getMaPartie().getPlayerEnCours() )) //FIXME Changer la cond pour gestion pat echec etc
+		//while(!getMaPartie().estEchecEtMat( getMaPartie().getPlayerEnCours() )) //FIXME Changer la cond pour gestion pat echec etc
+		while(true)
 		{
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{

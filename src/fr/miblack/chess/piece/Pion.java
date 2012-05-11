@@ -59,7 +59,7 @@ public class Pion extends Piece
 		{
 			if(estValide( getY()+(1*mult) ))
 			{
-				if(chess.getPiecePosition( getX(), (getY()+((-1)*mult)) )==null)
+				if(chess.getPiecePosition( getX(), (getY()+((1)*mult)) )==null)
 				{
 					if(estValide( getY()+(2*mult) ))
 					{
@@ -119,7 +119,45 @@ public class Pion extends Piece
 		return myList;
 	}
 
-		
+	public boolean metEnEchec(Echiquier chess)
+	{
+		boolean check=false;
+		Couleur maCouleur=this.getColor();
+		int mult=1;
+		if(maCouleur.getColor()==0)
+		{
+			mult=-1;
+		}
+		if((this.getX()+1)<=7)
+		{
+			if(estValide( this.getY()+(1*mult) ))
+			{
+				if(chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult))!=null)
+				{
+					if(!verifColor(chess,this.getX()+1,this.getY()+(1*mult)) )
+					{
+						if((chess.getPiecePosition(this.getX()+1,this.getY()+(1*mult) ) instanceof Roi))
+							check=true;
+					}
+				}
+			}
+		}
+		if((this.getX()-1)>=0)
+		{
+			if(estValide( this.getY()+(1*mult) ))
+			{
+				if(chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult))!=null)
+				{
+					if(!verifColor(chess,this.getX()-1,this.getY()+(1*mult)))
+					{
+						if((chess.getPiecePosition(this.getX()-1,this.getY()+(1*mult) ) instanceof Roi))
+							check=true;
+					}
+				}
+			}
+		}
+		return check;
+	}
 	
 	@Override
 	public String toString()

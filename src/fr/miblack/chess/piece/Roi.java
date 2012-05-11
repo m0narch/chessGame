@@ -30,7 +30,7 @@ public class Roi extends Piece
 	public LinkedList<Position> positionAccessibleChessboard(Echiquier chess)
 	{
 		LinkedList<Position> myList=positionAccessible() ;
-
+		boolean prise=false;
 		for(Position onePos:positionAccessible())
 		{
 			if(verifColor( chess, onePos ) && chess.getPiecePosition( onePos )!=null)
@@ -41,34 +41,26 @@ public class Roi extends Piece
 			{
 				myList.remove(onePos);
 			}
-
-			for(int a=-1;a<=1;a++)
+			prise=chess.deplacerPiecePourTest( getPos().clone(), onePos );
+			for(Piece unePiece:chess.getPieceList())
 			{
-				for(int b=-1;b<=1;b++)
+				if(unePiece.getColor()!=this.getColor())
 				{
-					if((a!=onePos.getX())&&(b!=onePos.getY()))
+					for(Position unePos : unePiece.positionAccessibleChessboard( chess ))
 					{
-						if(posRoiValide(onePos,a,b,chess))
-							myList.remove(Position.getPosition( onePos.getX()+a, onePos.getY()+b));
+						if(unePos.equals( getPos() ))
+						{
+							myList.remove(unePos);
+						}
 					}
 				}
 			}
+			chess.annulerDeplacerPiecePourTest ( getPos().clone(), onePos,prise );
 		}
 		return myList;
 	}
 
-	public boolean posRoiValide(Position onePos,int a,int b, Echiquier chess)
-	{
-		boolean ret=false;
-		if(estValide(onePos.getX()+a))
-		{
-			if(estValide( onePos.getY()+b))
-			{
-			ret= (chess.getPiecePosition( onePos.getX()+a,onePos.getY()+b)instanceof Roi);
-			}
-		}
-		return ret;
-	}
+
 	public LinkedList<Position> whatCanIEat(Echiquier chess)
 	{
 		LinkedList<Position> myList=positionAccessibleChessboard(chess);

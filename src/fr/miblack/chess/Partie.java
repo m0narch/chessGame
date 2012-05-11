@@ -80,10 +80,10 @@ public class Partie
 	public boolean seraEnEchec(Position laPosD,Position laPosA)
 	{
 		boolean prise=this.getMyChessboard().deplacerPiecePourTest(laPosD, laPosA);
-		
+		boolean check=false;
 		for(Piece laPiece : this.getMyChessboard().getPieceList())
 		{
-			if(laPiece instanceof Roi)
+			if(!(laPiece instanceof Roi))
 			{
 				if(laPiece.getColor()!=this.playerEnCours.getColor())
 				{
@@ -92,14 +92,19 @@ public class Partie
 						if(laPos.equals(laPosA))
 						{
 							this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
-							return true;
+							return check;
 						}
+					}
+					if(laPiece instanceof Pion)
+					{
+						check=check || ((Pion )laPiece).metEnEchec(this.myChessboard);
 					}
 				}
 			}
+			
 		}
 		this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
-		return false;
+		return check;
 	}
 	//Le null Supress n'est pas obligatoire car un joueur à TOUJOURS un roi
 	@SuppressWarnings( "null" )
@@ -116,11 +121,18 @@ public class Partie
 		}
 		for(Piece onePiece : this.myChessboard.getPieceList())
 		{
-			if(!p.getColor().equals( onePiece.getColor() ))
+			if(!(onePiece instanceof Roi))
 			{
-				if(onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
+				if(!p.getColor().equals( onePiece.getColor() ))
 				{
-					check=true;
+					if(onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
+					{
+						check=true;
+					}
+					if(onePiece instanceof Pion)
+					{
+						check=check || ((Pion )onePiece).metEnEchec(this.myChessboard);
+					}
 				}
 			}
 		}
@@ -153,6 +165,7 @@ public class Partie
 	public boolean estEchecEtMat(JoueurAbstract p)
 	{
 		Piece roiPiece = null;
+		boolean mat=false;
 		for(Piece onePiece : this.myChessboard.getPieceList())
 		{
 			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
@@ -160,8 +173,32 @@ public class Partie
 				roiPiece=onePiece;
 			}
 		}
+		LinkedList<Position> posKingAccess=roiPiece.positionAccessibleChessboard( getMyChessboard() );
+		for(Position posA :posKingAccess)
+		{
+			boolean prise=this.getMyChessboard().deplacerPiecePourTest(roiPiece.getPos().clone(), posA);
+			for(Piece laPiece : this.getMyChessboard().getPieceList())
+			{
+				for(Position laPos : laPiece.positionAccessibleChessboard( getMyChessboard() ))
+				{
+					if(laPos.equals( posA ))
+					{
+						mat=true;
+					}
+					else
+						mat=false;
+				}
+				if(laPiece instanceof Pion)
+				{
+					mat=mat || ((Pion )laPiece).metEnEchec(this.myChessboard);
+				}
+			}
+			
+			this.getMyChessboard().annulerDeplacerPiecePourTest(roiPiece.getPos().clone(), posA,prise);
 
-		return estEchecEtMat(roiPiece.getPos());
+		}
+		
+		return mat;
 	}
 
 	public boolean isDraw()
