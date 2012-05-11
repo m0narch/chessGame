@@ -163,13 +163,7 @@ public class Tour extends Piece implements Ligne
 			{	
 				myList.remove(onePos);
 			}
-			else
-			{
-				if(chess.getPiecePosition(onePos) instanceof Roi)
-				{
-					myList.remove(onePos);
-				}
-			}
+			
 
 		}
 		return myList;

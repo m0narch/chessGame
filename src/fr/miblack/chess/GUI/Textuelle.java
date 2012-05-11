@@ -243,17 +243,18 @@ public class Textuelle   extends Interface
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
 				if(getMaPartie().estEnEchec(p))
 				{
-					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs");
+					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
 				}
 				if(p instanceof JoueurHumain)
 				{
+						System.out.println("C'est au joueur humain "+p.toString()+" de jouer !");
 						monCoup=((JoueurHumain) p).jouerCoup( this.getMaPartie());
 				}
 				else
 				{
+						System.out.println("C'est au joueur machine "+p.toString()+" de jouer !");
 						monCoup=((JoueurOrdinateur) p).jouerCoup( this.getMaPartie());
 				}
-				
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setPlayerEnCours();
 				

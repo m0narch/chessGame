@@ -59,7 +59,7 @@ public class Pion extends Piece
 		{
 			if(estValide( getY()+(1*mult) ))
 			{
-				if(chess.getPiecePosition( getX(), (getY()+((1)*mult)) )==null)
+				if(chess.getPiecePosition( getX(), (getY()+((1)*mult)) )!=null)
 				{
 					if(estValide( getY()+(2*mult) ))
 					{

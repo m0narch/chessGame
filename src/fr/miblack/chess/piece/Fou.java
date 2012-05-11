@@ -126,14 +126,7 @@ public class Fou extends Piece implements Diagonale
 				myList.remove(onePos);
 				continue;
 			}
-			else
-			{
-				if((chess.getPiecePosition(onePos) instanceof Roi))
-				{
-					myList.remove(onePos);
-					continue;
-				}
-			}
+
 		}
 		return myList;
 	}

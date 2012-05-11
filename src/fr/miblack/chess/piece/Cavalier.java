@@ -70,13 +70,7 @@ public class Cavalier extends Piece
 			{
 				myList.remove(onePos);
 			}
-			else
-			{
-				if( (chess.getPiecePosition(onePos) instanceof Roi))
-				{
-					myList.remove(onePos);
-				}
-			}
+
 		}
 		return myList;
 	}

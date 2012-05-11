@@ -30,10 +30,21 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 	{
 		Interface monInterface=a.getMyInterface();
 		Coup m;
+		boolean mauvaisChoix=false;
 		do
 		{
+			if(mauvaisChoix)
+			{
+				System.out.println("Mauvais choix de coup");
+			}
 			m=saisirCoup(monInterface);
-		}while((a.seraEnEchec(m.getPosDepart(),m.getPosArrivee())));
+			if(a.seraEnEchec(m.getPosDepart(),m.getPosArrivee()))
+			{
+				mauvaisChoix=true;
+			}
+			else
+				mauvaisChoix=false;
+		}while(mauvaisChoix);
 	
 		if(monInterface instanceof Textuelle)
 			((Textuelle)monInterface).getMaPartie().addMove( m );

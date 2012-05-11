@@ -77,35 +77,41 @@ public class Partie
 		}
 		return check;
 	}
+	
+	@SuppressWarnings( "null" )
 	public boolean seraEnEchec(Position laPosD,Position laPosA)
 	{
 		boolean prise=this.getMyChessboard().deplacerPiecePourTest(laPosD, laPosA);
 		boolean check=false;
-		for(Piece laPiece : this.getMyChessboard().getPieceList())
+		
+		Piece roiPiece = null;
+
+		LinkedList<Piece> maListeDePiece=this.getMyChessboard().getPieceList();
+		for(Piece laPiece :	maListeDePiece ) 
 		{
-			if(!(laPiece instanceof Roi))
+			if(laPiece instanceof Roi && (getPlayerEnCours().getColor().equals(laPiece.getColor())))
 			{
-				if(laPiece.getColor()!=this.playerEnCours.getColor())
+				roiPiece=laPiece;
+			}
+		}
+		for(Piece onePiece : maListeDePiece)
+		{
+			if(!getPlayerEnCours().getColor().equals(onePiece.getColor()))
+			{
+				if(onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ))
 				{
-					for(Position laPos :laPiece.positionAccessibleChessboard(getMyChessboard()))
-					{
-						if(laPos.equals(laPosA))
-						{
-							this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
-							return check;
-						}
-					}
-					if(laPiece instanceof Pion)
-					{
-						check=check || ((Pion )laPiece).metEnEchec(this.myChessboard);
-					}
+					check=true;
+				}
+				if(onePiece instanceof Pion)
+				{
+					check=check || ((Pion )onePiece).metEnEchec(this.myChessboard);
 				}
 			}
-			
 		}
 		this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
 		return check;
 	}
+	
 	//Le null Supress n'est pas obligatoire car un joueur à TOUJOURS un roi
 	@SuppressWarnings( "null" )
 	public boolean estEnEchec(JoueurAbstract p)

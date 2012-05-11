@@ -37,12 +37,18 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 
 	public Coup jouerCoup(Partie a)
 	{
+		boolean mauvaisChoix=false;
 		Coup m;
-	//	Interface monInterface=a.getMyInterface();
 	 	do
 	 	{
 			m =selectionCoupAleatoire(a);
-		}while((a.seraEnEchec(m.getPosDepart(), m.getPosArrivee())));
+			if(a.seraEnEchec(m.getPosDepart(),m.getPosArrivee()))
+			{
+				mauvaisChoix=true;
+			}
+			else
+				mauvaisChoix=false;
+		}while(mauvaisChoix);
 		System.out.println(m);
 		return m;
 	}

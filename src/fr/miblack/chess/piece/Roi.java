@@ -1,5 +1,6 @@
 package fr.miblack.chess.piece;
 import java.util.*;
+
 import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
@@ -30,37 +31,17 @@ public class Roi extends Piece
 	public LinkedList<Position> positionAccessibleChessboard(Echiquier chess)
 	{
 		LinkedList<Position> myList=positionAccessible() ;
-		boolean prise=false;
 		for(Position onePos:positionAccessible())
 		{
 			if(verifColor( chess, onePos ) && chess.getPiecePosition( onePos )!=null)
 			{
 				myList.remove(onePos);
 			}
-			if(chess.getPiecePosition( onePos ) instanceof Roi)
-			{
-				myList.remove(onePos);
-			}
-			prise=chess.deplacerPiecePourTest( getPos().clone(), onePos );
-			for(Piece unePiece:chess.getPieceList())
-			{
-				if(unePiece.getColor()!=this.getColor())
-				{
-					for(Position unePos : unePiece.positionAccessibleChessboard( chess ))
-					{
-						if(unePos.equals( getPos() ))
-						{
-							myList.remove(unePos);
-						}
-					}
-				}
-			}
-			chess.annulerDeplacerPiecePourTest ( getPos().clone(), onePos,prise );
+
 		}
 		return myList;
 	}
-
-
+	
 	public LinkedList<Position> whatCanIEat(Echiquier chess)
 	{
 		LinkedList<Position> myList=positionAccessibleChessboard(chess);
@@ -70,13 +51,7 @@ public class Roi extends Piece
 			{
 				myList.remove(onePos);
 			}
-			else
-			{
-				if(chess.getPiecePosition( onePos ) instanceof Roi)
-				{
-					myList.remove(onePos);
-				}
-			}
+	
 		}
 		return myList;
 	}

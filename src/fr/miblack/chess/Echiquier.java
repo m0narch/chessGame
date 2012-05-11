@@ -97,8 +97,7 @@ public class Echiquier
 		Piece pieceD=null;
 		Position posA=null;
 		piecePourTest=null;
-		try
-		{
+
 			pieceD=myCoup.getPieceDepart();
 			posA= myCoup.getPosArrivee();
 			myCoup.setPiecePrise( this.getPiecePosition( posA ) );
@@ -118,18 +117,15 @@ public class Echiquier
 							break;
 						}
 					}
-					
 					return true;
 				}
 			}
 			else
 				return false;
-		}
-		catch(RuntimeException e)
-		{
-		}
+	
 		return false;
 	}
+	
 	//TODO Penser au roque
 	public Coup moveRoque(boolean little)
 	{

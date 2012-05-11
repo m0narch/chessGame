@@ -117,21 +117,18 @@ public abstract class Piece implements Cloneable
 	{
 		LinkedList<Position> myListOfPosAtteignable = PieceDepart.positionAccessibleChessboard( maPartie.getMyChessboard() );
 		LinkedList<Coup> listOfCoup=new LinkedList<Coup>();
-
+		//TODO Gérer le fait qu'un déplacement met en échecs
 		for(Position position : myListOfPosAtteignable  )
 		{
-			if(!maPartie.estEnEchec( position ))
+			if(!(maPartie.getMyChessboard().getPiecePosition( position ) instanceof Roi))
 			{
-				if(!(maPartie.getMyChessboard().getPiecePosition( position ) instanceof Roi))
-				{
-					if(PieceDepart.whatCanIEat( maPartie.getMyChessboard() ).contains( position ))
-					{		
-						listOfCoup.add( new Coup(PieceDepart, position, true) );
-					}
-					else
-						listOfCoup.add( new Coup(PieceDepart, position, false) );	
-				}	
-			}
+				if(PieceDepart.whatCanIEat( maPartie.getMyChessboard() ).contains( position ))
+				{		
+					listOfCoup.add( new Coup(PieceDepart, position, true) );
+				}
+				else
+					listOfCoup.add( new Coup(PieceDepart, position, false) );	
+			}	
 		}
 		return listOfCoup;
 	}
