@@ -192,18 +192,18 @@ public class Partie
 						mat=true;
 					}
 					else
+					{
 						mat=false;
+						return mat;
+					}
 				}
 				if(laPiece instanceof Pion)
 				{
 					mat=mat || ((Pion )laPiece).metEnEchec(this.myChessboard);
 				}
 			}
-			
 			this.getMyChessboard().annulerDeplacerPiecePourTest(roiPiece.getPos().clone(), posA,prise);
-
 		}
-		
 		return mat;
 	}
 
@@ -342,6 +342,10 @@ public class Partie
 	public void upCpt_sans_prise( )
 	{
 		this.cpt_sans_prise++;
+	}
+	public void setCpt_sans_prise( )
+	{
+		this.cpt_sans_prise=0;
 	}
 	public void downCpt_sans_prise( )
 	{

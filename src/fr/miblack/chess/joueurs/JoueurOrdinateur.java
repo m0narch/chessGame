@@ -48,8 +48,14 @@ public class JoueurOrdinateur extends JoueurAbstract implements Jouer
 			}
 			else
 				mauvaisChoix=false;
-		}while(mauvaisChoix);
+		}while(mauvaisChoix );
 		System.out.println(m);
+		if(m.isEstPrise())
+		{
+			a.setCpt_sans_prise();
+		}
+		else
+			a.upCpt_sans_prise();
 		return m;
 	}
 	

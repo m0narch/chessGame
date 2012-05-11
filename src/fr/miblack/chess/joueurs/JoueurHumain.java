@@ -48,6 +48,13 @@ public class JoueurHumain extends JoueurAbstract implements Jouer
 	
 		if(monInterface instanceof Textuelle)
 			((Textuelle)monInterface).getMaPartie().addMove( m );
+		
+		if(m.isEstPrise())
+		{
+			a.setCpt_sans_prise();
+		}
+		else
+			a.upCpt_sans_prise();
 		return m;
 	}
 	

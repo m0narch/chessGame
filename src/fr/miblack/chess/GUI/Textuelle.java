@@ -201,11 +201,11 @@ public class Textuelle   extends Interface
 			{
 				monCoup=Coup.parseStringToCoupCompl( strCoup, maPartie );
 			}
-			catch(RuntimeException e)
+			catch(NullPointerException e)
 			{
-				System.out.println(e.getMessage());
+				System.out.println("Le coup est invalide");
 				continue;
-			}		
+			}
 			for(Coup c:maPartie.listOfAvailableMove( p ))
 			{
 				if(monCoup.equals( c ))
@@ -234,9 +234,13 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		//while(!getMaPartie().estEchecEtMat( getMaPartie().getPlayerEnCours() )) //FIXME Changer la cond pour gestion pat echec etc
-		while(true)
+		while(getMaPartie().getCpt_sans_prise()<50) //FIXME Changer la cond pour gestion pat echec etc
 		{
+			if(getMaPartie().getCpt_sans_prise()>=49 )
+			{
+				System.out.println("Fin de partie , partie nulle");
+				break;
+			}
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
 				this.AfficherEchiquier();
@@ -244,6 +248,11 @@ public class Textuelle   extends Interface
 				if(getMaPartie().estEnEchec(p))
 				{
 					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
+				}
+				if(getMaPartie().estEchecEtMat( p ) )
+				{
+					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est echecs et mat !");
+					break;
 				}
 				if(p instanceof JoueurHumain)
 				{
@@ -257,7 +266,6 @@ public class Textuelle   extends Interface
 				}
 				this.getMyChessboard().realiserCoup( monCoup );
 				this.getMaPartie().setPlayerEnCours();
-				
 			}
 		}
 	}
