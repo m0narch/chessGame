@@ -22,6 +22,7 @@ public class Coup
 		 this.setPosDepart  ( pieceDepart.getPos().clone());
 		 this.setPosArrivee ( posArrivee  );
 	}
+
 	
 	public Coup(Piece pieceDepart,Position posArrivee,boolean prise)
 	{
@@ -30,6 +31,7 @@ public class Coup
 		 this.setPosArrivee ( posArrivee  );
 		 this.setEstPrise	( prise );
 	}
+	
 	
 	/**
 	 * @return the pieceDepart

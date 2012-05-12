@@ -204,17 +204,14 @@ public class Partie
 			for(Piece onePiece : listeDePiece)
 			{
 				LinkedList<Position> listPos=onePiece.positionAccessibleChessboard( getMyChessboard() );
-				if(!p.getColor().equals( onePiece.getColor() )  )
-				{
 					for(Position posA :listPos)
 					{
-						mat=seraEnEchec(onePiece.getPos().clone(),posA);
+						mat=seraEnEchec(onePiece.getPos().clone(),posA.clone());
 						if(mat==false)
 						{
 							return mat;
 						}
 					}
-				}
 			}
 		}catch(ConcurrentModificationException e)
 		{
@@ -264,6 +261,7 @@ public class Partie
 		return listCoup;
 	}
 
+
 	public void initPositions()
 	{
 		/***************************     White piece       ***********************************/
@@ -293,14 +291,14 @@ public class Partie
 		this.myChessboard.addKnight(new Cavalier(new Couleur(0),Position.getPosition(1,7),3));
 		this.myChessboard.addKnight(new Cavalier(new Couleur(0),Position.getPosition(6,7),3));
 		
-	/*	this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(0,1),1));
+		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(0,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(1,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(2,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(3,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(4,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(5,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(6,1),1));
-		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(7,1),1));*/
+		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(7,1),1));
 
 		this.myChessboard.addPawn(new Pion(new Couleur(0),Position.getPosition(0,6),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(0),Position.getPosition(1,6),1));
