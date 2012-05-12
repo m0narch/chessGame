@@ -99,7 +99,7 @@ public class Echiquier
 		Piece pieceD=null;
 		Position posA=null;
 		piecePourTest=null;
-
+		
 			pieceD=myCoup.getPieceDepart();
 			posA= myCoup.getPosArrivee();
 			myCoup.setPiecePrise( this.getPiecePosition( posA ) );
@@ -128,6 +128,19 @@ public class Echiquier
 		return false;
 	}
 	
+	/*public boolean realiserPromotion(Coup myCoup)
+	{
+		Piece pieceD=null;
+		Piece pieceApres=null;
+		pieceD=myCoup.getPieceDepart();
+		if(pieceD instanceof Pion)
+			pieceApres=	((Pion) pieceD).promotion( myCoup.getPromotion() );
+		pieceList.remove(pieceD );
+		pieceList.add(pieceApres );
+		return true;
+	}*/ //TODO a refaire !
+
+	
 	//TODO Penser au roque
 	public Coup moveRoque(boolean little)
 	{
@@ -142,7 +155,7 @@ public class Echiquier
 		}
 	}
 
-	
+
 
 	public int size() 
 	{

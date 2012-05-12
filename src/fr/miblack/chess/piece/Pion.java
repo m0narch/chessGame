@@ -41,6 +41,30 @@ public class Pion extends Piece
 		return myList;
 	}
 
+	public Piece promotion (String str)
+	{
+		if(str.equals( "F" ))
+		{
+			return new Fou(color, pos, asPlayed);
+		}
+		else if(str.equals( "C" ))
+		{
+			return new Cavalier(color, pos, asPlayed);
+		}
+		else if(str.equals( "T" ))
+		{
+			return new Tour(color, pos, asPlayed);
+		}
+		else if(str.equals( "D" ))
+		{
+			return new Dame(color, pos, asPlayed);
+		}
+		else 
+		{
+			return new Dame(color, pos, asPlayed);
+		}
+		
+	}
 	public  LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList=positionAccessibleCouleur(color.getColor());

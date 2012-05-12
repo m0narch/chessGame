@@ -27,7 +27,8 @@ public class Graphique  extends Interface
 	@Override
 	public Coup jouerCoup( Partie g )
 	{
-		// TODO Auto-generated method stub
+		
+		// TODO JouerCoup Graphique ... après !
 		return null;
 	}
 }

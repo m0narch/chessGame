@@ -50,7 +50,7 @@ public class Partie
 	public boolean estPat()
 	{
 		boolean stalemate=false;
-		//TODO a faire
+		//TODO a faire le pat
 		return stalemate;
 	}
 
@@ -107,6 +107,31 @@ public class Partie
 		}
 		this.getMyChessboard().annulerDeplacerPiecePourTest(laPosD, laPosA,prise);
 		return check;
+	}
+	
+	public boolean pomotionPossible(Echiquier chess)
+	{
+		boolean possible=false;
+		int col=0;
+		for(Piece unePiece : chess.getPieceList())
+		{
+			if(unePiece.getColor().getColor()==1)
+			{
+				col=7;
+			}
+			else
+			{
+				col=0;
+			}
+			if(unePiece instanceof Pion)
+			{
+				if(unePiece.getY()==col)
+				{
+					 possible=true;
+				}
+			}
+		}
+		return possible;
 	}
 	
 	public void realiserCoup(Coup m)
@@ -257,10 +282,8 @@ public class Partie
 				listCoup.addAll(onePiece.getCoupPossible( onePiece,this));
 			}
 		}
-		//TODO ici juste les coups normaux sont géré
 		return listCoup;
 	}
-
 
 	public void initPositions()
 	{
@@ -314,13 +337,6 @@ public class Partie
 	{
 		initPositions();
 		this.playerEnCours=joueur1;
-	}
-
-	public boolean  coupValide(Piece pieceD,Position posD,Piece pieceA,Position posA,int coupSpecial)
-	{
-		//TODO verifier si c'est un coup spé !
-		//TODO ... OMG j'ai ça a faire aussi
-		return false;
 	}
 
 	public boolean addMove(Coup e)

@@ -32,7 +32,8 @@ public class Coup
 		 this.setEstPrise	( prise );
 	}
 	
-	
+ 
+	 
 	/**
 	 * @return the pieceDepart
 	 */
@@ -68,6 +69,8 @@ public class Coup
 			throw new RuntimeException(posArrivee.getX() + ", " + posArrivee.getY() + " : coordonnées  invalide");
 	}
 
+	
+	
 	/**
 	 * @return the posDepart
 	 */
@@ -118,7 +121,6 @@ public class Coup
 		return echec;
 	}
 		
-	//TODO Réussir la regex du coup simplifié
 	//TODO ... gérer the fuc***** prise en passant 
 	public static Coup parseStringToCoupCompl(String myString,Partie party)
 	{

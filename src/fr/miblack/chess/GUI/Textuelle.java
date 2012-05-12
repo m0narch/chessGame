@@ -26,7 +26,8 @@ public class Textuelle   extends Interface
 
 	private void menuPrincipal()
 	{
-		int i=affichageMenuPrincipal();
+		int i=0;
+		i=affichageMenuPrincipal();
 		int ret=saisieMenu(i);
 		switch (ret)
 		{
@@ -50,13 +51,15 @@ public class Textuelle   extends Interface
 
 	}
 
-	private void menuLocal()
+	private int menuLocal()
 	{
-		int i=affichageMenuLocale();
+		int i=0;
+		i=affichageMenuLocale();
 		int ret=saisieMenu(i);
-		if(ret >=i)
+		if(ret >i)
 		{
 			menuPrincipal();
+			return -1;
 		}
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Entrez le nom du joueur 1:");
@@ -90,15 +93,18 @@ public class Textuelle   extends Interface
 			default :
 				break;
 		}
+		return 0;
 	}
 	
-	private void menuLocal(String p1,String p2)
+	private int menuLocal(String p1,String p2)
 	{
-		int i=affichageMenuLocale();
+		int i=0;
+		i=affichageMenuLocale();
 		int ret=saisieMenu(i);
-		if(ret >=i)
+		if(ret>i)
 		{
 			menuPrincipal();
+			return -1;
 		}
 		switch(ret)
 		{
@@ -127,6 +133,7 @@ public class Textuelle   extends Interface
 			default :
 				break;
 		}
+		return 0;
 	}
 	
 	//TODO si jamais le temps y est !
@@ -221,19 +228,22 @@ public class Textuelle   extends Interface
 	{
 		int i=taille+1;
 		Scanner sc=new Scanner(System.in);
-		while(i<0 || i>taille)
+		while(i<=0 || i>taille)
 		{
+			
 			try
 			{
-				
-					i=sc.nextInt();
-					if(i<0 || i>taille)
-						System.out.println("Mauvaise valeur !");
+				 i=Integer.parseInt( sc.nextLine() );
 			}
-			catch(Exception e)
+			catch(NumberFormatException e)
 			{
-				i=-1;
+				i=taille+1;
+				continue;
+			}
+			if(i<0 || i>taille)
+			{
 				System.out.println("Mauvaise valeur !");
+				i=taille+1;
 			}
 		}
 		return i;
@@ -241,11 +251,12 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(!getMaPartie().isDraw()) //FIXME Changer la cond pour gestion pat echec etc
+		while(!getMaPartie().isDraw() &&  !getMaPartie().estPat()) //FIXME Changer la cond pour gestion pat echec etc
 		{
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
 				this.AfficherEchiquier();
+
 				if(getMaPartie().estEnEchec(p))
 				{
 					if(getMaPartie().estEchecEtMat( p ) )
@@ -274,6 +285,10 @@ public class Textuelle   extends Interface
 						monCoup= p.jouerCoup( this.getMaPartie());
 				}
 				this.getMaPartie().realiserCoup( monCoup );
+			/*	if(getMaPartie().pomotionPossible(getMyChessboard()))
+				{
+					getMyChessboard().realiserPromotion( monCoup );
+				}*/
 				this.getMaPartie().setPlayerEnCours();
 			}
 		}
@@ -281,6 +296,11 @@ public class Textuelle   extends Interface
 		{
 			System.out.println("Fin de partie , partie nulle");
 		}
+		if(getMaPartie().estPat() )
+		{
+			System.out.println("Fin de partie , pat");
+		}
+		
 	}
 	
 	public String AfficherEchiquier()
