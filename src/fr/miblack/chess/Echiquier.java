@@ -9,6 +9,7 @@ public class Echiquier
 
 	private LinkedList<Piece> pieceList = new LinkedList<Piece>();
 	private Piece piecePourTest;
+	
 	public Piece getPiecePosition(Position pos)
 	{
 		for(Piece onePiece :this.pieceList)
@@ -60,6 +61,7 @@ public class Echiquier
 			return false;
 	}
 
+	
 	public boolean deplacerPiecePourTest(Position posDepart,Position posArrivee)
 	{
 		Piece pieceD=null;
@@ -91,7 +93,7 @@ public class Echiquier
 		piecePourTest=null;
 		pieceList.add(pieceD );
 	}
-	//TODO verif !!!!
+
 	public boolean realiserCoup(Coup myCoup)
 	{
 		Piece pieceD=null;

@@ -273,7 +273,7 @@ public class Textuelle   extends Interface
 						System.out.println("C'est au joueur machine "+p.toString()+" de jouer !");
 						monCoup= p.jouerCoup( this.getMaPartie());
 				}
-				this.getMyChessboard().realiserCoup( monCoup );
+				this.getMaPartie().realiserCoup( monCoup );
 				this.getMaPartie().setPlayerEnCours();
 			}
 		}
@@ -316,7 +316,6 @@ public class Textuelle   extends Interface
 	public Coup jouerCoup( Partie g )
 	{
 		JoueurAbstract p=g.getPlayerEnCours();
-		Interface monInterface=this;
 		Coup m;
 		boolean mauvaisChoix=false;
 		do
@@ -325,16 +324,15 @@ public class Textuelle   extends Interface
 			{
 				System.out.println("Mauvais choix de coup");
 			}
-			m=saisirCoup(p, monInterface.getMyChessboard()  );
-
-			if(g.seraEnEchec(m.getPosDepart(),m.getPosArrivee()))
+			m=saisirCoup(p, this.getMyChessboard()  );
+			if(g.seraEnEchec(m.getPosDepart().clone(),m.getPosArrivee().clone()))
 			{
 				mauvaisChoix=true;
 			}
 			else
 				mauvaisChoix=false;
 		}while(mauvaisChoix);
-	
+
 		return m;
 	}
 

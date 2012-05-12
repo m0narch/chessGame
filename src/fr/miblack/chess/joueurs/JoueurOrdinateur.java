@@ -37,7 +37,19 @@ public class JoueurOrdinateur extends JoueurAbstract
 
 	public Coup jouerCoup(Partie a)
 	{
-		return	selectionCoupAleatoire( a );
+		Coup m;
+		boolean mauvaisChoix=false;
+		do
+		{
+			m=selectionCoupAleatoire( a );
+			if(a.seraEnEchec(m.getPosDepart().clone(),m.getPosArrivee().clone()))
+			{
+				mauvaisChoix=true;
+			}
+			else
+				mauvaisChoix=false;
+		}while(mauvaisChoix);
+		return m;
 	}
 	
 	public Coup selectionCoupAleatoire(Partie a) 
@@ -52,7 +64,7 @@ public class JoueurOrdinateur extends JoueurAbstract
 				size=1;
 			}
 			int var =rand.nextInt(size);
-			var=rand.nextInt(size);
+			//var=rand.nextInt(size);
 			return listOfTheRandom.get( var );
 		}
 		throw new RuntimeException("Plus de coups possible !");

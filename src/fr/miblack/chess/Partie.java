@@ -109,6 +109,18 @@ public class Partie
 		return check;
 	}
 	
+	public void realiserCoup(Coup m)
+	{
+		if(m.isEstPrise())
+        {
+          this.setCpt_sans_prise();
+        }
+        else
+        	this.upCpt_sans_prise();
+		this.getMyChessboard().realiserCoup( m );
+		addMove( m);
+	}
+	
 	//Le null Supress n'est pas obligatoire car un joueur à TOUJOURS un roi
 	@SuppressWarnings( "null" )
 	public boolean estEnEchec(JoueurAbstract p)
@@ -170,7 +182,8 @@ public class Partie
 		Piece roiPiece = null;
 		boolean mat=false;
 		//1boolean prise=false;
-		for(Piece onePiece : this.myChessboard.getPieceList())
+		LinkedList<Piece> listeDePiece=this.myChessboard.getPieceList();
+		for(Piece onePiece : listeDePiece)
 		{
 			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
 			{
@@ -186,6 +199,28 @@ public class Partie
 				return mat;
 			}
 		}
+		try 
+		{
+			for(Piece onePiece : listeDePiece)
+			{
+				LinkedList<Position> listPos=onePiece.positionAccessibleChessboard( getMyChessboard() );
+				if(!p.getColor().equals( onePiece.getColor() )  )
+				{
+					for(Position posA :listPos)
+					{
+						mat=seraEnEchec(onePiece.getPos().clone(),posA);
+						if(mat==false)
+						{
+							return mat;
+						}
+					}
+				}
+			}
+		}catch(ConcurrentModificationException e)
+		{
+			
+		}
+		
 		return mat;
 	}
 
@@ -258,14 +293,14 @@ public class Partie
 		this.myChessboard.addKnight(new Cavalier(new Couleur(0),Position.getPosition(1,7),3));
 		this.myChessboard.addKnight(new Cavalier(new Couleur(0),Position.getPosition(6,7),3));
 		
-		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(0,1),1));
+	/*	this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(0,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(1,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(2,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(3,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(4,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(5,1),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(6,1),1));
-		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(7,1),1));
+		this.myChessboard.addPawn(new Pion(new Couleur(1),Position.getPosition(7,1),1));*/
 
 		this.myChessboard.addPawn(new Pion(new Couleur(0),Position.getPosition(0,6),1));
 		this.myChessboard.addPawn(new Pion(new Couleur(0),Position.getPosition(1,6),1));
