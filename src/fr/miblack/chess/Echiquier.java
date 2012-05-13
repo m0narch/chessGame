@@ -128,7 +128,7 @@ public class Echiquier
 		return false;
 	}
 	
-	/*public boolean realiserPromotion(Coup myCoup)
+	public boolean realiserPromotion(Coup myCoup)
 	{
 		Piece pieceD=null;
 		Piece pieceApres=null;
@@ -138,7 +138,7 @@ public class Echiquier
 		pieceList.remove(pieceD );
 		pieceList.add(pieceApres );
 		return true;
-	}*/ //TODO a refaire !
+	}
 
 	
 	//TODO Penser au roque

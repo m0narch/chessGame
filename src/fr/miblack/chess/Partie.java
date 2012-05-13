@@ -47,9 +47,46 @@ public class Partie
 		return listOfMoveCancelled.removeLast();
 	}
 	
-	public boolean estPat()
+	public boolean estPat(JoueurAbstract p)
 	{
+		Piece roiPiece = null;
 		boolean stalemate=false;
+		LinkedList<Piece> listeDePiece=new LinkedList<Piece>();
+		for(Piece onePiece : this.myChessboard.getPieceList())
+		{
+			if(onePiece.getColor().equals( p.getColor() ))
+			{
+				listeDePiece.add( onePiece );
+			}
+		}
+		for(Piece onePiece : listeDePiece)
+		{
+			if(p.getColor().equals( onePiece.getColor() ) && onePiece instanceof Roi)
+			{
+				roiPiece=onePiece;
+			}
+		}
+		if(!estEnEchec( p ))
+		{
+			try 
+			{
+				for(Piece onePiece : listeDePiece)
+				{
+					LinkedList<Position> listPos=onePiece.positionAccessibleChessboard( getMyChessboard() );
+						for(Position posA :listPos)
+						{
+							stalemate=seraEnEchec(onePiece.getPos().clone(),posA.clone());
+							if(stalemate==false)
+							{
+								return stalemate;
+							}
+						}
+				}
+			}catch(ConcurrentModificationException e)
+			{
+				
+			}
+		}
 		//TODO a faire le pat
 		return stalemate;
 	}

@@ -124,10 +124,10 @@ public abstract class Piece implements Cloneable
 				{
 					if(PieceDepart.whatCanIEat( maPartie.getMyChessboard() ).contains( position ))
 					{		
-						listOfCoup.add( new Coup(PieceDepart, position, true) );
+						listOfCoup.add( new Coup(PieceDepart, position, true,"D") );
 					}
 					else
-						listOfCoup.add( new Coup(PieceDepart, position, false) );	
+						listOfCoup.add( new Coup(PieceDepart, position, false,"D") );	
 				}	
 			}
 		return listOfCoup;

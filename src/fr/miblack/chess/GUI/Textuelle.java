@@ -251,7 +251,7 @@ public class Textuelle   extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(!getMaPartie().isDraw() &&  !getMaPartie().estPat()) //FIXME Changer la cond pour gestion pat echec etc
+		while(!getMaPartie().isDraw() ) //FIXME Changer la cond pour gestion pat echec etc
 		{
 			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
 			{
@@ -268,27 +268,21 @@ public class Textuelle   extends Interface
 				}
 				else
 				{
-					if(getMaPartie().estEchecEtMat( p ) )
+					if(getMaPartie().estPat( p ) )
 					{
 						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est pat !");
+						System.exit( 0 );
 					}	
 				}
 				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
-				if(p instanceof JoueurHumain)
-				{
-						System.out.println("C'est au joueur humain "+p.toString()+" de jouer !");
-						monCoup= p.jouerCoup( this.getMaPartie());
-				}
-				else
-				{
-						System.out.println("C'est au joueur machine "+p.toString()+" de jouer !");
-						monCoup= p.jouerCoup( this.getMaPartie());
-				}
+				System.out.println("C'est au joueur "+p.getType() +" "+p.toString()+" de jouer !");
+				monCoup= p.jouerCoup( this.getMaPartie());
+
 				this.getMaPartie().realiserCoup( monCoup );
-			/*	if(getMaPartie().pomotionPossible(getMyChessboard()))
+				if(getMaPartie().pomotionPossible(getMyChessboard()))
 				{
 					getMyChessboard().realiserPromotion( monCoup );
-				}*/
+				}
 				this.getMaPartie().setPlayerEnCours();
 			}
 		}
@@ -296,11 +290,6 @@ public class Textuelle   extends Interface
 		{
 			System.out.println("Fin de partie , partie nulle");
 		}
-		if(getMaPartie().estPat() )
-		{
-			System.out.println("Fin de partie , pat");
-		}
-		
 	}
 	
 	public String AfficherEchiquier()

@@ -17,12 +17,14 @@ public class JoueurOrdinateur extends JoueurAbstract
 	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface) 
 	{
 		super(p1,a,monInterface);
+		type="Ordinateur";
 	}
 	
 	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface,int niveau) 
 	{
 		super(p1,a,monInterface);
 		this.niveau=niveau;
+		type="Ordinateur";
 	}
 
 	public String getName()

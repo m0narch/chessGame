@@ -12,7 +12,16 @@ public abstract class JoueurAbstract implements Jouer
 	protected String name;
 	protected Couleur color;
 	protected Interface monInterface;
+	protected String type;
 	
+	public String getType()
+	{
+		return type;
+	}
+	public void setType( String type )
+	{
+		this.type = type;
+	}
 	public Couleur getColor()
 	{
 		return this.color;

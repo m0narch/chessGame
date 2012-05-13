@@ -12,6 +12,7 @@ public class JoueurHumain extends JoueurAbstract
 	public JoueurHumain(String p1,Couleur a,Interface monInterface) 
 	{
 		super(p1,a,monInterface);
+		type="Humain";
 	}
 
 	public String getName()

@@ -1,6 +1,8 @@
 package fr.miblack.chess.piece;
 import java.util.*;
 
+import fr.miblack.chess.Coup;
+import fr.miblack.chess.Partie;
 import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
@@ -65,6 +67,26 @@ public class Pion extends Piece
 		}
 		
 	}
+	public LinkedList<Coup> getCoupPossible(Piece PieceDepart,Partie maPartie )
+	{
+		LinkedList<Position> myListOfPosAtteignable = this.positionAccessibleChessboard( maPartie.getMyChessboard() );
+		LinkedList<Coup> listOfCoup=super.getCoupPossible( PieceDepart, maPartie );
+
+			for(Position position : myListOfPosAtteignable  )
+			{
+				if(position.getY()==0  || position.getY()==7)
+				{
+					if(PieceDepart.whatCanIEat( maPartie.getMyChessboard() ).contains( position ))
+					{		
+						listOfCoup.add( new Coup(PieceDepart, position, true,"D") );
+					}
+					else
+						listOfCoup.add( new Coup(PieceDepart, position, false,"D") );	
+				}
+			}
+		return listOfCoup;
+	}
+	
 	public  LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList=positionAccessibleCouleur(color.getColor());

@@ -1,5 +1,6 @@
 package fr.miblack.chess;
 
+import fr.miblack.chess.GUI.Graphique;
 import fr.miblack.chess.GUI.Textuelle;
 
 public class Main
@@ -10,6 +11,10 @@ public class Main
 		{
 			Textuelle guiTxt=new Textuelle();
 			guiTxt.jouerPartie();
+		}
+		else
+		{
+			Graphique maGUI=new Graphique();
 		}
 	}
 }

@@ -15,6 +15,7 @@ public class Coup
 	private Position posArrivee;
 	private boolean estPrise;
 	private Piece PiecePrise;
+	private String promotion;
 	
 	public Coup(Piece pieceDepart,Position posArrivee )
 	{
@@ -24,6 +25,14 @@ public class Coup
 	}
 
 	
+	public Coup(Piece pieceDepart,Position posArrivee,boolean prise,String promotion)
+	{
+		 this.setPieceDepart( pieceDepart );
+		 this.setPosDepart  ( pieceDepart.getPos().clone());
+		 this.setPosArrivee ( posArrivee  );
+		 this.setEstPrise	( prise );
+		 this.setPromotion( promotion );
+	}
 	public Coup(Piece pieceDepart,Position posArrivee,boolean prise)
 	{
 		 this.setPieceDepart( pieceDepart );
@@ -124,16 +133,20 @@ public class Coup
 	//TODO ... gérer the fuc***** prise en passant 
 	public static Coup parseStringToCoupCompl(String myString,Partie party)
 	{
-		Pattern myRegexComp=Pattern.compile("^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])[=]?([FDCT]?)[#+!?]*$");
+		Pattern myRegexComp=Pattern.compile("^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$");
 		Matcher matcher= myRegexComp.matcher( myString );
 		Piece pieceD;
 		boolean prise;
+		String promotion;
 		Position posA;
 		if(matcher.find())
 		{
 			pieceD =party.getMyChessboard().getPiecePosition(Position.stringToPos(matcher.group(2)));
 			posA=Position.stringToPos( matcher.group(4) );
 			prise =matcher.group(3).equals("x");
+			promotion=matcher.group(6);
+			if(matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
+				return new Coup(pieceD, posA , prise,promotion);
 			return new Coup(pieceD, posA , prise);
 		}
 		throw new RuntimeException("coup invalide");
@@ -151,7 +164,7 @@ public class Coup
 
 	public boolean equals(Coup autre)
 	{
-		return (pieceDepart.equals(autre.pieceDepart) && posArrivee.equals( autre.posArrivee )  && pieceDepart.getPos().equals( autre.posDepart ) );		
+		return (pieceDepart.equals(autre.pieceDepart) && posArrivee.equals( autre.posArrivee )  && pieceDepart.getPos().equals( autre.posDepart )  );		
 	}
 	
 	
@@ -162,6 +175,18 @@ public class Coup
 	public void setPiecePrise( Piece piecePrise )
 	{
 		PiecePrise = piecePrise;
+	}
+
+
+	public String getPromotion()
+	{
+		return promotion;
+	}
+
+
+	public void setPromotion( String promotion )
+	{
+		this.promotion = promotion;
 	}
 	
 }
