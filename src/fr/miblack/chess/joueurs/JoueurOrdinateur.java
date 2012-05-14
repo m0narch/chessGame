@@ -1,30 +1,29 @@
+
 package fr.miblack.chess.joueurs;
 
 import java.util.LinkedList;
 import java.util.Random;
 
 import fr.miblack.chess.Coup;
-import fr.miblack.chess.Partie; 
+import fr.miblack.chess.Partie;
 import fr.miblack.chess.GUI.Interface;
 import fr.miblack.chess.color.Couleur;
 
-
-public class JoueurOrdinateur extends JoueurAbstract 
+public class JoueurOrdinateur extends JoueurAbstract
 {
 
-	private int niveau;
-	
-	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface) 
-	{
-		super(p1,a,monInterface);
-		type="Ordinateur";
+	private int	niveau;
+
+	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface ) {
+		super( p1, a, monInterface );
+		type = "Ordinateur";
 	}
-	
-	public JoueurOrdinateur(String p1,Couleur a,Interface monInterface,int niveau) 
-	{
-		super(p1,a,monInterface);
-		this.niveau=niveau;
-		type="Ordinateur";
+
+	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface,
+			int niveau ) {
+		super( p1, a, monInterface );
+		this.niveau = niveau;
+		type = "Ordinateur";
 	}
 
 	public String getName()
@@ -32,44 +31,45 @@ public class JoueurOrdinateur extends JoueurAbstract
 		return this.name;
 	}
 
-	public void setName(String name)
+	public void setName( String name )
 	{
-		this.name=name;
+		this.name = name;
 	}
 
-	public Coup jouerCoup(Partie a)
+	public Coup jouerCoup( Partie a )
 	{
 		Coup m;
-		boolean mauvaisChoix=false;
+		boolean mauvaisChoix = false;
 		do
 		{
-			m=selectionCoupAleatoire( a );
-			if(a.seraEnEchec(m.getPosDepart().clone(),m.getPosArrivee().clone()))
+			m = selectionCoupAleatoire( a );
+			if ( a.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee()
+					.clone() ) )
 			{
-				mauvaisChoix=true;
+				mauvaisChoix = true;
 			}
 			else
-				mauvaisChoix=false;
-		}while(mauvaisChoix);
+				mauvaisChoix = false;
+		} while (mauvaisChoix);
 		return m;
 	}
-	
-	public Coup selectionCoupAleatoire(Partie a) 
+
+	public Coup selectionCoupAleatoire( Partie a )
 	{
-		LinkedList<Coup> listOfTheRandom=a.listOfAvailableMove( this );
-		if(!a.listOfAvailableMove(this).isEmpty())
+		LinkedList<Coup> listOfTheRandom = a.listOfAvailableMove( this );
+		if ( !a.listOfAvailableMove( this ).isEmpty() )
 		{
 			Random rand = new Random();
-			int size=a.listOfAvailableMove( this ).size();
-			if(size<=0)
+			int size = a.listOfAvailableMove( this ).size();
+			if ( size <= 0 )
 			{
-				size=1;
+				size = 1;
 			}
-			int var =rand.nextInt(size);
-			//var=rand.nextInt(size);
+			int var = rand.nextInt( size );
+			// var=rand.nextInt(size);
 			return listOfTheRandom.get( var );
 		}
-		throw new RuntimeException("Plus de coups possible !");
+		throw new RuntimeException( "Plus de coups possible !" );
 	}
 
 	public int getNiveau()

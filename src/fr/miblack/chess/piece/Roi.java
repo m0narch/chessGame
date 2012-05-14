@@ -1,57 +1,67 @@
+
 package fr.miblack.chess.piece;
+
 import java.util.*;
 
 import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
+
 public class Roi extends Piece
 {
 
-	public Roi(Couleur color,Position pos,int valeur)
-	{
-		super(color,pos,valeur);
+	public Roi( Couleur color, Position pos, int valeur ) {
+		super( color, pos, valeur );
 	}
 
-	public  LinkedList<Position> positionAccessible()
+	public LinkedList<Position> positionAccessible()
 	{
-		LinkedList<Position> myList=new LinkedList<Position>() ;
-		for (int xx=( getX()-1); xx<=( getX()+1); ++xx)	/* parcours colonne*/
+		LinkedList<Position> myList = new LinkedList<Position>();
+		for ( int xx = (getX() - 1) ; xx <= (getX() + 1) ; ++xx ) /*
+																 * parcours
+																 * colonne
+																 */
 		{
-			for (int yy=( getY()-1); yy<= ( getY()+1); ++yy)	/*parcours ligne*/
+			for ( int yy = (getY() - 1) ; yy <= (getY() + 1) ; ++yy ) /*
+																	 * parcours
+																	 * ligne
+																	 */
 			{
-				if ( !((xx== getX()) && (yy== getY())) &&estValide(xx) && estValide(yy))
+				if ( !((xx == getX()) && (yy == getY())) && estValide( xx )
+						&& estValide( yy ) )
 				{
-					myList.add(Position.getPosition(xx,yy));
+					myList.add( Position.getPosition( xx, yy ) );
 				}
 			}
 		}
 		return myList;
 	}
 
-	public LinkedList<Position> positionAccessibleChessboard(Echiquier chess)
+	public LinkedList<Position> positionAccessibleChessboard( Echiquier chess )
 	{
-		LinkedList<Position> myList=positionAccessible() ;
-		for(Position onePos:positionAccessible())
+		LinkedList<Position> myList = positionAccessible();
+		for ( Position onePos : positionAccessible() )
 		{
-			if(verifColor( chess, onePos ) && chess.getPiecePosition( onePos )!=null)
+			if ( verifColor( chess, onePos )
+					&& chess.getPiecePosition( onePos ) != null )
 			{
-				myList.remove(onePos);
+				myList.remove( onePos );
 			}
 
 		}
 		return myList;
 	}
-	
-	public LinkedList<Position> whatCanIEat(Echiquier chess)
+
+	public LinkedList<Position> whatCanIEat( Echiquier chess )
 	{
-		LinkedList<Position> myList=positionAccessibleChessboard(chess);
-		for(Position onePos:positionAccessibleChessboard(chess))
+		LinkedList<Position> myList = positionAccessibleChessboard( chess );
+		for ( Position onePos : positionAccessibleChessboard( chess ) )
 		{
-			if(chess.getPiecePosition( onePos )==null)
+			if ( chess.getPiecePosition( onePos ) == null )
 			{
-				myList.remove(onePos);
+				myList.remove( onePos );
 			}
-	
+
 		}
 		return myList;
 	}
@@ -59,22 +69,22 @@ public class Roi extends Piece
 	@Override
 	public String toString()
 	{
-		if(this.color.getColor()==1)
-			//return "♚";
+		if ( this.color.getColor() == 1 )
+			// return "♚";
 			return "R";
 		else
 			return "r";
-		//return "♔";
+		// return "♔";
 	}
-
 
 	public String getNom()
 	{
 		return "R";
 	}
-	public Piece clone() 
+
+	public Piece clone()
 	{
-		Roi maPiece =new Roi(this.getColor(),this.getPos(),this.getValeur());
+		Roi maPiece = new Roi( this.getColor(), this.getPos(), this.getValeur() );
 		return maPiece;
 	}
 }

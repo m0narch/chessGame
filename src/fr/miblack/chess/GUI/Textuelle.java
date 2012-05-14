@@ -1,3 +1,4 @@
+
 package fr.miblack.chess.GUI;
 
 import java.util.Scanner;
@@ -10,25 +11,22 @@ import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.joueurs.JoueurHumain;
 import fr.miblack.chess.joueurs.JoueurOrdinateur;
 
-public class Textuelle   extends Interface
+public class Textuelle extends Interface
 {
 
-	
-	public Textuelle()
-	{
+	public Textuelle() {
 		menuPrincipal();
 	}
-	
-	public Textuelle(String p1,String p2)
-	{
-		menuLocal(p1,p2);
+
+	public Textuelle( String p1, String p2 ) {
+		menuLocal( p1, p2 );
 	}
 
 	private void menuPrincipal()
 	{
-		int i=0;
-		i=affichageMenuPrincipal();
-		int ret=saisieMenu(i);
+		int i = 0;
+		i = affichageMenuPrincipal();
+		int ret = saisieMenu( i );
 		switch (ret)
 		{
 			case 1 :
@@ -40,7 +38,7 @@ public class Textuelle   extends Interface
 				break;
 			case 3 :
 				System.exit( 0 );
-				//TODO	menuOption();
+				// TODO menuOption();
 				break;
 			case 4 :
 				System.exit( 0 );
@@ -53,39 +51,39 @@ public class Textuelle   extends Interface
 
 	private int menuLocal()
 	{
-		int i=0;
-		i=affichageMenuLocale();
-		int ret=saisieMenu(i);
-		if(ret >i)
+		int i = 0;
+		i = affichageMenuLocale();
+		int ret = saisieMenu( i );
+		if ( ret > i )
 		{
 			menuPrincipal();
 			return -1;
 		}
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Entrez le nom du joueur 1:");
-		String p1=sc.nextLine();
-		System.out.println("Entrez le nom du joueur 2:");
-		String p2=sc.nextLine();
-		switch(ret)
+		Scanner sc = new Scanner( System.in );
+		System.out.println( "Entrez le nom du joueur 1:" );
+		String p1 = sc.nextLine();
+		System.out.println( "Entrez le nom du joueur 2:" );
+		String p2 = sc.nextLine();
+		switch (ret)
 		{
 			case 1 :
-				player1=new JoueurHumain( p1, new Couleur( 1 ),this);
-				player2=new JoueurOrdinateur( p2, new Couleur( 0 ),this);
-				this.maPartie=new Partie(player1,player2);
-				break;	
+				player1 = new JoueurHumain( p1, new Couleur( 1 ), this );
+				player2 = new JoueurOrdinateur( p2, new Couleur( 0 ), this );
+				this.maPartie = new Partie( player1, player2 );
+				break;
 
 			case 2 :
-				player1=new JoueurHumain( p1, new Couleur( 1 ),this);
-				player2=new JoueurHumain( p2, new Couleur( 0 ),this);
-				this.maPartie=new Partie(player1,player2);
-				break;	
-				
-			case 3 :
-				player1=new JoueurOrdinateur( p1, new Couleur( 1 ),this);
-				player2=new JoueurOrdinateur( p2, new Couleur( 0 ),this);
-				this.maPartie=new Partie(player1,player2);
+				player1 = new JoueurHumain( p1, new Couleur( 1 ), this );
+				player2 = new JoueurHumain( p2, new Couleur( 0 ), this );
+				this.maPartie = new Partie( player1, player2 );
 				break;
-				
+
+			case 3 :
+				player1 = new JoueurOrdinateur( p1, new Couleur( 1 ), this );
+				player2 = new JoueurOrdinateur( p2, new Couleur( 0 ), this );
+				this.maPartie = new Partie( player1, player2 );
+				break;
+
 			case 4 :
 				menuPrincipal();
 				break;
@@ -95,37 +93,37 @@ public class Textuelle   extends Interface
 		}
 		return 0;
 	}
-	
-	private int menuLocal(String p1,String p2)
+
+	private int menuLocal( String p1, String p2 )
 	{
-		int i=0;
-		i=affichageMenuLocale();
-		int ret=saisieMenu(i);
-		if(ret>i)
+		int i = 0;
+		i = affichageMenuLocale();
+		int ret = saisieMenu( i );
+		if ( ret > i )
 		{
 			menuPrincipal();
 			return -1;
 		}
-		switch(ret)
+		switch (ret)
 		{
 			case 1 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ),this);
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ),this);
-				this.maPartie=new Partie(player1,player2);
-				break;	
+				player1 = new JoueurHumain( p1, new Couleur( 0 ), this );
+				player2 = new JoueurOrdinateur( p2, new Couleur( 1 ), this );
+				this.maPartie = new Partie( player1, player2 );
+				break;
 
 			case 2 :
-				player1=new JoueurHumain( p1, new Couleur( 0 ),this);
-				player2=new JoueurHumain( p2, new Couleur( 1 ),this);
-				this.maPartie=new Partie(player1,player2);
-				break;	
-				
-			case 3 :
-				player1=new JoueurOrdinateur( p1, new Couleur( 0 ),this);
-				player2=new JoueurOrdinateur( p2, new Couleur( 1 ),this);
-				this.maPartie=new Partie(player1,player2);
+				player1 = new JoueurHumain( p1, new Couleur( 0 ), this );
+				player2 = new JoueurHumain( p2, new Couleur( 1 ), this );
+				this.maPartie = new Partie( player1, player2 );
 				break;
-				
+
+			case 3 :
+				player1 = new JoueurOrdinateur( p1, new Couleur( 0 ), this );
+				player2 = new JoueurOrdinateur( p2, new Couleur( 1 ), this );
+				this.maPartie = new Partie( player1, player2 );
+				break;
+
 			case 4 :
 				menuPrincipal();
 				break;
@@ -135,88 +133,86 @@ public class Textuelle   extends Interface
 		}
 		return 0;
 	}
-	
-	//TODO si jamais le temps y est !
+
+	// TODO si jamais le temps y est !
 	private void menuReseau()
 	{
-		int ret=saisieMenu(affichageMenuReseau());
-		switch(ret)
+		int ret = saisieMenu( affichageMenuReseau() );
+		switch (ret)
 		{
 			case 1 :
 
-				break;	
+				break;
 			case 2 :
 
-				break;	
+				break;
 			case 3 :
 				menuPrincipal();
 				break;
 
 			default :
-					menuPrincipal();
+				menuPrincipal();
 				break;
 		}
 	}
-
-
 
 	public int affichageMenuPrincipal()
 	{
-		System.out.print("Bienvenue !\n");
-		System.out.print("Faites votre choix :\n");
-		System.out.print("1 . Partie locale\n");
-		System.out.print("2 . Partie réseau\n");//TODO Partie réseau
-		System.out.print("3 . Options\n");
-		System.out.print("4 . Quitter\n");
+		System.out.print( "Bienvenue !\n" );
+		System.out.print( "Faites votre choix :\n" );
+		System.out.print( "1 . Partie locale\n" );
+		System.out.print( "2 . Partie réseau\n" );// TODO Partie réseau
+		System.out.print( "3 . Options\n" );
+		System.out.print( "4 . Quitter\n" );
 		return 4;
 
 	}
 
 	public int affichageMenuLocale()
 	{
-		System.out.print("Faites votre choix :\n");
-		System.out.print("1 . Partie un joueur\n");
-		System.out.print("2 . Partie deux joueurs\n");
-		System.out.print("3 . Partie Machine VS Machine\n");
-		System.out.print("4 . Retour\n");
+		System.out.print( "Faites votre choix :\n" );
+		System.out.print( "1 . Partie un joueur\n" );
+		System.out.print( "2 . Partie deux joueurs\n" );
+		System.out.print( "3 . Partie Machine VS Machine\n" );
+		System.out.print( "4 . Retour\n" );
 
 		return 4;
 	}
 
 	public int affichageMenuReseau()
 	{
-		System.out.print("Faites votre choix :\n");
-		System.out.print("1 . Partie deux joueurs\n");
-		System.out.print("2 . Partie Machine VS Machine\n");
-		System.out.print("3 . Retour\n");
+		System.out.print( "Faites votre choix :\n" );
+		System.out.print( "1 . Partie deux joueurs\n" );
+		System.out.print( "2 . Partie Machine VS Machine\n" );
+		System.out.print( "3 . Retour\n" );
 		return 3;
 	}
 
-	public Coup saisirCoup(JoueurAbstract p,Echiquier chess)  
+	public Coup saisirCoup( JoueurAbstract p, Echiquier chess )
 	{
-		Scanner sc=new Scanner(System.in );
+		Scanner sc = new Scanner( System.in );
 		String strCoup;
 		Coup monCoup = null;
-		boolean trouve=false;
+		boolean trouve = false;
 
-		while(trouve==false)
+		while (trouve == false)
 		{
-			System.out.println("Saissisez le coup à jouer avec la notation complete");
-			strCoup=sc.nextLine();
+			System.out
+					.println( "Saissisez le coup à jouer avec la notation complete" );
+			strCoup = sc.nextLine();
 			try
 			{
-				monCoup=Coup.parseStringToCoupCompl( strCoup, maPartie );
-			}
-			catch(RuntimeException e)
+				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie );
+			} catch (RuntimeException e)
 			{
-				System.out.println("Le coup est invalide");
+				System.out.println( "Le coup est invalide" );
 				continue;
 			}
-			for(Coup c:maPartie.listOfAvailableMove( p ))
+			for ( Coup c : maPartie.listOfAvailableMove( p ) )
 			{
-				if(monCoup.equals( c ))
+				if ( monCoup.equals( c ) )
 				{
-					trouve=true;
+					trouve = true;
 					break;
 				}
 			}
@@ -224,123 +220,135 @@ public class Textuelle   extends Interface
 		return monCoup;
 	}
 
-	public int saisieMenu(int taille)
+	public int saisieMenu( int taille )
 	{
-		int i=taille+1;
-		Scanner sc=new Scanner(System.in);
-		while(i<=0 || i>taille)
+		int i = taille + 1;
+		Scanner sc = new Scanner( System.in );
+		while (i <= 0 || i > taille)
 		{
-			
+
 			try
 			{
-				 i=Integer.parseInt( sc.nextLine() );
-			}
-			catch(NumberFormatException e)
+				i = Integer.parseInt( sc.nextLine() );
+			} catch (NumberFormatException e)
 			{
-				i=taille+1;
+				i = taille + 1;
 				continue;
 			}
-			if(i<0 || i>taille)
+			if ( i < 0 || i > taille )
 			{
-				System.out.println("Mauvaise valeur !");
-				i=taille+1;
+				System.out.println( "Mauvaise valeur !" );
+				i = taille + 1;
 			}
 		}
 		return i;
 	}
+
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while(!getMaPartie().isDraw() ) //FIXME Changer la cond pour gestion pat echec etc
+		while (!getMaPartie().isDraw()) // FIXME Changer la cond pour gestion
+										// pat echec etc
 		{
-			for	(JoueurAbstract p: this.getMaPartie().getListOfPlayer())
+			for ( JoueurAbstract p : this.getMaPartie().getListOfPlayer() )
 			{
 				this.AfficherEchiquier();
 
-				if(getMaPartie().estEnEchec(p))
+				if ( getMaPartie().estEnEchec( p ) )
 				{
-					if(getMaPartie().estEchecEtMat( p ) )
+					if ( getMaPartie().estEchecEtMat( p ) )
 					{
-						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est echecs et mat !");
-						System.exit(0);
+						System.out.println( "Le roi de "
+								+ getMaPartie().getPlayerEnCours()
+								+ " est echecs et mat !" );
+						System.exit( 0 );
 					}
-					System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est en echecs !");
+					System.out.println( "Le roi de "
+							+ getMaPartie().getPlayerEnCours()
+							+ " est en echecs !" );
 				}
 				else
 				{
-					if(getMaPartie().estPat( p ) )
+					if ( getMaPartie().estPat( p ) )
 					{
-						System.out.println("Le roi de "+getMaPartie().getPlayerEnCours()+" est pat !");
+						System.out.println( "Le roi de "
+								+ getMaPartie().getPlayerEnCours()
+								+ " est pat !" );
 						System.exit( 0 );
-					}	
+					}
 				}
-				System.out.println(this.getMaPartie().listOfAvailableMove( p ) );
-				System.out.println("C'est au joueur "+p.getType() +" "+p.toString()+" de jouer !");
-				monCoup= p.jouerCoup( this.getMaPartie());
+				System.out
+						.println( this.getMaPartie().listOfAvailableMove( p ) );
+				System.out.println( "C'est au joueur " + p.getType() + " "
+						+ p.toString() + " de jouer !" );
+				monCoup = p.jouerCoup( this.getMaPartie() );
 
 				this.getMaPartie().realiserCoup( monCoup );
-				if(getMaPartie().pomotionPossible(getMyChessboard()))
+				if ( getMaPartie().pomotionPossible( getMyChessboard() ) )
 				{
 					getMyChessboard().realiserPromotion( monCoup );
 				}
 				this.getMaPartie().setPlayerEnCours();
 			}
 		}
-		if(getMaPartie().isDraw() )
+		if ( getMaPartie().isDraw() )
 		{
-			System.out.println("Fin de partie , partie nulle");
+			System.out.println( "Fin de partie , partie nulle" );
 		}
 	}
-	
+
 	public String AfficherEchiquier()
 	{
-		Echiquier myChessboard=maPartie.getMyChessboard();
-		String a="";
-		for(int y=7;y>=0;y--)
+		Echiquier myChessboard = maPartie.getMyChessboard();
+		String a = "";
+		for ( int y = 7 ; y >= 0 ; y-- )
 		{
-			for(int x=0;x<=7;x++)
+			for ( int x = 0 ; x <= 7 ; x++ )
 			{
-				System.out.print(Couleur.ANSI_RESET);
-				if(myChessboard.getPiecePosition(Position.getPosition(x,y) )!=null)
-					System.out.print(myChessboard.getPiecePosition(Position.getPosition(x, y)).toString());
+				System.out.print( Couleur.ANSI_RESET );
+				if ( myChessboard
+						.getPiecePosition( Position.getPosition( x, y ) ) != null )
+					System.out.print( myChessboard.getPiecePosition(
+							Position.getPosition( x, y ) ).toString() );
 				else
 				{
-					System.out.print(Position.getPosition(x,y));
+					System.out.print( Position.getPosition( x, y ) );
 				}
 			}
-			System.out.print(Couleur.ANSI_RESET);
-			System.out.print(" " +(y+1)+"\n");
+			System.out.print( Couleur.ANSI_RESET );
+			System.out.print( " " + (y + 1) + "\n" );
 		}
-		System.out.println("");
+		System.out.println( "" );
 
-		for(int i=0;i<=7;i++)
+		for ( int i = 0 ; i <= 7 ; i++ )
 		{
-			System.out.print((char)(i+97));
+			System.out.print( (char) (i + 97) );
 		}
-		System.out.println("");
+		System.out.println( "" );
 		return a;
 	}
 
 	@Override
 	public Coup jouerCoup( Partie g )
 	{
-		JoueurAbstract p=g.getPlayerEnCours();
+		JoueurAbstract p = g.getPlayerEnCours();
 		Coup m;
-		boolean mauvaisChoix=false;
+		boolean mauvaisChoix = false;
 		do
 		{
-			if(mauvaisChoix)
+			if ( mauvaisChoix )
 			{
-				System.out.println("Mauvais choix de coup");
+				System.out.println( "Mauvais choix de coup" );
 			}
-			m=saisirCoup(p, this.getMyChessboard()  );
-			if(g.seraEnEchec(m.getPosDepart().clone(),m.getPosArrivee().clone()))
+			m = saisirCoup( p, this.getMyChessboard() );
+			if ( g.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee()
+					.clone() ) )
 			{
-				mauvaisChoix=true;
+				mauvaisChoix = true;
 			}
 			else
-				mauvaisChoix=false;
-		}while(mauvaisChoix);
+				mauvaisChoix = false;
+		} while (mauvaisChoix);
 
 		return m;
 	}

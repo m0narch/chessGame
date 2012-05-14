@@ -1,3 +1,4 @@
+
 package fr.miblack.chess;
 
 import java.util.LinkedList;
@@ -10,39 +11,36 @@ import fr.miblack.chess.piece.Roi;
 
 public class Coup
 {
-	private Piece pieceDepart;
-	private Position posDepart;
-	private Position posArrivee;
-	private boolean estPrise;
-	private Piece PiecePrise;
-	private String promotion;
-	
-	public Coup(Piece pieceDepart,Position posArrivee )
-	{
-		 this.setPieceDepart( pieceDepart );
-		 this.setPosDepart  ( pieceDepart.getPos().clone());
-		 this.setPosArrivee ( posArrivee  );
+	private static Pattern  myRegexComp = Pattern.compile( "^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$" );
+	private Piece		pieceDepart;
+	private Position	posDepart;
+	private Position	posArrivee;
+	private boolean		estPrise;
+	private Piece		PiecePrise;
+	private String		promotion;
+
+	public Coup( Piece pieceDepart, Position posArrivee ) {
+		this.setPieceDepart( pieceDepart );
+		this.setPosDepart( pieceDepart.getPos().clone() );
+		this.setPosArrivee( posArrivee );
 	}
 
-	
-	public Coup(Piece pieceDepart,Position posArrivee,boolean prise,String promotion)
-	{
-		 this.setPieceDepart( pieceDepart );
-		 this.setPosDepart  ( pieceDepart.getPos().clone());
-		 this.setPosArrivee ( posArrivee  );
-		 this.setEstPrise	( prise );
-		 this.setPromotion( promotion );
+	public Coup( Piece pieceDepart, Position posArrivee, boolean prise,
+			String promotion ) {
+		this.setPieceDepart( pieceDepart );
+		this.setPosDepart( pieceDepart.getPos().clone() );
+		this.setPosArrivee( posArrivee );
+		this.setEstPrise( prise );
+		this.setPromotion( promotion );
 	}
-	public Coup(Piece pieceDepart,Position posArrivee,boolean prise)
-	{
-		 this.setPieceDepart( pieceDepart );
-		 this.setPosDepart  ( pieceDepart.getPos().clone());
-		 this.setPosArrivee ( posArrivee  );
-		 this.setEstPrise	( prise );
+
+	public Coup( Piece pieceDepart, Position posArrivee, boolean prise ) {
+		this.setPieceDepart( pieceDepart );
+		this.setPosDepart( pieceDepart.getPos().clone() );
+		this.setPosArrivee( posArrivee );
+		this.setEstPrise( prise );
 	}
-	
- 
-	 
+
 	/**
 	 * @return the pieceDepart
 	 */
@@ -50,13 +48,14 @@ public class Coup
 	{
 		return pieceDepart;
 	}
-	
+
 	/**
-	 * @param pieceDepart the pieceDepart to set
+	 * @param pieceDepart
+	 *            the pieceDepart to set
 	 */
-	public void setPieceDepart( Piece piece  )
+	public void setPieceDepart( Piece piece )
 	{
-		this.pieceDepart = piece ;
+		this.pieceDepart = piece;
 	}
 
 	/**
@@ -66,20 +65,21 @@ public class Coup
 	{
 		return posArrivee;
 	}
-	
+
 	/**
-	 * @param posArrivee the posArrivee to set
+	 * @param posArrivee
+	 *            the posArrivee to set
 	 */
 	public void setPosArrivee( Position posArrivee )
 	{
-		if(Position.valValide(posArrivee.getX())&&Position.valValide(posArrivee.getY()))
+		if ( Position.valValide( posArrivee.getX() )
+				&& Position.valValide( posArrivee.getY() ) )
 			this.posArrivee = posArrivee;
 		else
-			throw new RuntimeException(posArrivee.getX() + ", " + posArrivee.getY() + " : coordonnées  invalide");
+			throw new RuntimeException( posArrivee.getX() + ", "
+					+ posArrivee.getY() + " : coordonnées  invalide" );
 	}
 
-	
-	
 	/**
 	 * @return the posDepart
 	 */
@@ -89,69 +89,73 @@ public class Coup
 	}
 
 	/**
-	 * @param posDepart the posDepart to set
+	 * @param posDepart
+	 *            the posDepart to set
 	 */
 	public void setPosDepart( Position posDepart )
 	{
-		if( Position.valValide(posDepart.getX()) && Position.valValide(posDepart.getY()) )
+		if ( Position.valValide( posDepart.getX() )
+				&& Position.valValide( posDepart.getY() ) )
 			this.posDepart = posDepart;
 		else
-			throw new RuntimeException(posDepart.getX() + ", " + posDepart.getY() + " : coordonnées  invalide");
-	}
-	
-	public String toString()
-	{
-		if(isEstPrise())
-		{
-			return ""+pieceDepart.getNom()+posDepart.toStringPos()+"x"+posArrivee.toStringPos();
-		}
-		else
-			return ""+pieceDepart.getNom()+posDepart.toStringPos()+"-"+posArrivee.toStringPos();
+			throw new RuntimeException( posDepart.getX() + ", "
+					+ posDepart.getY() + " : coordonnées  invalide" );
 	}
 
-	public boolean metEnEchec(JoueurAbstract p,Echiquier chess)
+	public String toString()
 	{
-		boolean echec=false;
-		Piece maPiece=pieceDepart;
-		if(maPiece!=null)
+		if ( isEstPrise() )
 		{
-			LinkedList<Position> listPos =maPiece.positionAccessibleChessboard( chess );
-			for(Position onePos :listPos)
+			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"
+					+ posArrivee.toStringPos();
+		}
+		else
+			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"
+					+ posArrivee.toStringPos();
+	}
+
+	public boolean metEnEchec( JoueurAbstract p, Echiquier chess )
+	{
+		boolean echec = false;
+		Piece maPiece = pieceDepart;
+		if ( maPiece != null )
+		{
+			LinkedList<Position> listPos = maPiece.positionAccessibleChessboard( chess );
+			for ( Position onePos : listPos )
 			{
-				if(chess.getPiecePosition(onePos)!=null)
+				if ( chess.getPiecePosition( onePos ) != null )
 				{
-					if(chess.getPiecePosition(onePos) instanceof Roi)
+					if ( chess.getPiecePosition( onePos ) instanceof Roi )
 					{
-						echec=true;
+						echec = true;
 					}
 				}
 			}
 		}
 		return echec;
 	}
-		
-	//TODO ... gérer the fuc***** prise en passant 
-	public static Coup parseStringToCoupCompl(String myString,Partie party)
+
+	public static Coup parseStringToCoupCompl( String myString, Partie party )
 	{
-		Pattern myRegexComp=Pattern.compile("^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$");
-		Matcher matcher= myRegexComp.matcher( myString );
+		Matcher matcher = myRegexComp.matcher( myString );
 		Piece pieceD;
 		boolean prise;
 		String promotion;
 		Position posA;
-		if(matcher.find())
+		if ( matcher.find() )
 		{
-			pieceD =party.getMyChessboard().getPiecePosition(Position.stringToPos(matcher.group(2)));
-			posA=Position.stringToPos( matcher.group(4) );
-			prise =matcher.group(3).equals("x");
-			promotion=matcher.group(6);
-			if(matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
-				return new Coup(pieceD, posA , prise,promotion);
-			return new Coup(pieceD, posA , prise);
+			pieceD = party.getMyChessboard().getPiecePosition(
+					Position.stringToPos( matcher.group( 2 ) ) );
+			posA = Position.stringToPos( matcher.group( 4 ) );
+			prise = matcher.group( 3 ).equals( "x" );
+			promotion = matcher.group( 6 );
+			if ( matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
+				return new Coup( pieceD, posA, prise, promotion );
+			return new Coup( pieceD, posA, prise );
 		}
-		throw new RuntimeException("coup invalide");
+		throw new RuntimeException( "coup invalide" );
 	}
-	
+
 	public boolean isEstPrise()
 	{
 		return estPrise;
@@ -162,31 +166,30 @@ public class Coup
 		this.estPrise = estPrise;
 	}
 
-	public boolean equals(Coup autre)
+	public boolean equals( Coup autre )
 	{
-		return (pieceDepart.equals(autre.pieceDepart) && posArrivee.equals( autre.posArrivee )  && pieceDepart.getPos().equals( autre.posDepart )  );		
+		return (pieceDepart.equals( autre.pieceDepart )
+				&& posArrivee.equals( autre.posArrivee ) && pieceDepart.getPos().equals( autre.posDepart ));
 	}
-	
-	
+
 	public Piece getPiecePrise()
 	{
 		return PiecePrise;
 	}
+
 	public void setPiecePrise( Piece piecePrise )
 	{
 		PiecePrise = piecePrise;
 	}
-
 
 	public String getPromotion()
 	{
 		return promotion;
 	}
 
-
 	public void setPromotion( String promotion )
 	{
 		this.promotion = promotion;
 	}
-	
+
 }

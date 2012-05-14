@@ -1,74 +1,76 @@
+
 package fr.miblack.chess.piece;
+
 import java.util.*;
 import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
+
 public class Cavalier extends Piece
 {
-	public Cavalier(Couleur color,Position pos,int valeur)
-	{
-		super(color,pos,valeur);
+	public Cavalier( Couleur color, Position pos, int valeur ) {
+		super( color, pos, valeur );
 	}
 
-	public  LinkedList<Position> positionAccessible()
+	public LinkedList<Position> positionAccessible()
 	{
-		LinkedList<Position> myList=new LinkedList<Position>() ;
-		int xx=0;
-		int yy=0;
-		int delta=0;
-		for (xx=this.getPos().getX() -2; xx <= getX()+2;++xx)
+		LinkedList<Position> myList = new LinkedList<Position>();
+		int xx = 0;
+		int yy = 0;
+		int delta = 0;
+		for ( xx = this.getPos().getX() - 2 ; xx <= getX() + 2 ; ++xx )
 		{
-			if(xx== getX())
+			if ( xx == getX() )
 				continue;
-			delta=Math.abs(xx-getX());
-			if(delta==2)
+			delta = Math.abs( xx - getX() );
+			if ( delta == 2 )
 			{
-				delta=1;
+				delta = 1;
 			}
 			else
 			{
-				delta=2;
+				delta = 2;
 			}
-			for(yy= getY()-delta;yy<= getY()+delta;yy=yy+delta)
+			for ( yy = getY() - delta ; yy <= getY() + delta ; yy = yy + delta )
 			{
-				if(yy== getY())
+				if ( yy == getY() )
 				{
 					continue;
 				}
-				if(!(estValide(yy)&&estValide(xx)))
+				if ( !(estValide( yy ) && estValide( xx )) )
 					continue;
-				myList.add(Position.getPosition(xx,yy));
+				myList.add( Position.getPosition( xx, yy ) );
 			}
 		}
 		return myList;
 	}
 
-	public LinkedList<Position> positionAccessibleChessboard(Echiquier chess)
+	public LinkedList<Position> positionAccessibleChessboard( Echiquier chess )
 	{
-		LinkedList<Position> myList=positionAccessible() ;
-		
-		for(Position onePos:positionAccessible())
+		LinkedList<Position> myList = positionAccessible();
+
+		for ( Position onePos : positionAccessible() )
 		{
-			if(chess.getPiecePosition(onePos)!=null)
+			if ( chess.getPiecePosition( onePos ) != null )
 			{
-				if(verifColor(chess,onePos))
+				if ( verifColor( chess, onePos ) )
 				{
-					myList.remove(onePos);
+					myList.remove( onePos );
 				}
 			}
 		}
 		return myList;
 	}
 
-	public LinkedList<Position> whatCanIEat(Echiquier chess)
+	public LinkedList<Position> whatCanIEat( Echiquier chess )
 	{
-		LinkedList<Position> myList=positionAccessibleChessboard(chess) ;
-		
-		for(Position onePos:positionAccessibleChessboard(chess))
+		LinkedList<Position> myList = positionAccessibleChessboard( chess );
+
+		for ( Position onePos : positionAccessibleChessboard( chess ) )
 		{
-			if(chess.getPiecePosition(onePos)==null)
+			if ( chess.getPiecePosition( onePos ) == null )
 			{
-				myList.remove(onePos);
+				myList.remove( onePos );
 			}
 
 		}
@@ -78,22 +80,23 @@ public class Cavalier extends Piece
 	@Override
 	public String toString()
 	{
-		if(this.color.getColor()==1)
-			//return "♞";
+		if ( this.color.getColor() == 1 )
+			// return "♞";
 			return "C";
 		else
 			return "c";
-		//return "♘";
+		// return "♘";
 	}
 
 	public String getNom()
 	{
 		return "C";
 	}
-	
-	public Piece clone() 
+
+	public Piece clone()
 	{
-		Cavalier maPiece =new Cavalier(this.getColor(),this.getPos(),this.getValeur());
+		Cavalier maPiece = new Cavalier( this.getColor(), this.getPos(),
+				this.getValeur() );
 		return maPiece;
 	}
 }
