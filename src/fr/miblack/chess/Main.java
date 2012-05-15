@@ -16,6 +16,7 @@ public class Main
 		else
 		{
 			Graphique maGUI = new Graphique();
+			maGUI.jouerPartie();
 		}
 	}
 }

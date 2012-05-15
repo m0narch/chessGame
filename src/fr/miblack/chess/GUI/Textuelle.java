@@ -197,9 +197,35 @@ public class Textuelle extends Interface
 
 		while (trouve == false)
 		{
-			System.out
-					.println( "Saissisez le coup à jouer avec la notation complete" );
+			System.out.println( "Saissisez le coup à jouer avec la notation complete" );
 			strCoup = sc.nextLine();
+			if(strCoup.equals( "save" ))
+			{
+				System.out.println("Saissisez le nom de save du fichier");
+				strCoup = sc.nextLine();
+				maPartie.saveGame( strCoup );
+				continue;
+			}
+			if(strCoup.startsWith( "save " ))
+			{
+				String out=strCoup.substring( 5 );
+				maPartie.saveGame( out );
+				continue;
+			}
+			if(strCoup.equals( "load" ))
+			{
+				System.out.println("Saissisez le nom  du fichier a charger");
+				strCoup = sc.nextLine();
+				maPartie.loadGame( strCoup, this );
+				continue;
+			}
+			if(strCoup.startsWith( "load " ))
+			{
+				String out=strCoup.substring( 5 );
+				maPartie.loadGame( out, this );
+				continue;
+			}
+			 
 			try
 			{
 				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie );
@@ -247,8 +273,7 @@ public class Textuelle extends Interface
 	public void jouerPartie()
 	{
 		Coup monCoup;
-		while (!getMaPartie().isDraw()) // FIXME Changer la cond pour gestion
-										// pat echec etc
+		while (!getMaPartie().isDraw()) 
 		{
 			for ( JoueurAbstract p : this.getMaPartie().getListOfPlayer() )
 			{
@@ -258,33 +283,25 @@ public class Textuelle extends Interface
 				{
 					if ( getMaPartie().estEchecEtMat( p ) )
 					{
-						System.out.println( "Le roi de "
-								+ getMaPartie().getPlayerEnCours()
-								+ " est echecs et mat !" );
+						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est echecs et mat !" );
 						System.exit( 0 );
 					}
-					System.out.println( "Le roi de "
-							+ getMaPartie().getPlayerEnCours()
-							+ " est en echecs !" );
+					System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est en echecs !" );
 				}
 				else
 				{
 					if ( getMaPartie().estPat( p ) )
 					{
-						System.out.println( "Le roi de "
-								+ getMaPartie().getPlayerEnCours()
-								+ " est pat !" );
+						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est pat !" );
 						System.exit( 0 );
 					}
 				}
-				System.out
-						.println( this.getMaPartie().listOfAvailableMove( p ) );
-				System.out.println( "C'est au joueur " + p.getType() + " "
-						+ p.toString() + " de jouer !" );
+				System.out.println( this.getMaPartie().listOfAvailableMove( p ) );
+				System.out.println( "C'est au joueur " + p.getType() + " "+ p.toString() + " de jouer !" );
 				monCoup = p.jouerCoup( this.getMaPartie() );
 
 				this.getMaPartie().realiserCoup( monCoup );
-				if ( getMaPartie().pomotionPossible( getMyChessboard() ) )
+				if ( getMaPartie().promotionPossible( getMyChessboard() ) )
 				{
 					getMyChessboard().realiserPromotion( monCoup );
 				}
@@ -341,8 +358,7 @@ public class Textuelle extends Interface
 				System.out.println( "Mauvais choix de coup" );
 			}
 			m = saisirCoup( p, this.getMyChessboard() );
-			if ( g.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee()
-					.clone() ) )
+			if ( g.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee().clone() ) )
 			{
 				mauvaisChoix = true;
 			}

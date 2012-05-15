@@ -10,7 +10,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 import fr.miblack.chess.Coup;
-import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.Partie;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 
@@ -21,15 +20,23 @@ public class Graphique extends Interface
 	private JPanel		monJpanel;
 	private JMenuBar	monJMenu;
 
-	public Graphique( JoueurAbstract player1, JoueurAbstract player2 ) {
+	
+	public Graphique( JoueurAbstract player1, JoueurAbstract player2 ) 
+	{
 		this.setMaPartie( new Partie( player1, player2 ) );
 	}
 
-	public Graphique() {
+	public Graphique() 
+	{
 		this.setMaFrame( creationDeFenetre() );
 		this.setMaPartie( new Partie( player1, player2 ) );
 	}
 
+	/**
+	 * 
+	 * Initialise la fenetre de base
+	 * @return laFrame crée
+	 */
 	public JFrame creationDeFenetre()
 	{
 		JFrame laFrame = new JFrame( "chessGame" );
@@ -52,6 +59,10 @@ public class Graphique extends Interface
 		return laFrame;
 	}
 
+	public void jouerPartie()
+	{
+		
+	}
 	public Partie getMaPartie()
 	{
 		return maPartie;
@@ -59,8 +70,7 @@ public class Graphique extends Interface
 
 	public void afficherEchiquier()
 	{
-		Echiquier myChessboard = maPartie.getMyChessboard();
-
+//		Echiquier myChessboard = maPartie.getMyChessboard();
 	}
 
 	public void setMaPartie( Partie maPartie )
@@ -71,7 +81,6 @@ public class Graphique extends Interface
 	@Override
 	public Coup jouerCoup( Partie g )
 	{
-
 		// TODO JouerCoup Graphique ... après !
 		return null;
 	}

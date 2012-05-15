@@ -14,6 +14,16 @@ public abstract class JoueurAbstract implements Jouer
 	protected Interface	monInterface;
 	protected String	type;
 
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName( String name )
+	{
+		this.name = name;
+	}
+
 	public String getType()
 	{
 		return type;
@@ -29,10 +39,16 @@ public abstract class JoueurAbstract implements Jouer
 		return this.color;
 	}
 
-	public JoueurAbstract( String p1, Couleur a, Interface monInterface ) {
+	public JoueurAbstract( String p1, Couleur a, Interface monInterface ) 
+	{
 		this.name = p1;
 		this.color = a;
 		this.monInterface = monInterface;
+	}
+	public JoueurAbstract( String p1 ,Couleur a  ) 
+	{
+		this.name = p1;
+		this.color = a;
 	}
 
 	@Override

@@ -11,7 +11,8 @@ import fr.miblack.chess.piece.Roi;
 
 public class Coup
 {
-	private static Pattern  myRegexComp = Pattern.compile( "^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$" );
+	static String maRegex= "^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$";
+	private static Pattern  myRegexComp = Pattern.compile(maRegex );
 	private Piece		pieceDepart;
 	private Position	posDepart;
 	private Position	posArrivee;
@@ -76,8 +77,7 @@ public class Coup
 				&& Position.valValide( posArrivee.getY() ) )
 			this.posArrivee = posArrivee;
 		else
-			throw new RuntimeException( posArrivee.getX() + ", "
-					+ posArrivee.getY() + " : coordonnées  invalide" );
+			throw new RuntimeException( posArrivee.getX() + ", "+ posArrivee.getY() + " : coordonnées  invalide" );
 	}
 
 	/**
@@ -94,24 +94,20 @@ public class Coup
 	 */
 	public void setPosDepart( Position posDepart )
 	{
-		if ( Position.valValide( posDepart.getX() )
-				&& Position.valValide( posDepart.getY() ) )
+		if ( Position.valValide( posDepart.getX() )&& Position.valValide( posDepart.getY() ) )
 			this.posDepart = posDepart;
 		else
-			throw new RuntimeException( posDepart.getX() + ", "
-					+ posDepart.getY() + " : coordonnées  invalide" );
+			throw new RuntimeException( posDepart.getX() + ", "+ posDepart.getY() + " : coordonnées  invalide" );
 	}
 
 	public String toString()
 	{
 		if ( isEstPrise() )
 		{
-			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"
-					+ posArrivee.toStringPos();
+			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos();
 		}
 		else
-			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"
-					+ posArrivee.toStringPos();
+			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos();
 	}
 
 	public boolean metEnEchec( JoueurAbstract p, Echiquier chess )
@@ -144,8 +140,7 @@ public class Coup
 		Position posA;
 		if ( matcher.find() )
 		{
-			pieceD = party.getMyChessboard().getPiecePosition(
-					Position.stringToPos( matcher.group( 2 ) ) );
+			pieceD = party.getMyChessboard().getPiecePosition(Position.stringToPos( matcher.group( 2 ) ) );
 			posA = Position.stringToPos( matcher.group( 4 ) );
 			prise = matcher.group( 3 ).equals( "x" );
 			promotion = matcher.group( 6 );
@@ -168,8 +163,7 @@ public class Coup
 
 	public boolean equals( Coup autre )
 	{
-		return (pieceDepart.equals( autre.pieceDepart )
-				&& posArrivee.equals( autre.posArrivee ) && pieceDepart.getPos().equals( autre.posDepart ));
+		return (pieceDepart.equals( autre.pieceDepart )&& posArrivee.equals( autre.posArrivee ) && pieceDepart.getPos().equals( autre.posDepart ));
 	}
 
 	public Piece getPiecePrise()

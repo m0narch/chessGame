@@ -2,10 +2,21 @@
 package fr.miblack.chess;
 
 import fr.miblack.chess.Echiquier;
+import fr.miblack.chess.GUI.Interface;
+import fr.miblack.chess.GUI.Textuelle;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
+import fr.miblack.chess.joueurs.JoueurHumain;
 import fr.miblack.chess.piece.*;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Partie
@@ -21,7 +32,8 @@ public class Partie
 	private int							cptSansMvmtPion		= 0;
 	private Echiquier					myChessboard		= new Echiquier();
 
-	public Partie( JoueurAbstract player1, JoueurAbstract player2 ) {
+	public Partie( JoueurAbstract player1, JoueurAbstract player2 ) 
+	{
 		listOfPlayer.add( player2 );
 		listOfPlayer.addFirst( player1 );
 		letsPlay( player1 );
@@ -64,12 +76,10 @@ public class Partie
 			{
 				for ( Piece onePiece : listeDePiece )
 				{
-					LinkedList<Position> listPos = onePiece
-							.positionAccessibleChessboard( getMyChessboard() );
+					LinkedList<Position> listPos = onePiece.positionAccessibleChessboard( getMyChessboard() );
 					for ( Position posA : listPos )
 					{
-						stalemate = seraEnEchec( onePiece.getPos().clone(),
-								posA.clone() );
+						stalemate = seraEnEchec( onePiece.getPos().clone(),posA.clone() );
 						if ( stalemate == false )
 						{
 							return stalemate;
@@ -90,8 +100,7 @@ public class Partie
 		Piece maPiece = this.getMyChessboard().getPiecePosition( laPos );
 		if ( maPiece != null )
 		{
-			LinkedList<Position> listPos = maPiece
-					.positionAccessibleChessboard( getMyChessboard() );
+			LinkedList<Position> listPos = maPiece.positionAccessibleChessboard( getMyChessboard() );
 			for ( Position onePos : listPos )
 			{
 				if ( this.getMyChessboard().getPiecePosition( onePos ) != null )
@@ -115,13 +124,10 @@ public class Partie
 
 		Piece roiPiece = null;
 
-		LinkedList<Piece> maListeDePiece = this.getMyChessboard()
-				.getPieceList();
+		LinkedList<Piece> maListeDePiece = this.getMyChessboard().getPieceList();
 		for ( Piece laPiece : maListeDePiece )
 		{
-			if ( laPiece instanceof Roi
-					&& (getPlayerEnCours().getColor().equals( laPiece
-							.getColor() )) )
+			if ( laPiece instanceof Roi&& (getPlayerEnCours().getColor().equals( laPiece.getColor() )) )
 			{
 				roiPiece = laPiece;
 			}
@@ -130,24 +136,78 @@ public class Partie
 		{
 			if ( !getPlayerEnCours().getColor().equals( onePiece.getColor() ) )
 			{
-				if ( onePiece.positionAccessibleChessboard( this.myChessboard )
-						.contains( roiPiece.getPos() ) )
+				if ( onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ) )
 				{
 					check = true;
 				}
 				if ( onePiece instanceof Pion )
 				{
-					check = check
-							|| ((Pion) onePiece).metEnEchec( this.myChessboard );
+					check = check|| ((Pion) onePiece).metEnEchec( this.myChessboard );
 				}
 			}
 		}
-		this.getMyChessboard().annulerDeplacerPiecePourTest( laPosD, laPosA,
-				prise );
+		this.getMyChessboard().annulerDeplacerPiecePourTest( laPosD, laPosA,prise );
 		return check;
 	}
 
-	public boolean pomotionPossible( Echiquier chess )
+	public boolean roquePossible(Echiquier chess,boolean petitRoque )
+	{
+		Couleur color=getPlayerEnCours().getColor();
+		int xRoi;
+		int yRoi;
+		int xTour;
+		int yTour;
+		if(color.getColor()==0)
+		{
+			xRoi=4;
+			yRoi=0;
+			if(petitRoque)
+			{
+				xTour=7;
+				yTour=0;
+			}
+			else
+			{
+				xTour=0;
+				yTour=0;
+			}
+		}
+		else
+		{
+			xRoi=4;
+			yRoi=7;
+			if(petitRoque)
+			{
+				xTour=7;
+				yTour=7;
+			}
+			else
+			{
+				xTour=0;
+				yTour=7;
+			}
+		}
+		Position Roi=Position.getPosition( xRoi, yRoi );
+		Position Tour=Position.getPosition( xTour, yTour );
+		Piece pieceRoi=chess.getPiecePosition( Roi );
+		Piece pieceTour=chess.getPiecePosition( Tour );
+		if(pieceRoi !=null && pieceRoi.getPlayed()==0)
+		{
+			if(pieceTour !=null && pieceTour.getPlayed()==0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public boolean promotionPossible( Echiquier chess )
 	{
 		boolean possible = false;
 		int col = 0;
@@ -180,6 +240,11 @@ public class Partie
 		}
 		else
 			this.upCpt_sans_prise();
+		if(m.getPieceDepart().toString().equalsIgnoreCase( "P" ))
+			this.setCptSansMvmtPion();
+		else
+			this.upCptSansMvmtPion();
+
 		this.getMyChessboard().realiserCoup( m );
 		addMove( m );
 	}
@@ -192,8 +257,7 @@ public class Partie
 		Piece roiPiece = null;
 		for ( Piece onePiece : this.myChessboard.getPieceList() )
 		{
-			if ( p.getColor().equals( onePiece.getColor() )
-					&& onePiece instanceof Roi )
+			if ( p.getColor().equals( onePiece.getColor() )&& onePiece instanceof Roi )
 			{
 				roiPiece = onePiece;
 			}
@@ -204,16 +268,13 @@ public class Partie
 			{
 				if ( !p.getColor().equals( onePiece.getColor() ) )
 				{
-					if ( onePiece.positionAccessibleChessboard(
-							this.myChessboard ).contains( roiPiece.getPos() ) )
+					if ( onePiece.positionAccessibleChessboard(this.myChessboard ).contains( roiPiece.getPos() ) )
 					{
 						check = true;
 					}
 					if ( onePiece instanceof Pion )
 					{
-						check = check
-								|| ((Pion) onePiece)
-										.metEnEchec( this.myChessboard );
+						check = check || ((Pion) onePiece) .metEnEchec( this.myChessboard );
 					}
 				}
 			}
@@ -227,8 +288,7 @@ public class Partie
 
 		if ( estEnEchec( laPos ) )
 		{
-			for ( Position onePos : getMyChessboard().getPiecePosition( laPos )
-					.positionAccessibleChessboard( getMyChessboard() ) )
+			for ( Position onePos : getMyChessboard().getPiecePosition( laPos ).positionAccessibleChessboard( getMyChessboard() ) )
 			{
 				if ( estEnEchec( onePos ) )
 				{
@@ -253,14 +313,12 @@ public class Partie
 		LinkedList<Piece> listeDePiece = this.myChessboard.getPieceList();
 		for ( Piece onePiece : listeDePiece )
 		{
-			if ( p.getColor().equals( onePiece.getColor() )
-					&& onePiece instanceof Roi )
+			if ( p.getColor().equals( onePiece.getColor() )	&& onePiece instanceof Roi )
 			{
 				roiPiece = onePiece;
 			}
 		}
-		LinkedList<Position> posKingAccess = roiPiece
-				.positionAccessibleChessboard( getMyChessboard() );
+		LinkedList<Position> posKingAccess = roiPiece.positionAccessibleChessboard( getMyChessboard() );
 		for ( Position posA : posKingAccess )
 		{
 			mat = seraEnEchec( roiPiece.getPos().clone(), posA );
@@ -273,8 +331,7 @@ public class Partie
 		{
 			for ( Piece onePiece : listeDePiece )
 			{
-				LinkedList<Position> listPos = onePiece
-						.positionAccessibleChessboard( getMyChessboard() );
+				LinkedList<Position> listPos = onePiece.positionAccessibleChessboard( getMyChessboard() );
 				for ( Position posA : listPos )
 				{
 					mat = seraEnEchec( onePiece.getPos().clone(), posA.clone() );
@@ -300,16 +357,107 @@ public class Partie
 
 	public void saveGame( String pathOfFile )
 	{
-		/*
-		 * try { FileWriter fstream =new FileWriter( pathOfFile );
-		 * BufferedWriter out =new BufferedWriter( fstream ); // out.write( ) }
-		 * catch(Exception e) { System.err.println("Error: "+ e.getMessage()); }
-		 */
+		  try 
+		  {
+              String chaine=null;
+			  FileWriter fstream =new FileWriter( pathOfFile );
+			  BufferedWriter out =new BufferedWriter( fstream );
+			  chaine=new String("[White \""+getJoueur( 0 )+"\"]\n");
+			  out.write( chaine );
+			  chaine=new String("[Black \""+getJoueur( 1 )+"\"]\n");
+			  out.write( chaine );
+			  out.write( miseEnFormeListCoup());
+			  out.close();
+		  }
+		  catch(Exception e) { System.err.println("Error: "+ e.getMessage()); }
+		 
 	}
 
-	public void loadGame( String pathOfFile )
+	public void loadGame( String pathOfFile ,Interface monInterface )
 	{
-
+		String j1="";
+		String j2="";
+		boolean fin=false;
+		String lecture="";
+		Coup coup=null;
+		JoueurAbstract pJ1= new JoueurHumain("", new Couleur(0),monInterface);
+		JoueurAbstract pJ2= new JoueurHumain("", new Couleur(1),monInterface);
+		if(!listOfMove.isEmpty())
+			this.listOfMove.remove();
+		if(!myChessboard.getPieceList().isEmpty())
+			myChessboard.getPieceList().remove();
+		if(!listOfPlayer.isEmpty())
+			listOfPlayer.remove();
+		
+		try
+		{
+			InputStream ips=new FileInputStream( pathOfFile );
+			InputStreamReader ipsr=new InputStreamReader( ips );
+			BufferedReader bis =new BufferedReader(ipsr);
+			try
+			{
+				j1=bis.readLine().substring( 8 );
+				j1=j1.substring( 0, j1.indexOf( "\"" ) );
+				j2=bis.readLine().substring( 8 );
+				j2=j2.substring( 0, j2.indexOf( "\"" ) );
+				pJ1.setName(j1 );
+				pJ2.setName(j2);
+				listOfPlayer.add( pJ2 );
+				listOfPlayer.addFirst( pJ1 );
+				this.letsPlay( pJ1 );
+			} 
+			catch (IOException e)
+			{
+				System.out.println("Erreur de chargement");
+				fin=true;
+			}
+			while(fin==false)
+			{
+				try
+				{
+					lecture=bis.readLine();
+					if(lecture!=null)
+					{
+						coup=Coup.parseStringToCoupCompl( lecture, this );
+					}
+					else
+					{
+						fin=true;
+						break;
+					}
+					if(this.seraEnEchec( coup.getPosDepart().clone(), coup.getPosArrivee().clone() ) )
+					{
+						throw new Exception("Le coup est erroné");
+					}
+					this.myChessboard.realiserCoup( coup );
+					this.listOfMove.add( coup );
+					this.setPlayerEnCours();
+				}
+				catch(Exception e)
+				{
+					 e.printStackTrace();
+				}
+			}
+			try
+			{
+				bis.close();
+				System.out.println("Partie bien chargée !");
+			}
+			catch (Exception e)
+			{
+				System.out.println("Echec de fermeture");
+			}
+		} 
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		if(monInterface instanceof Textuelle)
+		{
+			((Textuelle)monInterface).AfficherEchiquier();
+			System.out.println( ((Textuelle)monInterface).getMaPartie().listOfAvailableMove( getPlayerEnCours() ) );
+			System.out.println( "C'est au joueur " + getPlayerEnCours().getType() + " "+ getPlayerEnCours().toString() + " de jouer !" );
+		}
 	}
 
 	public LinkedList<Coup> listOfAvailableMove( JoueurAbstract p )
@@ -330,79 +478,47 @@ public class Partie
 		/*************************** White piece ***********************************/
 		/*************************** Black piece ***********************************/
 
-		this.myChessboard.addKing( new Roi( new Couleur( 0 ), Position
-				.getPosition( 4, 7 ), 0 ) );
-		this.myChessboard.addKing( new Roi( new Couleur( 1 ), Position
-				.getPosition( 4, 0 ), 0 ) );
+		this.myChessboard.addKing( new Roi( new Couleur( 0 ), Position.getPosition( 4, 7 ), 0 ) );
+		this.myChessboard.addKing( new Roi( new Couleur( 1 ), Position.getPosition( 4, 0 ), 0 ) );
 
-		this.myChessboard.addQueen( new Dame( new Couleur( 0 ), Position
-				.getPosition( 3, 7 ), 10 ) );
-		this.myChessboard.addQueen( new Dame( new Couleur( 1 ), Position
-				.getPosition( 3, 0 ), 10 ) );
+		this.myChessboard.addQueen( new Dame( new Couleur( 0 ), Position.getPosition( 3, 7 ), 10 ) );
+		this.myChessboard.addQueen( new Dame( new Couleur( 1 ), Position.getPosition( 3, 0 ), 10 ) );
 
-		this.myChessboard.addRook( new Tour( new Couleur( 1 ), Position
-				.getPosition( 0, 0 ), 5 ) );
-		this.myChessboard.addRook( new Tour( new Couleur( 1 ), Position
-				.getPosition( 7, 0 ), 5 ) );
+		this.myChessboard.addRook( new Tour( new Couleur( 1 ), Position.getPosition( 0, 0 ), 5 ) );
+		this.myChessboard.addRook( new Tour( new Couleur( 1 ), Position.getPosition( 7, 0 ), 5 ) );
 
-		this.myChessboard.addRook( new Tour( new Couleur( 0 ), Position
-				.getPosition( 0, 7 ), 5 ) );
-		this.myChessboard.addRook( new Tour( new Couleur( 0 ), Position
-				.getPosition( 7, 7 ), 5 ) );
+		this.myChessboard.addRook( new Tour( new Couleur( 0 ), Position.getPosition( 0, 7 ), 5 ) );
+		this.myChessboard.addRook( new Tour( new Couleur( 0 ), Position.getPosition( 7, 7 ), 5 ) );
 
-		this.myChessboard.addBishop( new Fou( new Couleur( 1 ), Position
-				.getPosition( 2, 0 ), 3 ) );
-		this.myChessboard.addBishop( new Fou( new Couleur( 1 ), Position
-				.getPosition( 5, 0 ), 3 ) );
+		this.myChessboard.addBishop( new Fou( new Couleur( 1 ), Position.getPosition( 2, 0 ), 3 ) );
+		this.myChessboard.addBishop( new Fou( new Couleur( 1 ), Position.getPosition( 5, 0 ), 3 ) );
 
-		this.myChessboard.addBishop( new Fou( new Couleur( 0 ), Position
-				.getPosition( 2, 7 ), 3 ) );
-		this.myChessboard.addBishop( new Fou( new Couleur( 0 ), Position
-				.getPosition( 5, 7 ), 3 ) );
+		this.myChessboard.addBishop( new Fou( new Couleur( 0 ), Position.getPosition( 2, 7 ), 3 ) );
+		this.myChessboard.addBishop( new Fou( new Couleur( 0 ), Position.getPosition( 5, 7 ), 3 ) );
 
-		this.myChessboard.addKnight( new Cavalier( new Couleur( 1 ), Position
-				.getPosition( 1, 0 ), 3 ) );
-		this.myChessboard.addKnight( new Cavalier( new Couleur( 1 ), Position
-				.getPosition( 6, 0 ), 3 ) );
+		this.myChessboard.addKnight( new Cavalier( new Couleur( 1 ), Position.getPosition( 1, 0 ), 3 ) );
+		this.myChessboard.addKnight( new Cavalier( new Couleur( 1 ), Position.getPosition( 6, 0 ), 3 ) );
 
-		this.myChessboard.addKnight( new Cavalier( new Couleur( 0 ), Position
-				.getPosition( 1, 7 ), 3 ) );
-		this.myChessboard.addKnight( new Cavalier( new Couleur( 0 ), Position
-				.getPosition( 6, 7 ), 3 ) );
+		this.myChessboard.addKnight( new Cavalier( new Couleur( 0 ), Position.getPosition( 1, 7 ), 3 ) );
+		this.myChessboard.addKnight( new Cavalier( new Couleur( 0 ), Position.getPosition( 6, 7 ), 3 ) );
 
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 0, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 1, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 2, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 3, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 4, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 5, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 6, 1 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position
-				.getPosition( 7, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 0, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 1, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 2, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 3, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 4, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 5, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 6, 1 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 1 ), Position.getPosition( 7, 1 ), 1 ) );
 
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 0, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 1, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 2, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 3, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 4, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 5, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 6, 6 ), 1 ) );
-		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position
-				.getPosition( 7, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 0, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 1, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 2, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 3, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 4, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 5, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 6, 6 ), 1 ) );
+		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 7, 6 ), 1 ) );
 	}
 
 	public void letsPlay( JoueurAbstract joueur1 )
@@ -438,6 +554,20 @@ public class Partie
 		this.listOfMoveCancelled = listOfMoveCancelled;
 	}
 
+	public String miseEnFormeListCoup()
+	{
+		String msg="";
+		Coup coup;
+		Iterator<Coup> iterator=listOfMove.iterator();
+		while(iterator.hasNext())
+		{	
+			coup=iterator.next();
+			msg+=coup;
+			msg+="\n"; 
+		}
+		return msg;
+	}
+	
 	public int getCpt_sans_prise()
 	{
 		return cpt_sans_prise;
@@ -456,6 +586,16 @@ public class Partie
 	public void downCpt_sans_prise()
 	{
 		this.cpt_sans_prise--;
+	}
+	
+	public void setCptSansMvmtPion()
+	{
+		this.cptSansMvmtPion=0;
+	}
+	
+	public void upCptSansMvmtPion()
+	{
+		this.cptSansMvmtPion++;
 	}
 
 	public JoueurAbstract getPlayerEnCours()

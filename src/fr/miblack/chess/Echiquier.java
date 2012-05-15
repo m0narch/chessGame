@@ -83,8 +83,7 @@ public class Echiquier
 		return prise;
 	}
 
-	public void annulerDeplacerPiecePourTest( Position posDepart,
-			Position posArrivee, boolean isPrise )
+	public void annulerDeplacerPiecePourTest( Position posDepart,Position posArrivee, boolean isPrise )
 	{
 		Piece pieceD = null;
 		pieceD = this.getPiecePosition( posArrivee );
