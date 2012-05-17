@@ -42,12 +42,14 @@ public class Position
 
 	public void setX( int x )
 	{
-		this.x = x;
+		if(x>=0 && x<8)
+			this.x = x;
 	}
 
-	public void setY( int y )
+	public void setY( int a)
 	{
-		this.y = y;
+		if(a>=0 && a<8)
+		this.y = a;
 	}
 
 	public boolean equals( Position pos )

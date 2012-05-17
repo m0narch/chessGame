@@ -43,13 +43,20 @@ public class JoueurOrdinateur extends JoueurAbstract
 		do
 		{
 			m = selectionCoupAleatoire( a );
-			if ( a.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee()
-					.clone() ) )
+			System.out.println(m);
+			if(m.getRoque()==false)
 			{
-				mauvaisChoix = true;
+				if ( a.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee().clone() ) )
+				{
+					mauvaisChoix = true;
+				}
+				else
+					mauvaisChoix = false;
 			}
 			else
 				mauvaisChoix = false;
+
+			
 		} while (mauvaisChoix);
 		return m;
 	}

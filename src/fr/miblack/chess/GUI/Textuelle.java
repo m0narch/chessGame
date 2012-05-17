@@ -228,10 +228,10 @@ public class Textuelle extends Interface
 			 
 			try
 			{
-				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie );
+				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie,p );
 			} catch (RuntimeException e)
 			{
-				System.out.println( "Le coup est invalide" );
+				System.out.println( "Le coup est invalide -izai" );
 				continue;
 			}
 			for ( Coup c : maPartie.listOfAvailableMove( p ) )
@@ -272,6 +272,8 @@ public class Textuelle extends Interface
 
 	public void jouerPartie()
 	{
+		Scanner sc =new Scanner( System.in );
+		String m="";
 		Coup monCoup;
 		while (!getMaPartie().isDraw()) 
 		{
@@ -284,7 +286,7 @@ public class Textuelle extends Interface
 					if ( getMaPartie().estEchecEtMat( p ) )
 					{
 						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est echecs et mat !" );
-						System.exit( 0 );
+						break;
 					}
 					System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est en echecs !" );
 				}
@@ -293,7 +295,7 @@ public class Textuelle extends Interface
 					if ( getMaPartie().estPat( p ) )
 					{
 						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est pat !" );
-						System.exit( 0 );
+						break;
 					}
 				}
 				System.out.println( this.getMaPartie().listOfAvailableMove( p ) );
@@ -311,6 +313,19 @@ public class Textuelle extends Interface
 		if ( getMaPartie().isDraw() )
 		{
 			System.out.println( "Fin de partie , partie nulle" );
+		}
+		System.out.println("save <nom fichier> pour sauvegarder");
+		m=sc.nextLine();
+		if(m.equals( "save" ))
+		{
+			System.out.println("Saissisez le nom de save du fichier");
+			m = sc.nextLine();
+			maPartie.saveGame( m );
+		}
+		if(m.startsWith( "save " ))
+		{
+			String out=m.substring( 5 );
+			maPartie.saveGame( out );
 		}
 	}
 
@@ -358,6 +373,10 @@ public class Textuelle extends Interface
 				System.out.println( "Mauvais choix de coup" );
 			}
 			m = saisirCoup( p, this.getMyChessboard() );
+			if(m.getRoque()==true)
+			{
+				break;
+			}
 			if ( g.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee().clone() ) )
 			{
 				mauvaisChoix = true;

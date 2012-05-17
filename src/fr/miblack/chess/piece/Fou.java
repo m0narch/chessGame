@@ -32,12 +32,12 @@ public class Fou extends Piece implements Diagonale
 			if ( xx != getX() )
 			{
 				yy = getY() + delta;
-				if ( (yy >= 1) && (yy < 7) )
+				if ( (yy >= 0) && (yy < 7) )
 				{
 					myList.add( Position.getPosition( xx, yy ) );
 				}
 				yy = getY() - delta;
-				if ( (yy >= 1) && (yy < 7) )
+				if ( (yy >= 0) && (yy < 7) )
 				{
 					myList.add( Position.getPosition( xx, yy ) );
 				}

@@ -98,36 +98,87 @@ public class Echiquier
 		pieceList.add( pieceD );
 	}
 
+	@SuppressWarnings( "null" )
 	public boolean realiserCoup( Coup myCoup )
 	{
+		
 		Piece pieceD = null;
 		Position posA = null;
 		piecePourTest = null;
-
-		pieceD = myCoup.getPieceDepart();
-		posA = myCoup.getPosArrivee();
-		myCoup.setPiecePrise( this.getPiecePosition( posA ) );
-		if ( pieceList.contains( pieceD ) )
+		Piece roi=null;
+		Piece tour=null;
+		try
 		{
-			if ( pieceD.positionAccessibleChessboard( this ).contains( posA ) )
+			pieceD = myCoup.getPieceDepart();
+			posA = myCoup.getPosArrivee();
+			myCoup.setPiecePrise( this.getPiecePosition( posA ) );
+		}
+		catch (NullPointerException e)
+		{
+			
+		}
+		if(myCoup.getRoque()==false)
+		{
+			if ( pieceList.contains( pieceD ) )
 			{
-				pieceList.remove( this.getPiecePosition( posA ) );
-				for ( Piece piece : pieceList )
+				if ( pieceD.positionAccessibleChessboard( this ).contains( posA ) )
 				{
-					if ( piece.equals( pieceD ) )
+					pieceList.remove( this.getPiecePosition( posA ) );
+					for ( Piece piece : pieceList )
 					{
-						pieceD.setPlayed();
-						pieceD.setPos( posA );
-						pieceList.remove( piece );
-						pieceList.add( pieceD );
-						break;
+						if ( piece.equals( pieceD ) )
+						{
+							pieceD.setPlayed();
+							pieceD.setPos( posA );
+							pieceList.remove( piece );
+							pieceList.add( pieceD );
+							break;
+						}
 					}
+					return true;
 				}
-				return true;
 			}
+			else
+				return false;	
 		}
 		else
-			return false;
+		{
+			if(myCoup.estPetitRoque)
+			{
+				if(myCoup.getCouleur().getColor()==1)//blanc
+				{
+					roi=this.getPiecePosition(4,0);
+					tour=this.getPiecePosition( 7, 0 );
+					roi.setPos(6,0);
+					tour.setPos( 5, 0 );
+				}
+				else
+				{
+					roi=this.getPiecePosition(4,7);
+					tour=this.getPiecePosition( 7, 7 );
+					roi.setPos(6,7);
+					tour.setPos( 5, 7 );
+				}
+			}
+			else
+			{
+				if(myCoup.getCouleur().getColor()==1)//blanc
+				{
+					roi=this.getPiecePosition(4,0);
+					tour=this.getPiecePosition( 0, 0 );
+					roi.setPos(2,0);
+					tour.setPos( 3, 0 );
+				}
+				else
+				{
+					roi=this.getPiecePosition(4,7);
+					tour=this.getPiecePosition( 0, 7 );
+					roi.setPos(2,7);
+					tour.setPos( 3, 7 );
+				}
+			}
+		}
+		
 
 		return false;
 	}
@@ -144,19 +195,6 @@ public class Echiquier
 		return true;
 	}
 
-	// TODO Penser au roque
-	public Coup moveRoque( boolean little )
-	{
-		Coup m = null;
-		if ( little )
-		{
-			return m;
-		}
-		else
-		{
-			return m;
-		}
-	}
 
 	public int size()
 	{

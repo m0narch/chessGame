@@ -61,6 +61,12 @@ public abstract class Piece implements Cloneable
 
 	}
 
+	
+	public void setPos( int x,int y )
+	{
+			this.pos.setX(x );
+			this.pos.setY(y );
+	}
 	public Position getPos()
 	{
 		return this.pos;

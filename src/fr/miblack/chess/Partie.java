@@ -118,8 +118,7 @@ public class Partie
 	@SuppressWarnings( "null" )
 	public boolean seraEnEchec( Position laPosD, Position laPosA )
 	{
-		boolean prise = this.getMyChessboard().deplacerPiecePourTest( laPosD,
-				laPosA );
+		boolean prise = this.getMyChessboard().deplacerPiecePourTest( laPosD,laPosA );
 		boolean check = false;
 
 		Piece roiPiece = null;
@@ -136,9 +135,16 @@ public class Partie
 		{
 			if ( !getPlayerEnCours().getColor().equals( onePiece.getColor() ) )
 			{
-				if ( onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ) )
+				try
 				{
-					check = true;
+					if ( onePiece.positionAccessibleChessboard( this.myChessboard ).contains( roiPiece.getPos() ) )
+					{
+						check = true;
+					}	
+				}
+				catch(NullPointerException e)
+				{
+					
 				}
 				if ( onePiece instanceof Pion )
 				{
@@ -150,17 +156,34 @@ public class Partie
 		return check;
 	}
 
-	public boolean roquePossible(Echiquier chess,boolean petitRoque )
+	public Position getPosRoi( )
 	{
+		setPlayerEnCours();
 		Couleur color=getPlayerEnCours().getColor();
-		int xRoi;
-		int yRoi;
-		int xTour;
-		int yTour;
+		int xRoi=4;
+		int yRoi=0;
 		if(color.getColor()==0)
 		{
 			xRoi=4;
 			yRoi=0;
+		}
+		else
+		{
+			xRoi=4;
+			yRoi=7;
+		}
+		setPlayerEnCours();
+		return Position.getPosition( xRoi, yRoi );
+	}
+
+	public  Position getPosTour( boolean petitRoque)
+	{
+		setPlayerEnCours();
+		Couleur color=getPlayerEnCours().getColor();
+		int xTour=0;
+		int yTour=0;
+		if(color.getColor()==0)
+		{
 			if(petitRoque)
 			{
 				xTour=7;
@@ -174,8 +197,6 @@ public class Partie
 		}
 		else
 		{
-			xRoi=4;
-			yRoi=7;
 			if(petitRoque)
 			{
 				xTour=7;
@@ -187,15 +208,67 @@ public class Partie
 				yTour=7;
 			}
 		}
-		Position Roi=Position.getPosition( xRoi, yRoi );
-		Position Tour=Position.getPosition( xTour, yTour );
+
+		setPlayerEnCours();
+		return Position.getPosition( xTour, yTour );
+	}
+	
+	public boolean trajetLibre(Echiquier chess,Position Roi,Position Tour,boolean petitRoque)
+	{
+		int x1=Roi.getX()+1;
+		int x2=Roi.getX()+2;
+		int j1=Roi.getX()-1;
+		int j2=Roi.getX()-2;
+		int j3=Roi.getX()-3;
+		if(!petitRoque && Position.valValide( x1 ) && Position.valValide( x2 ))
+		{
+			if(chess.getPiecePosition( Position.getPosition( x1, Roi.getY() ) )==null)
+			{
+				if(chess.getPiecePosition( Position.getPosition(x2,  Roi.getY() ) )==null)
+				{
+						return true;
+				}	
+			}
+		}
+		else
+		{
+			if(Position.valValide( j1 )&& Position.valValide( j2 )&& Position.valValide( j3 ))
+			{
+				if(chess.getPiecePosition( Position.getPosition( j1,  Roi.getY() ) )==null)
+				{
+					if(chess.getPiecePosition( Position.getPosition( j2,  Roi.getY() ) )==null)
+					{
+						if(chess.getPiecePosition( Position.getPosition( j3,  Roi.getY() ) )==null)
+						{
+								return true;
+						}
+					}
+				}
+			}	
+		}
+		return false;
+	}
+	
+	public boolean petitRoquePossible(Echiquier chess  )
+	{
+		boolean check=false;
+		
+		Position Roi=getPosRoi(  );
+		Position Tour=getPosTour(true);
 		Piece pieceRoi=chess.getPiecePosition( Roi );
 		Piece pieceTour=chess.getPiecePosition( Tour );
 		if(pieceRoi !=null && pieceRoi.getPlayed()==0)
 		{
 			if(pieceTour !=null && pieceTour.getPlayed()==0)
 			{
-				return true;
+				if(trajetLibre( chess, Roi, Tour, true ))
+				{
+					check=check|| estEnEchec( Roi.clone() );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+1,  Roi.getY() ) );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+2,  Roi.getY() ) );
+					check=check||seraEnEchec( Tour.clone(),Roi .clone());
+				}
+				return !check;
 			}
 			else
 			{
@@ -207,6 +280,41 @@ public class Partie
 			return false;
 		}
 	}
+	
+	public boolean grandRoquePossible(Echiquier chess )
+	{
+		boolean check=false;
+		Position Roi=getPosRoi();
+		Position Tour=getPosTour(false);
+		Piece pieceRoi=chess.getPiecePosition( Roi );
+		Piece pieceTour=chess.getPiecePosition( Tour );
+		 
+		
+		if((pieceRoi !=null) && (pieceRoi.getPlayed()==0))
+		{
+			if((pieceTour !=null)&& (pieceTour.getPlayed()==0))
+			{
+				if(trajetLibre( chess, Roi, Tour, false ))
+				{
+					check=check||estEnEchec( Roi.clone() );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-1,  Roi.getY() ) );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-2,  Roi.getY() ) );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-3,  Roi.getY() ) );
+					check=check||seraEnEchec( Tour.clone(),Roi.clone() );
+				}
+				return !check;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	public boolean promotionPossible( Echiquier chess )
 	{
 		boolean possible = false;
@@ -240,9 +348,11 @@ public class Partie
 		}
 		else
 			this.upCpt_sans_prise();
-		if(m.getPieceDepart().toString().equalsIgnoreCase( "P" ))
-			this.setCptSansMvmtPion();
-		else
+		if(!m.estRoque)
+		{
+			if(m.getPieceDepart().toString().equalsIgnoreCase( "P" ))
+				this.setCptSansMvmtPion();
+		}else
 			this.upCptSansMvmtPion();
 
 		this.getMyChessboard().realiserCoup( m );
@@ -418,7 +528,7 @@ public class Partie
 					lecture=bis.readLine();
 					if(lecture!=null)
 					{
-						coup=Coup.parseStringToCoupCompl( lecture, this );
+						coup=Coup.parseStringToCoupCompl( lecture, this ,playerEnCours);
 					}
 					else
 					{
@@ -459,7 +569,10 @@ public class Partie
 			System.out.println( "C'est au joueur " + getPlayerEnCours().getType() + " "+ getPlayerEnCours().toString() + " de jouer !" );
 		}
 	}
-
+	/**
+	 * @param p
+	 * @return Liste des coup possibles
+	 */
 	public LinkedList<Coup> listOfAvailableMove( JoueurAbstract p )
 	{
 		LinkedList<Coup> listCoup = new LinkedList<Coup>();
@@ -469,6 +582,14 @@ public class Partie
 			{
 				listCoup.addAll( onePiece.getCoupPossible( onePiece, this ) );
 			}
+		}
+		if(petitRoquePossible( myChessboard))
+		{
+			listCoup.addLast( new Coup(true,p.getColor()) );
+		}
+		if(grandRoquePossible( myChessboard))
+		{
+			listCoup.addLast( new Coup(false,p.getColor()) );
 		}
 		return listCoup;
 	}
@@ -519,6 +640,7 @@ public class Partie
 		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 5, 6 ), 1 ) );
 		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 6, 6 ), 1 ) );
 		this.myChessboard.addPawn( new Pion( new Couleur( 0 ), Position.getPosition( 7, 6 ), 1 ) );
+
 	}
 
 	public void letsPlay( JoueurAbstract joueur1 )

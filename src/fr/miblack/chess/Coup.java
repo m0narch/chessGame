@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.Piece;
 import fr.miblack.chess.piece.Roi;
@@ -12,16 +13,32 @@ import fr.miblack.chess.piece.Roi;
 public class Coup
 {
 	static String maRegex= "^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$";
-	private static Pattern  myRegexComp = Pattern.compile(maRegex );
-	private Piece		pieceDepart;
-	private Position	posDepart;
-	private Position	posArrivee;
-	private boolean		estPrise;
-	private Piece		PiecePrise;
-	private String		promotion;
+	static String maRegexRoque="^(O-O-O|O-O)?";
+	protected static Pattern  myRegexComp = Pattern.compile(maRegex );
+	protected static Pattern  myRegexRoque = Pattern.compile(maRegexRoque );
+	protected Piece		pieceDepart;
+	protected Position	posDepart;
+	protected Position	posArrivee;
+	protected boolean		estPrise;
+	protected Piece		PiecePrise;
+	protected String		promotion;
+	protected boolean estPetitRoque ;
+	protected boolean estRoque ;
+	protected Couleur couleur;
+	
+
+
+	public Coup(boolean petitRoque,Couleur couleur)
+	{	
+		this.estRoque=true;
+		this.couleur=couleur;
+		//TODO realiser coup pour le roque !
+		this.estPetitRoque=petitRoque;
+	}
 
 	public Coup( Piece pieceDepart, Position posArrivee ) {
 		this.setPieceDepart( pieceDepart );
+		this.estRoque=false;
 		this.setPosDepart( pieceDepart.getPos().clone() );
 		this.setPosArrivee( posArrivee );
 	}
@@ -29,6 +46,7 @@ public class Coup
 	public Coup( Piece pieceDepart, Position posArrivee, boolean prise,
 			String promotion ) {
 		this.setPieceDepart( pieceDepart );
+		this.estRoque=false;
 		this.setPosDepart( pieceDepart.getPos().clone() );
 		this.setPosArrivee( posArrivee );
 		this.setEstPrise( prise );
@@ -40,6 +58,7 @@ public class Coup
 		this.setPosDepart( pieceDepart.getPos().clone() );
 		this.setPosArrivee( posArrivee );
 		this.setEstPrise( prise );
+		this.estRoque=false;
 	}
 
 	/**
@@ -50,6 +69,10 @@ public class Coup
 		return pieceDepart;
 	}
 
+	public boolean getRoque()
+	{
+		return this.estRoque;
+	}
 	/**
 	 * @param pieceDepart
 	 *            the pieceDepart to set
@@ -102,12 +125,22 @@ public class Coup
 
 	public String toString()
 	{
-		if ( isEstPrise() )
+		if(estRoque==false)
 		{
-			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos();
+			if ( isEstPrise() )
+			{
+				return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos();
+			}
+			else
+				return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos();
 		}
 		else
-			return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos();
+		{
+			if(estPetitRoque)
+				return "O-O";
+			else
+				return "O-O-O";
+		}
 	}
 
 	public boolean metEnEchec( JoueurAbstract p, Echiquier chess )
@@ -131,23 +164,36 @@ public class Coup
 		return echec;
 	}
 
-	public static Coup parseStringToCoupCompl( String myString, Partie party )
+	public static Coup parseStringToCoupCompl(String myString, Partie party,JoueurAbstract p )
 	{
 		Matcher matcher = myRegexComp.matcher( myString );
+		Matcher matcherRoque = myRegexRoque.matcher( myString );
 		Piece pieceD;
 		boolean prise;
 		String promotion;
 		Position posA;
-		if ( matcher.find() )
+ 
+		if(matcherRoque.matches())
 		{
-			pieceD = party.getMyChessboard().getPiecePosition(Position.stringToPos( matcher.group( 2 ) ) );
-			posA = Position.stringToPos( matcher.group( 4 ) );
-			prise = matcher.group( 3 ).equals( "x" );
-			promotion = matcher.group( 6 );
-			if ( matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
-				return new Coup( pieceD, posA, prise, promotion );
-			return new Coup( pieceD, posA, prise );
+			if(matcherRoque.group(1).equals( "O-O" ))
+			{
+				return new Coup(true,p.getColor());
+			}
+			else
+			{
+				return new Coup(false,p.getColor());
+			}
 		}
+			if ( matcher.matches() )
+			{
+				pieceD = party.getMyChessboard().getPiecePosition(Position.stringToPos( matcher.group( 2 ) ) );
+				posA = Position.stringToPos( matcher.group( 4 ) );
+				prise = matcher.group( 3 ).equals( "x" );
+				promotion = matcher.group( 6 );
+				if ( matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
+					return new Coup( pieceD, posA, prise, promotion );
+				return new Coup( pieceD, posA, prise );
+			}	
 		throw new RuntimeException( "coup invalide" );
 	}
 
@@ -163,7 +209,16 @@ public class Coup
 
 	public boolean equals( Coup autre )
 	{
-		return (pieceDepart.equals( autre.pieceDepart )&& posArrivee.equals( autre.posArrivee ) && pieceDepart.getPos().equals( autre.posDepart ));
+		boolean equals;
+		if(this.estRoque)
+		{
+			equals=(autre.estPetitRoque==this.estPetitRoque);
+		}
+		else
+		{
+			equals=(pieceDepart.equals( autre.pieceDepart )&& posArrivee.equals( autre.posArrivee ) && pieceDepart.getPos().equals( autre.posDepart ));
+		}
+		return equals;
 	}
 
 	public Piece getPiecePrise()
@@ -185,5 +240,13 @@ public class Coup
 	{
 		this.promotion = promotion;
 	}
+	public Couleur getCouleur()
+	{
+		return couleur;
+	}
 
+	public void setCouleur( Couleur couleur )
+	{
+		this.couleur = couleur;
+	}
 }
