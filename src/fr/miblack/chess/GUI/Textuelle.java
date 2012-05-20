@@ -272,8 +272,7 @@ public class Textuelle extends Interface
 
 	public void jouerPartie()
 	{
-		Scanner sc =new Scanner( System.in );
-		String m="";
+
 		Coup monCoup;
 		while (!getMaPartie().isDraw()) 
 		{
@@ -286,7 +285,8 @@ public class Textuelle extends Interface
 					if ( getMaPartie().estEchecEtMat( p ) )
 					{
 						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est echecs et mat !" );
-						break;
+						proposerSave(maPartie);
+						System.exit( 0);
 					}
 					System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est en echecs !" );
 				}
@@ -295,7 +295,8 @@ public class Textuelle extends Interface
 					if ( getMaPartie().estPat( p ) )
 					{
 						System.out.println( "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est pat !" );
-						break;
+						proposerSave(maPartie);
+						System.exit( 0);
 					}
 				}
 				System.out.println( this.getMaPartie().listOfAvailableMove( p ) );
@@ -314,6 +315,14 @@ public class Textuelle extends Interface
 		{
 			System.out.println( "Fin de partie , partie nulle" );
 		}
+		proposerSave(maPartie);
+
+	}
+
+	public void proposerSave(Partie maPartie)
+	{		
+	Scanner sc =new Scanner( System.in );
+	String m="";
 		System.out.println("save <nom fichier> pour sauvegarder");
 		m=sc.nextLine();
 		if(m.equals( "save" ))
@@ -328,7 +337,6 @@ public class Textuelle extends Interface
 			maPartie.saveGame( out );
 		}
 	}
-
 	public String AfficherEchiquier()
 	{
 		Echiquier myChessboard = maPartie.getMyChessboard();
