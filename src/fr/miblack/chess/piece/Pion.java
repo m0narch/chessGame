@@ -14,6 +14,7 @@ public class Pion extends Piece
 
 	public Pion( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
+		setDisplay('♟');
 	}
 
 	public LinkedList<Position> positionAccessibleCouleur( int couleur )

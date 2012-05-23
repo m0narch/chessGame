@@ -61,12 +61,10 @@ public class Position
 	{
 		if ( getColor() == 1 )
 		{
-			// return ".";
 			return Couleur.ANSI_WHITE + ".";
 		}
 		else
 		{
-			// return ".";
 			return Couleur.ANSI_RED + ".";
 		}
 	}
@@ -107,6 +105,11 @@ public class Position
 		return "" + (char) (this.x + 97) + (this.y + 1);
 	}
 
+	/**
+	 * 
+	 * @param pos
+	 * @return la position equivalante a la chaine passee
+	 */
 	public static Position stringToPos( String pos )
 	{
 		int x = 0;

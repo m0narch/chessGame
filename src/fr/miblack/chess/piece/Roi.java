@@ -12,6 +12,7 @@ public class Roi extends Piece
 
 	public Roi( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
+		setDisplay('♚');
 	}
 
 	public LinkedList<Position> positionAccessible()

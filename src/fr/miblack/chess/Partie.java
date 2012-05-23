@@ -2,8 +2,8 @@
 package fr.miblack.chess;
 
 import fr.miblack.chess.Echiquier;
-import fr.miblack.chess.GUI.Interface;
-import fr.miblack.chess.GUI.Textuelle;
+import fr.miblack.chess.affichage.Interface;
+import fr.miblack.chess.affichage.Textuelle;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.joueurs.JoueurHumain;
@@ -31,7 +31,7 @@ public class Partie
 	private int							cpt_sans_prise		= 0;
 	private int							cptSansMvmtPion		= 0;
 	private Echiquier					myChessboard		= new Echiquier();
-
+	
 	public Partie( JoueurAbstract player1, JoueurAbstract player2 ) 
 	{
 		listOfPlayer.add( player2 );
@@ -392,27 +392,6 @@ public class Partie
 		return check;
 	}
 
-	public boolean estEchecEtMat( Position laPos )
-	{
-		boolean mat = false;
-
-		if ( estEnEchec( laPos ) )
-		{
-			for ( Position onePos : getMyChessboard().getPiecePosition( laPos ).positionAccessibleChessboard( getMyChessboard() ) )
-			{
-				if ( estEnEchec( onePos ) )
-				{
-					mat = true;
-				}
-				else
-				{
-					mat = false;
-				}
-			}
-			return mat;
-		}
-		return mat;
-	}
 
 	@SuppressWarnings( "null" )
 	public boolean estEchecEtMat( JoueurAbstract p )
@@ -564,11 +543,16 @@ public class Partie
 		}
 		if(monInterface instanceof Textuelle)
 		{
-			((Textuelle)monInterface).AfficherEchiquier();
+			((Textuelle)monInterface).afficherEchiquier();
 			System.out.println( ((Textuelle)monInterface).getMaPartie().listOfAvailableMove( getPlayerEnCours() ) );
 			System.out.println( "C'est au joueur " + getPlayerEnCours().getType() + " "+ getPlayerEnCours().toString() + " de jouer !" );
 		}
 	}
+	
+	
+	
+	 
+	
 	/**
 	 * @param p
 	 * @return Liste des coup possibles

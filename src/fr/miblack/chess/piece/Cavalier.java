@@ -8,10 +8,16 @@ import fr.miblack.chess.color.Couleur;
 
 public class Cavalier extends Piece
 {
-	public Cavalier( Couleur color, Position pos, int valeur ) {
+	public Cavalier( Couleur color, Position pos, int valeur ) 
+	{
 		super( color, pos, valeur );
+		setDisplay('♞');
 	}
 
+	
+	/**
+	 * 
+	 */
 	public LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();

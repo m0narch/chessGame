@@ -1,0 +1,6 @@
+package fr.miblack.chess.jtuto.gui;
+
+public interface GestionnaireEvenements {
+	public void gereEvenement( String nomComposant , int typeEvenement ,
+	      String valeur , int xSouris , int ySouris );
+}

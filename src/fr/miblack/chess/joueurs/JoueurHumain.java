@@ -3,7 +3,7 @@ package fr.miblack.chess.joueurs;
 
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Partie;
-import fr.miblack.chess.GUI.Interface;
+import fr.miblack.chess.affichage.Interface;
 import fr.miblack.chess.color.Couleur;
 
 public class JoueurHumain extends JoueurAbstract

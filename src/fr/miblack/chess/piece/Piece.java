@@ -15,7 +15,9 @@ public abstract class Piece implements Cloneable
 	protected Position	pos;
 	protected int		valeur;
 	protected int		asPlayed	= 0;
-
+	protected char display;
+	
+	
 	public Piece( Couleur color, Position pos, int valeur ) {
 		this.color = color;
 		this.pos = pos;
@@ -35,6 +37,13 @@ public abstract class Piece implements Cloneable
 	public int getPlayed()
 	{
 		return this.asPlayed;
+	}
+	
+	public char getDisplay() {
+		return display;
+	}
+	public void setDisplay(char display) {
+		this.display=display;
 	}
 
 	public void setPlayed()

@@ -13,6 +13,7 @@ public class Tour extends Piece implements Ligne
 
 	public Tour( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
+		setDisplay('♜');
 	}
 
 	public LinkedList<Position> positionAccessible()

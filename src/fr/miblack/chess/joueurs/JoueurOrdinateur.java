@@ -6,7 +6,7 @@ import java.util.Random;
 
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Partie;
-import fr.miblack.chess.GUI.Interface;
+import fr.miblack.chess.affichage.Interface;
 import fr.miblack.chess.color.Couleur;
 
 public class JoueurOrdinateur extends JoueurAbstract
@@ -14,13 +14,14 @@ public class JoueurOrdinateur extends JoueurAbstract
 
 	private int	niveau;
 
-	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface ) {
+	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface ) 
+	{
 		super( p1, a, monInterface );
 		type = "Ordinateur";
 	}
 
-	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface,
-			int niveau ) {
+	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface,int niveau ) 
+	{
 		super( p1, a, monInterface );
 		this.niveau = niveau;
 		type = "Ordinateur";
@@ -36,6 +37,10 @@ public class JoueurOrdinateur extends JoueurAbstract
 		this.name = name;
 	}
 
+	/**
+	 * permet a une machine de jouer un coup , ici seulement le niveau 1 est implementee
+	 * @return le coup a jouer
+	 */
 	public Coup jouerCoup( Partie a )
 	{
 		Coup m;
@@ -43,7 +48,6 @@ public class JoueurOrdinateur extends JoueurAbstract
 		do
 		{
 			m = selectionCoupAleatoire( a );
-			System.out.println(m);
 			if(m.getRoque()==false)
 			{
 				if ( a.seraEnEchec( m.getPosDepart().clone(), m.getPosArrivee().clone() ) )
@@ -61,6 +65,11 @@ public class JoueurOrdinateur extends JoueurAbstract
 		return m;
 	}
 
+	/**
+	 * IA de niveau 1 , selection aleatoire
+	 * @param a , la partie
+	 * @return un coup aleatoire parmis la liste de coup jouable
+	 */
 	public Coup selectionCoupAleatoire( Partie a )
 	{
 		LinkedList<Coup> listOfTheRandom = a.listOfAvailableMove( this );
@@ -73,7 +82,6 @@ public class JoueurOrdinateur extends JoueurAbstract
 				size = 1;
 			}
 			int var = rand.nextInt( size );
-			// var=rand.nextInt(size);
 			return listOfTheRandom.get( var );
 		}
 		throw new RuntimeException( "Plus de coups possible !" );

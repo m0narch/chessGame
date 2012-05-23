@@ -16,6 +16,7 @@ public class Dame extends Piece implements Diagonale, Ligne
 		super( color, pos, valeur );
 		tour = new Tour( color, pos, valeur );
 		fou = new Fou( color, pos, valeur );
+		setDisplay('♛');
 	}
 
 	public LinkedList<Position> positionAccessible()

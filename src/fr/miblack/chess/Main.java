@@ -1,8 +1,8 @@
 
 package fr.miblack.chess;
 
-import fr.miblack.chess.GUI.Graphique;
-import fr.miblack.chess.GUI.Textuelle;
+import fr.miblack.chess.affichage.Graphique;
+import fr.miblack.chess.affichage.Textuelle;
 
 public class Main
 {

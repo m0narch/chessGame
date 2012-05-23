@@ -12,6 +12,12 @@ public class Echiquier
 	private LinkedList<Piece>	pieceList	= new LinkedList<Piece>();
 	private Piece				piecePourTest;
 
+	
+	/**
+	 * 
+	 * @param pos
+	 * @return la piece a la position donnee , null si la position est vide
+	 */
 	public Piece getPiecePosition( Position pos )
 	{
 		for ( Piece onePiece : this.pieceList )
@@ -24,6 +30,12 @@ public class Echiquier
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return la piece a la position donnee , null si la position est vide
+	 */
 	public Piece getPiecePosition( int x, int y )
 	{
 		for ( Piece onePiece : this.pieceList )
@@ -65,8 +77,14 @@ public class Echiquier
 			return false;
 	}
 
-	public boolean deplacerPiecePourTest( Position posDepart,
-			Position posArrivee )
+	/**
+	 * Deplace une piece sans faire de test
+	 * 
+	 * @param posDepart
+	 * @param posArrivee
+	 * @return s'il y  a une prise de piece
+	 */
+	public boolean deplacerPiecePourTest( Position posDepart,Position posArrivee )
 	{
 		Piece pieceD = null;
 		boolean prise = false;
@@ -83,6 +101,11 @@ public class Echiquier
 		return prise;
 	}
 
+	/**
+	 * @param posDepart
+	 * @param posArrivee
+	 * @param isPrise
+	 */
 	public void annulerDeplacerPiecePourTest( Position posDepart,Position posArrivee, boolean isPrise )
 	{
 		Piece pieceD = null;
@@ -105,8 +128,7 @@ public class Echiquier
 		Piece pieceD = null;
 		Position posA = null;
 		piecePourTest = null;
-		Piece roi=null;
-		Piece tour=null;
+		
 		try
 		{
 			pieceD = myCoup.getPieceDepart();
@@ -143,47 +165,63 @@ public class Echiquier
 		}
 		else
 		{
-			if(myCoup.estPetitRoque)
-			{
-				if(myCoup.getCouleur().getColor()==1)//blanc
-				{
-					roi=this.getPiecePosition(4,0);
-					tour=this.getPiecePosition( 7, 0 );
-					roi.setPos(6,0);
-					tour.setPos( 5, 0 );
-				}
-				else
-				{
-					roi=this.getPiecePosition(4,7);
-					tour=this.getPiecePosition( 7, 7 );
-					roi.setPos(6,7);
-					tour.setPos( 5, 7 );
-				}
-			}
-			else
-			{
-				if(myCoup.getCouleur().getColor()==1)//blanc
-				{
-					roi=this.getPiecePosition(4,0);
-					tour=this.getPiecePosition( 0, 0 );
-					roi.setPos(2,0);
-					tour.setPos( 3, 0 );
-				}
-				else
-				{
-					roi=this.getPiecePosition(4,7);
-					tour=this.getPiecePosition( 0, 7 );
-					roi.setPos(2,7);
-					tour.setPos( 3, 7 );
-				}
-			}
+			realiserRoque(myCoup);
 		}
-		
-
 		return false;
 	}
 
-	public boolean realiserPromotion( Coup myCoup )
+	/**
+	 * Realise le roque (deplace les pieces)
+	 * 
+	 * @param myCoup (le coup joue)
+	 */
+	public void realiserRoque(Coup myCoup)
+	{
+		Piece roi=null;
+		Piece tour=null;
+		if(myCoup.estPetitRoque)
+		{
+			if(myCoup.getCouleur().getColor()==1)//blanc
+			{
+				roi=this.getPiecePosition(4,0);
+				tour=this.getPiecePosition( 7, 0 );
+				roi.setPos(6,0);
+				tour.setPos( 5, 0 );
+			}
+			else
+			{
+				roi=this.getPiecePosition(4,7);
+				tour=this.getPiecePosition( 7, 7 );
+				roi.setPos(6,7);
+				tour.setPos( 5, 7 );
+			}
+		}
+		else
+		{
+			if(myCoup.getCouleur().getColor()==1)//blanc
+			{
+				roi=this.getPiecePosition(4,0);
+				tour=this.getPiecePosition( 0, 0 );
+				roi.setPos(2,0);
+				tour.setPos( 3, 0 );
+			}
+			else
+			{
+				roi=this.getPiecePosition(4,7);
+				tour=this.getPiecePosition( 0, 7 );
+				roi.setPos(2,7);
+				tour.setPos( 3, 7 );
+			}
+		}
+	}
+	
+	/**
+	 * Realise la promotion (change la piece)
+	 * 
+	 * @param myCoup
+	 */
+	
+	public void realiserPromotion( Coup myCoup )
 	{
 		Piece pieceD = null;
 		Piece pieceApres = null;
@@ -192,7 +230,6 @@ public class Echiquier
 			pieceApres = ((Pion) pieceD).promotion( myCoup.getPromotion() );
 		pieceList.remove( pieceD );
 		pieceList.add( pieceApres );
-		return true;
 	}
 
 
