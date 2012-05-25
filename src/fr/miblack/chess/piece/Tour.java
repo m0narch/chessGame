@@ -13,7 +13,6 @@ public class Tour extends Piece implements Ligne
 
 	public Tour( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
-		setDisplay('♜');
 	}
 
 	public LinkedList<Position> positionAccessible()
@@ -61,7 +60,7 @@ public class Tour extends Piece implements Ligne
 		LinkedList<Position> myList = new LinkedList<Position>();
 		int x = getX();
 		int y = getY();
-		if ( a > 0 )// après la piece
+		if ( a > 0 )// apres la piece
 		{
 			for ( x = getX() + a ; x < 8 ; x = x + a )
 			{
@@ -112,7 +111,7 @@ public class Tour extends Piece implements Ligne
 		LinkedList<Position> myList = new LinkedList<Position>();
 		int y = getY();
 		int x = getX();
-		if ( a > 0 )// Après la piece
+		if ( a > 0 )// Apres la piece
 		{
 			for ( y = getY() + a ; y < 8 ; y = y + a )
 			{
@@ -177,10 +176,8 @@ public class Tour extends Piece implements Ligne
 	{
 		if ( this.color.getColor() == 1 )
 			return "T";
-		// return "♖";
 		else
 			return "t";
-		// return "♜";
 	}
 
 	public String getNom()

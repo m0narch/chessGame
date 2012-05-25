@@ -16,7 +16,6 @@ public class Dame extends Piece implements Diagonale, Ligne
 		super( color, pos, valeur );
 		tour = new Tour( color, pos, valeur );
 		fou = new Fou( color, pos, valeur );
-		setDisplay('♛');
 	}
 
 	public LinkedList<Position> positionAccessible()
@@ -57,10 +56,8 @@ public class Dame extends Piece implements Diagonale, Ligne
 	{
 		if ( this.color.getColor() == 1 )
 			return "D";
-		// return "♛";
 		else
 			return "d";
-		// return "♕";
 	}
 
 	public String getNom()

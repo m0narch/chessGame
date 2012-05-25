@@ -38,6 +38,7 @@ public class JoueurOrdinateur extends JoueurAbstract
 	}
 
 	/**
+	 * @author mi-black
 	 * permet a une machine de jouer un coup , ici seulement le niveau 1 est implementee
 	 * @return le coup a jouer
 	 */
@@ -76,6 +77,13 @@ public class JoueurOrdinateur extends JoueurAbstract
 		if ( !a.listOfAvailableMove( this ).isEmpty() )
 		{
 			Random rand = new Random();
+			try
+			{
+				Thread.sleep( 50 );
+			} catch (InterruptedException monExecption)
+			{
+				monExecption.printStackTrace();
+			}
 			int size = a.listOfAvailableMove( this ).size();
 			if ( size <= 0 )
 			{

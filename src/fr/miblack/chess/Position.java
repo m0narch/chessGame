@@ -1,6 +1,7 @@
 
 package fr.miblack.chess;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 
 import fr.miblack.chess.color.Couleur;
@@ -74,16 +75,23 @@ public class Position
 		Position a;
 		if ( valValide( x ) && valValide( y ) )
 		{
-			for ( Position myPos : listPos )
+			try
 			{
-				if ( (myPos.getX() == x) && (myPos.getY() == y) )
-					return myPos;
+				for ( Position myPos : listPos )
+				{
+					if ( (myPos.getX() == x) && (myPos.getY() == y) )
+						return myPos;
+				}	
+			}catch(ConcurrentModificationException e)
+			{
+				e.getStackTrace();
 			}
+
 			a = new Position( x, y );
 			listPos.add( a );
 			return a;
 		}
-		throw new RuntimeException( x + ", " + y + " : coordonnées  invalide" );
+		throw new RuntimeException( x + ", " + y + " : coordonnees  invalide" );
 	}
 
 	public static boolean valValide( int a )

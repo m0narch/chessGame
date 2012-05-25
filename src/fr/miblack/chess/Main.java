@@ -10,13 +10,13 @@ public class Main
 	{
 		if ( args.length == 0 )
 		{
-			Textuelle guiTxt = new Textuelle();
-			guiTxt.jouerPartie();
+			Graphique maGUI = new Graphique();
+			maGUI.jouerPartie();	
 		}
 		else
 		{
-			Graphique maGUI = new Graphique();
-			maGUI.jouerPartie();
+			Textuelle guiTxt = new Textuelle();
+			guiTxt.jouerPartie();
 		}
 	}
 }

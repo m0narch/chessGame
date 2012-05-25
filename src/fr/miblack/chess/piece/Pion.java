@@ -14,7 +14,6 @@ public class Pion extends Piece
 
 	public Pion( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
-		setDisplay('♟');
 	}
 
 	public LinkedList<Position> positionAccessibleCouleur( int couleur )
@@ -88,12 +87,10 @@ public class Pion extends Piece
 				if ( PieceDepart.whatCanIEat( maPartie.getMyChessboard() )
 						.contains( position ) )
 				{
-					listOfCoup
-							.add( new Coup( PieceDepart, position, true, "D" ) );
+					listOfCoup.add( new Coup( PieceDepart, position, true, "D" ) );
 				}
 				else
-					listOfCoup
-							.add( new Coup( PieceDepart, position, false, "D" ) );
+					listOfCoup.add( new Coup( PieceDepart, position, false, "D" ) );
 			}
 		}
 		return listOfCoup;
@@ -238,10 +235,8 @@ public class Pion extends Piece
 	{
 		if ( this.color.getColor() == 1 )
 			return "P";
-		// return "♟";
 		else
 			return "p";
-		// return "♙";
 	}
 
 	public String getNom()

@@ -12,7 +12,6 @@ public class Fou extends Piece implements Diagonale
 {
 	public Fou( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
-		setDisplay('♝');
 	}
 
 	public LinkedList<Position> positionAccessible()
@@ -139,10 +138,8 @@ public class Fou extends Piece implements Diagonale
 	{
 		if ( this.color.getColor() == 1 )
 			return "F";
-		// return "♝";
 		else
 			return "f";
-		// return "♗";
 	}
 
 	public String getNom()

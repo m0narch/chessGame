@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.Piece;
+import fr.miblack.chess.piece.Pion;
 import fr.miblack.chess.piece.Roi;
 
 public class Coup
@@ -32,7 +33,6 @@ public class Coup
 	{	
 		this.estRoque=true;
 		this.couleur=couleur;
-		//TODO realiser coup pour le roque !
 		this.estPetitRoque=petitRoque;
 	}
 
@@ -100,7 +100,7 @@ public class Coup
 				&& Position.valValide( posArrivee.getY() ) )
 			this.posArrivee = posArrivee;
 		else
-			throw new RuntimeException( posArrivee.getX() + ", "+ posArrivee.getY() + " : coordonnées  invalide" );
+			throw new RuntimeException( posArrivee.getX() + ", "+ posArrivee.getY() + " : coordonnees  invalide" );
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class Coup
 		if ( Position.valValide( posDepart.getX() )&& Position.valValide( posDepart.getY() ) )
 			this.posDepart = posDepart;
 		else
-			throw new RuntimeException( posDepart.getX() + ", "+ posDepart.getY() + " : coordonnées  invalide" );
+			throw new RuntimeException( posDepart.getX() + ", "+ posDepart.getY() + " : coordonnees  invalide" );
 	}
 
 	public String toString()
@@ -129,10 +129,20 @@ public class Coup
 		{
 			if ( isEstPrise() )
 			{
-				return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos();
+				if((pieceDepart instanceof Pion) &&(posArrivee.getY()==0 || posArrivee.getY()==7))
+				{
+					return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos()+"="+promotion;
+				}
+				else
+					return "" + pieceDepart.getNom() + posDepart.toStringPos() + "x"+ posArrivee.toStringPos();
 			}
 			else
-				return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos();
+				if((pieceDepart instanceof Pion) &&(posArrivee.getY()==0 || posArrivee.getY()==7))
+				{
+					return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos()+"="+promotion;
+				}
+				else
+					return "" + pieceDepart.getNom() + posDepart.toStringPos() + "-"+ posArrivee.toStringPos();
 		}
 		else
 		{
@@ -192,7 +202,8 @@ public class Coup
 				promotion = matcher.group( 6 );
 				if ( matcher.group( 5 ).equals( "=" ) && !promotion.isEmpty() )
 					return new Coup( pieceD, posA, prise, promotion );
-				return new Coup( pieceD, posA, prise );
+				else
+					return new Coup( pieceD, posA, prise );
 			}	
 		throw new RuntimeException( "coup invalide" );
 	}

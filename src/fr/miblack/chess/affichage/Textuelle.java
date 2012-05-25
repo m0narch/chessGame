@@ -55,7 +55,7 @@ public class Textuelle extends Interface
 				monCoup = p.jouerCoup( this.getMaPartie() );
 
 				this.getMaPartie().realiserCoup( monCoup );
-				if ( getMaPartie().promotionPossible( getMyChessboard() ) )
+				if ( getMaPartie().promotionPossible( ) )
 				{
 					getMyChessboard().realiserPromotion( monCoup );
 				}
@@ -151,6 +151,65 @@ public class Textuelle extends Interface
 		} while (mauvaisChoix);
 
 		return m;
+	}
+	
+	public Coup saisirCoup( JoueurAbstract p, Echiquier chess )
+	{
+		Scanner sc = new Scanner( System.in );
+		String strCoup;
+		Coup monCoup = null;
+		boolean trouve = false;
+
+		while (trouve == false)
+		{
+			
+			System.out.println( "Saissisez le coup a jouer avec la notation complete" );
+			strCoup = sc.nextLine();
+			if(strCoup.equals( "save" ))
+			{
+				System.out.println("Saissisez le nom de save du fichier");
+				strCoup = sc.nextLine();
+				maPartie.saveGame( strCoup );
+				continue;
+			}
+			if(strCoup.startsWith( "save " ))
+			{
+				String out=strCoup.substring( 5 );
+				maPartie.saveGame( out );
+				continue;
+			}
+			if(strCoup.equals( "load" ))
+			{
+				System.out.println("Saissisez le nom  du fichier a charger");
+				strCoup = sc.nextLine();
+				maPartie.loadGame( strCoup, this );
+				continue;
+			}
+			if(strCoup.startsWith( "load " ))
+			{
+				String out=strCoup.substring( 5 );
+				maPartie.loadGame( out, this );
+				continue;
+			}
+			 
+			try
+			{
+				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie,p );
+			} catch (RuntimeException e)
+			{
+				System.out.println( "Le coup est invalide" );
+				continue;
+			}
+			for ( Coup c : maPartie.listOfAvailableMove( p ) )
+			{
+				if ( monCoup.equals( c ) )
+				{
+					trouve = true;
+					break;
+				}
+			}
+		}
+		return monCoup;
 	}
 
 }

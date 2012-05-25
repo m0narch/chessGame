@@ -4,6 +4,7 @@ package fr.miblack.chess;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.affichage.Interface;
 import fr.miblack.chess.affichage.Textuelle;
+import fr.miblack.chess.affichage.GUI.Fenetre;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.joueurs.JoueurHumain;
@@ -39,6 +40,12 @@ public class Partie
 		letsPlay( player1 );
 	}
 
+	public Partie clone()
+	{
+		Partie maPartie= new Partie( listOfPlayer.getFirst(), listOfPlayer.getLast() );
+		maPartie.setListOfMove( listOfMove );
+		return maPartie;
+	}
 	public Echiquier getMyChessboard()
 	{
 		return myChessboard;
@@ -114,7 +121,10 @@ public class Partie
 		}
 		return check;
 	}
-
+	public void setListOfMove( LinkedList<Coup> listOfMove )
+	{
+		this.listOfMove = listOfMove;
+	}
 	@SuppressWarnings( "null" )
 	public boolean seraEnEchec( Position laPosD, Position laPosA )
 	{
@@ -213,35 +223,36 @@ public class Partie
 		return Position.getPosition( xTour, yTour );
 	}
 	
-	public boolean trajetLibre(Echiquier chess,Position Roi,Position Tour,boolean petitRoque)
+	public boolean trajetLibre(Echiquier chess,Position Roi,boolean petitRoque)
 	{
-		int x1=Roi.getX()+1;
-		int x2=Roi.getX()+2;
-		int j1=Roi.getX()-1;
-		int j2=Roi.getX()-2;
-		int j3=Roi.getX()-3;
-		if(!petitRoque && Position.valValide( x1 ) && Position.valValide( x2 ))
+		int x1=Roi.getX()-1;
+		int x2=Roi.getX()-2;
+		int j1=Roi.getX()+1;
+		int j2=Roi.getX()+2;
+		if(!petitRoque)
 		{
-			if(chess.getPiecePosition( Position.getPosition( x1, Roi.getY() ) )==null)
+			if(Position.valValide( x1 ) && Position.valValide( x2 ))
 			{
-				if(chess.getPiecePosition( Position.getPosition(x2,  Roi.getY() ) )==null)
+				if(chess.getPiecePosition( Position.getPosition( x1 , Roi.getY() ) )==null)
 				{
-						return true;
-				}	
+					if(chess.getPiecePosition( Position.getPosition(x2 ,  Roi.getY() ) )==null)
+					{
+							return true;
+					}	
+				}
 			}
+			else
+				return false;
 		}
 		else
 		{
-			if(Position.valValide( j1 )&& Position.valValide( j2 )&& Position.valValide( j3 ))
+			if(Position.valValide( j1 )&& Position.valValide( j2 ) )
 			{
-				if(chess.getPiecePosition( Position.getPosition( j1,  Roi.getY() ) )==null)
+				if(chess.getPiecePosition( Position.getPosition( j1 ,  Roi.getY() ) )==null)
 				{
-					if(chess.getPiecePosition( Position.getPosition( j2,  Roi.getY() ) )==null)
+					if(chess.getPiecePosition( Position.getPosition( j2 ,  Roi.getY() ) )==null)
 					{
-						if(chess.getPiecePosition( Position.getPosition( j3,  Roi.getY() ) )==null)
-						{
-								return true;
-						}
+						return true;
 					}
 				}
 			}	
@@ -261,14 +272,14 @@ public class Partie
 		{
 			if(pieceTour !=null && pieceTour.getPlayed()==0)
 			{
-				if(trajetLibre( chess, Roi, Tour, true ))
+				if(trajetLibre( chess, Roi,  true ))
 				{
 					check=check|| estEnEchec( Roi.clone() );
-					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+1,  Roi.getY() ) );
-					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+2,  Roi.getY() ) );
-					check=check||seraEnEchec( Tour.clone(),Roi .clone());
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-1,  Roi.getY() ) );
+					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-2,  Roi.getY() ) );
+					return !check;
 				}
-				return !check;
+				return false;
 			}
 			else
 			{
@@ -288,21 +299,21 @@ public class Partie
 		Position Tour=getPosTour(false);
 		Piece pieceRoi=chess.getPiecePosition( Roi );
 		Piece pieceTour=chess.getPiecePosition( Tour );
-		 
 		
 		if((pieceRoi !=null) && (pieceRoi.getPlayed()==0))
 		{
 			if((pieceTour !=null)&& (pieceTour.getPlayed()==0))
 			{
-				if(trajetLibre( chess, Roi, Tour, false ))
+				if(trajetLibre( chess, Roi,  false ))
 				{
-					check=check||estEnEchec( Roi.clone() );
-					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-1,  Roi.getY() ) );
-					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-2,  Roi.getY() ) );
-					check=check||seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()-3,  Roi.getY() ) );
-					check=check||seraEnEchec( Tour.clone(),Roi.clone() );
+					check=check || estEnEchec( Roi.clone() );
+					check=check || seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+1,  Roi.getY() ) );
+					check=check || seraEnEchec( Roi.clone(),Position.getPosition( Roi.getX()+2,  Roi.getY() ) );
+					check=check || seraEnEchec( Tour.clone(),Roi.clone() );
+					return !check;
 				}
-				return !check;
+				return false;
+
 			}
 			else
 			{
@@ -315,11 +326,18 @@ public class Partie
 		}
 	}
 	
-	public boolean promotionPossible( Echiquier chess )
+	
+	/**
+	 * Verifie si une promotion est possible 
+	 * @author mi-black
+	 * @param chess l'echiquier
+	 * @return
+	 */
+	public boolean promotionPossible(  )
 	{
 		boolean possible = false;
 		int col = 0;
-		for ( Piece unePiece : chess.getPieceList() )
+		for ( Piece unePiece : myChessboard.getPieceList() )
 		{
 			if ( unePiece.getColor().getColor() == 1 )
 			{
@@ -340,6 +358,11 @@ public class Partie
 		return possible;
 	}
 
+	/**
+	 * augmente les compteurs de partie nulle puis réalise un coup sur 
+	 * l'échiquier et ajoute enfin le coup à la liste des coups
+	 * @param m le coup à réaliser
+	 */
 	public void realiserCoup( Coup m )
 	{
 		if ( m.isEstPrise() )
@@ -352,15 +375,24 @@ public class Partie
 		{
 			if(m.getPieceDepart().toString().equalsIgnoreCase( "P" ))
 				this.setCptSansMvmtPion();
+			else
+				this.upCptSansMvmtPion();
 		}else
 			this.upCptSansMvmtPion();
 
 		this.getMyChessboard().realiserCoup( m );
 		addMove( m );
 	}
-
-	// Le null Supress n'est pas obligatoire car un joueur à TOUJOURS un roi
-	@SuppressWarnings( "null" )
+	
+	
+	/**
+	 * Cette fonction vérifie si le roi de p est dans la liste de déplacement 
+	 * d'une des pieces de l'adversaire
+	 * @author mi-black
+	 * @param p le joueur à vérifier
+	 * @return si le joueur p est en Echecs
+	 */
+	@SuppressWarnings( "null" )	// Le null Supress n'est pas obligatoire car un joueur a TOUJOURS un roi
 	public boolean estEnEchec( JoueurAbstract p )
 	{
 		boolean check = false;
@@ -378,13 +410,21 @@ public class Partie
 			{
 				if ( !p.getColor().equals( onePiece.getColor() ) )
 				{
+					
 					if ( onePiece.positionAccessibleChessboard(this.myChessboard ).contains( roiPiece.getPos() ) )
 					{
 						check = true;
 					}
 					if ( onePiece instanceof Pion )
 					{
-						check = check || ((Pion) onePiece) .metEnEchec( this.myChessboard );
+						try
+						{
+							check = check || ((Pion) onePiece) .metEnEchec( this.myChessboard );
+						}
+						catch (ConcurrentModificationException e)
+						{
+							e.getStackTrace();
+						}
 					}
 				}
 			}
@@ -392,14 +432,26 @@ public class Partie
 		return check;
 	}
 
-
-	@SuppressWarnings( "null" )
+	/**
+	 * @author mi-black
+	 * Cette fonction vérifie pour chaque piece si son déplacement mettera le 
+	 * joueur p en Echec , si c'est le cas pour tout les coups alors p est mat
+	 * @param p le joueur à vérifier
+	 * @return si le joueur p est réelement Echecs & mat
+	 */
 	public boolean estEchecEtMat( JoueurAbstract p )
 	{
-		Piece roiPiece = null;
+		Piece roiPiece =null;
 		boolean mat = false;
-		// 1boolean prise=false;
 		LinkedList<Piece> listeDePiece = this.myChessboard.getPieceList();
+		LinkedList<Piece> mesPieces=new LinkedList<Piece>();
+		for(Piece onePiece : listeDePiece)
+		{
+			if(p.getColor().equals( onePiece.getColor() ))
+			{
+				mesPieces.add( onePiece );
+			}
+		}
 		for ( Piece onePiece : listeDePiece )
 		{
 			if ( p.getColor().equals( onePiece.getColor() )	&& onePiece instanceof Roi )
@@ -407,6 +459,7 @@ public class Partie
 				roiPiece = onePiece;
 			}
 		}
+		@SuppressWarnings( "null" )// Juste pour le suppress warning car un roi sera TOUJOURS present
 		LinkedList<Position> posKingAccess = roiPiece.positionAccessibleChessboard( getMyChessboard() );
 		for ( Position posA : posKingAccess )
 		{
@@ -418,7 +471,7 @@ public class Partie
 		}
 		try
 		{
-			for ( Piece onePiece : listeDePiece )
+			for ( Piece onePiece : mesPieces )
 			{
 				LinkedList<Position> listPos = onePiece.positionAccessibleChessboard( getMyChessboard() );
 				for ( Position posA : listPos )
@@ -438,12 +491,23 @@ public class Partie
 		return mat;
 	}
 
+	/**
+	 * Verifie s'il y a une partie nulle
+	 * @author mi-black
+	 * @return draw , une partie est considérée comme nulle si cptSansMvmtPion ou cpt_sans_prise sont >50
+	 */
 	public boolean isDraw()
 	{
 		boolean draw = (cptSansMvmtPion > 50 || cpt_sans_prise > 50);
 		return draw;
 	}
-
+	
+	
+	/**
+	 * Cette fonction permet donc d'enregistrer une partie dans un fichier texte
+	 * @author mi-black
+	 * @param pathOfFile Le fichier où sauvegarder
+	 */
 	public void saveGame( String pathOfFile )
 	{
 		  try 
@@ -462,6 +526,12 @@ public class Partie
 		 
 	}
 
+	/**
+	 * Cette fonction permet de charger une partie , elle reprend une partie de zéro et effectue chaque coups un par un
+	 * @author mi-black
+	 * @param pathOfFile Le fichier à charger
+	 * @param monInterface	L'interface à charger
+	 */
 	public void loadGame( String pathOfFile ,Interface monInterface )
 	{
 		String j1="";
@@ -508,6 +578,11 @@ public class Partie
 					if(lecture!=null)
 					{
 						coup=Coup.parseStringToCoupCompl( lecture, this ,playerEnCours);
+						if(Fenetre.msg!=null)
+						{
+							Fenetre.msg.append(coup.toString()+"\n");
+						}
+						
 					}
 					else
 					{
@@ -516,7 +591,7 @@ public class Partie
 					}
 					if(this.seraEnEchec( coup.getPosDepart().clone(), coup.getPosArrivee().clone() ) )
 					{
-						throw new Exception("Le coup est erroné");
+						throw new Exception("Le coup est errone");
 					}
 					this.myChessboard.realiserCoup( coup );
 					this.listOfMove.add( coup );
@@ -530,7 +605,7 @@ public class Partie
 			try
 			{
 				bis.close();
-				System.out.println("Partie bien chargée !");
+				System.out.println("Partie bien chargee !");
 			}
 			catch (Exception e)
 			{
@@ -554,8 +629,9 @@ public class Partie
 	 
 	
 	/**
-	 * @param p
-	 * @return Liste des coup possibles
+	 * @author mi-black
+	 * @param p le joueur dont on veux la liste
+	 * @return Liste des coups possibles
 	 */
 	public LinkedList<Coup> listOfAvailableMove( JoueurAbstract p )
 	{
@@ -578,6 +654,10 @@ public class Partie
 		return listCoup;
 	}
 
+	/**
+	 * Place chaque piece sur l'échiquier 
+	 * @author mi-black
+	 */
 	public void initPositions()
 	{
 		/*************************** White piece ***********************************/
@@ -627,6 +707,11 @@ public class Partie
 
 	}
 
+	/**
+	 * initialise les positions puis affecte le joueurs au blanc
+	 * @author mi-black
+	 * @param joueur1 le joueur jouant les blancs
+	 */
 	public void letsPlay( JoueurAbstract joueur1 )
 	{
 		initPositions();
@@ -660,6 +745,14 @@ public class Partie
 		this.listOfMoveCancelled = listOfMoveCancelled;
 	}
 
+	/**
+	 * met en forme la liste des coups joués pour posseder une syntaxe comme
+	 * a2-a4
+	 * a7-a5
+	 * Ta1-a3
+	 * @author mi-black
+	 * @return la liste des coups avec une syntaxe correcte
+	 */
 	public String miseEnFormeListCoup()
 	{
 		String msg="";
@@ -709,6 +802,10 @@ public class Partie
 		return playerEnCours;
 	}
 
+	/**
+	 * Change le joueur en cours
+	 * @author mi-black
+	 */
 	public void setPlayerEnCours()
 	{
 		if ( playerEnCours.equals( listOfPlayer.getFirst() ) )

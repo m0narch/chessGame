@@ -49,14 +49,6 @@ public abstract class Interface implements Jouer
 				break;
 			case 2 :
 				System.exit( 0 );
-				menuReseau();
-				break;
-			case 3 :
-				System.exit( 0 );
-				// TODO menuOption();
-				break;
-			case 4 :
-				System.exit( 0 );
 				break;
 			default :
 				break;
@@ -69,7 +61,7 @@ public abstract class Interface implements Jouer
 		int i = 0;
 		i = affichageMenuLocale();
 		int ret = saisieMenu( i );
-		if ( ret > i )
+		if ( ret >= i )
 		{
 			menuPrincipal();
 			return -1;
@@ -149,28 +141,6 @@ public abstract class Interface implements Jouer
 		return 0;
 	}
 
-	// TODO si jamais le temps y est !
-	protected void menuReseau()
-	{
-		int ret = saisieMenu( affichageMenuReseau() );
-		switch (ret)
-		{
-			case 1 :
-
-				break;
-			case 2 :
-
-				break;
-			case 3 :
-				menuPrincipal();
-				break;
-
-			default :
-				menuPrincipal();
-				break;
-		}
-	}
-
 	public int affichageMenuPrincipal()
 	{
 		System.out.print( "Bienvenue !\n" );
@@ -192,73 +162,7 @@ public abstract class Interface implements Jouer
 		return 4;
 	}
 
-	public int affichageMenuReseau()
-	{
-		System.out.print( "Faites votre choix :\n" );
-		System.out.print( "1 . Partie deux joueurs\n" );
-		System.out.print( "2 . Partie Machine VS Machine\n" );
-		System.out.print( "3 . Retour\n" );
-		return 3;
-	}	
- 
-
-	public Coup saisirCoup( JoueurAbstract p, Echiquier chess )
-	{
-		Scanner sc = new Scanner( System.in );
-		String strCoup;
-		Coup monCoup = null;
-		boolean trouve = false;
-
-		while (trouve == false)
-		{
-			System.out.println( "Saissisez le coup à jouer avec la notation complete" );
-			strCoup = sc.nextLine();
-			if(strCoup.equals( "save" ))
-			{
-				System.out.println("Saissisez le nom de save du fichier");
-				strCoup = sc.nextLine();
-				maPartie.saveGame( strCoup );
-				continue;
-			}
-			if(strCoup.startsWith( "save " ))
-			{
-				String out=strCoup.substring( 5 );
-				maPartie.saveGame( out );
-				continue;
-			}
-			if(strCoup.equals( "load" ))
-			{
-				System.out.println("Saissisez le nom  du fichier a charger");
-				strCoup = sc.nextLine();
-				maPartie.loadGame( strCoup, this );
-				continue;
-			}
-			if(strCoup.startsWith( "load " ))
-			{
-				String out=strCoup.substring( 5 );
-				maPartie.loadGame( out, this );
-				continue;
-			}
-			 
-			try
-			{
-				monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie,p );
-			} catch (RuntimeException e)
-			{
-				System.out.println( "Le coup est invalide -izai" );
-				continue;
-			}
-			for ( Coup c : maPartie.listOfAvailableMove( p ) )
-			{
-				if ( monCoup.equals( c ) )
-				{
-					trouve = true;
-					break;
-				}
-			}
-		}
-		return monCoup;
-	}
+	
 
 	public int saisieMenu( int taille )
 	{

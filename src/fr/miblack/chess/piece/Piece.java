@@ -10,13 +10,10 @@ import java.util.*;
 
 public abstract class Piece implements Cloneable
 {
-	/* List of unicode char : BLACK : ♟ ♞ ♝ ♜ ♛ ♚ WHITE : ♙ ♘ ♗ ♖ ♕ ♔ * */
 	protected Couleur	color;
 	protected Position	pos;
 	protected int		valeur;
 	protected int		asPlayed	= 0;
-	protected char display;
-	
 	
 	public Piece( Couleur color, Position pos, int valeur ) {
 		this.color = color;
@@ -39,13 +36,6 @@ public abstract class Piece implements Cloneable
 		return this.asPlayed;
 	}
 	
-	public char getDisplay() {
-		return display;
-	}
-	public void setDisplay(char display) {
-		this.display=display;
-	}
-
 	public void setPlayed()
 	{
 		this.asPlayed = asPlayed + 1;
@@ -161,6 +151,7 @@ public abstract class Piece implements Cloneable
 		return listOfCoup;
 	}
 
+	
 	public boolean equals( Piece autre )
 	{
 		return (this.pos.equals( autre.getPos() )

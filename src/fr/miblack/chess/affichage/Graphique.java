@@ -1,16 +1,16 @@
 
 package fr.miblack.chess.affichage;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.ConcurrentModificationException;
 
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import fr.miblack.chess.affichage.GUI.Fenetre;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.Coup;
+import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.Partie;
 
 public class Graphique extends Interface
@@ -18,7 +18,7 @@ public class Graphique extends Interface
 	private Fenetre maFenetre=null ;
 	private JPanel monPanel;
 	private JOptionPane jop1 = new JOptionPane();
-	
+
 	public Graphique( String p1, String p2 ) 
 	{
 		menuLocal( p1, p2 );
@@ -33,98 +33,94 @@ public class Graphique extends Interface
 		this.setMonPanel( (JPanel) maFenetre.getContentPane() );
 	}
 	
-	
-	public void afficherEvenement(String event)
+	public Graphique(Partie partie) 
 	{
-		JDialog dialog = new JDialog();
-		dialog.setSize(300, 200);//On lui donne une taille
-		dialog.setTitle(event); 
-		dialog.setLocationRelativeTo(null);
-		dialog.add( new JLabel(event),BorderLayout.CENTER);
-		dialog.setVisible(true);//On la rend visible
-		
+		maPartie=partie;
 	}
+ 
+	
 	
 	public void jouerPartie()
 	{
 		Coup monCoup;
+		boolean termine=false;
 		while (!getMaPartie().isDraw()) 
 		{
-			for ( JoueurAbstract p : this.getMaPartie().getListOfPlayer() )
+			try 
 			{
-				this.maFenetre.getMonEchiquier().repaint();
-				if ( getMaPartie().estEnEchec( p ) )
+				for ( JoueurAbstract p : this.getMaPartie().getListOfPlayer() )
 				{
-					if ( getMaPartie().estEchecEtMat( p ) )
+					maFenetre.getTxt().setText( "" );
+					maFenetre.getTxt().append(maPartie.listOfAvailableMove( p ).toString());
+					maFenetre.getPanneauAffichage().getJtext().setEditable( true );
+					maFenetre.getPanneauAffichage().getJtext().setBackground( new Color( 238,238,238 ) );
+					maFenetre.getPanneauAffichage().getJtext().setText( "C'est au joueur " + maPartie.getPlayerEnCours().getType() + " "+ maPartie.getPlayerEnCours().toString() + " de jouer !" );
+					maFenetre.getPanneauAffichage().getJtext().setEditable( false );
+					this.maFenetre.getMonEchiquier().repaint();
+					if ( getMaPartie().estEnEchec( p ) )
 					{
-						Thread t2 = new Thread(new Runnable(){
-							@SuppressWarnings( "static-access" )
-							public void run(){
-								JOptionPane jop2 = new JOptionPane();
-								jop2.showMessageDialog(null, "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est echecs et mat !", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
-							}
-						});
-						t2.run();
-						proposerSave(maPartie);
-						System.exit( 0);
+						if ( getMaPartie().estEchecEtMat( p ) )
+						{
+							Thread t2 = new Thread(new Runnable(){
+								@SuppressWarnings( "static-access" )
+								public void run(){
+									JOptionPane jop2 = new JOptionPane();
+									jop2.showMessageDialog(null, "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est echecs et mat !", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
+								}
+							});
+							t2.run();
+							termine=true;
+							//System.exit( 0);
+							break;
+						}
 					}
- 
-				}
-				else
-				{
-					if ( getMaPartie().estPat( p ) )
+					else
 					{
-						Thread t2 = new Thread(new Runnable(){
-							@SuppressWarnings( "static-access" )
-							public void run(){
-								JOptionPane jop2 = new JOptionPane();
-								jop2.showMessageDialog(null, "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est pat !", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
-							}
-						});
-						t2.run();
+						if ( getMaPartie().estPat( p ) )
+						{
+							Thread t2 = new Thread(new Runnable(){
+								@SuppressWarnings( "static-access" )
+								public void run(){
+									JOptionPane jop2 = new JOptionPane();
+									jop2.showMessageDialog(null, "Le roi de "+ getMaPartie().getPlayerEnCours()+ " est pat !", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
+								}
+							});
+							t2.run();
+							termine=true;
+							break;
+						}
+					}
+					monCoup = p.jouerCoup( this.getMaPartie() );
+					maFenetre.getMsg().append(monCoup.toString()+"\n");
 
-						proposerSave(maPartie);
-						System.exit( 0);
+					this.getMaPartie().realiserCoup( monCoup );
+					if ( getMaPartie().promotionPossible(  ) )
+					{
+						getMyChessboard().realiserPromotion( monCoup );
 					}
+					this.getMaPartie().setPlayerEnCours();
 				}
-				System.out.println( this.getMaPartie().listOfAvailableMove( p ) );
-				System.out.println( "C'est au joueur " + p.getType() + " "+ p.toString() + " de jouer !" );
+			
+			}catch(ConcurrentModificationException e)
+			{
+				e.getStackTrace();
+			}
+			if ( getMaPartie().isDraw() )
+			{
 				Thread t2 = new Thread(new Runnable(){
+					@SuppressWarnings( "static-access" )
 					public void run(){
-				//		getMaFenetre().getZoneSaisie().getText();
+						JOptionPane jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Fin de partie , partie nulle", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
 					}
 				});
 				t2.run();
-				monCoup = p.jouerCoup( this.getMaPartie() );
-
-				this.getMaPartie().realiserCoup( monCoup );
-				if ( getMaPartie().promotionPossible( getMyChessboard() ) )
-				{
-					getMyChessboard().realiserPromotion( monCoup );
-				}
-				this.getMaPartie().setPlayerEnCours();
+			}
+			if(termine)
+			{
+				break;
 			}
 		}
-		if ( getMaPartie().isDraw() )
-		{
-			Thread t2 = new Thread(new Runnable(){
-				@SuppressWarnings( "static-access" )
-				public void run(){
-					JOptionPane jop2 = new JOptionPane();
-					jop2.showMessageDialog(null, "Fin de partie , partie nulle", "Fin de Partie", JOptionPane.WARNING_MESSAGE);
-				}
-			});
-			t2.run();
-
-		}
-		proposerSave(maPartie); 
-	}
-
-	
-	
-	private void proposerSave( Partie maPartie )
-	{
-		//TODO faire une popup proposant la save
 	}
 
 	public Partie getMaPartie()
@@ -137,7 +133,7 @@ public class Graphique extends Interface
 		this.maPartie = maPartie;
 	}
 
-	public Coup jouerCoup( Partie g )
+	public  Coup jouerCoup( Partie g )
 	{
 		JoueurAbstract p = g.getPlayerEnCours();
 		Coup m;
@@ -146,9 +142,18 @@ public class Graphique extends Interface
 		{
 			if ( mauvaisChoix )
 			{
-				System.out.println( "Mauvais choix de coup" );
+				Thread t2 = new Thread(new Runnable(){
+					@SuppressWarnings( "static-access" )
+					public void run()
+					{
+						JOptionPane jop2 = new JOptionPane();
+						jop2.showMessageDialog(null, "Mauvais choix !", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+				});
+				t2.run();
 			}
-			m = saisirCoup( p, this.getMyChessboard() );
+				m = this.saisirCoup( p, this.getMyChessboard() );
+
 			if(m.getRoque()==true)
 			{
 				break;
@@ -162,6 +167,46 @@ public class Graphique extends Interface
 		} while (mauvaisChoix);
 
 		return m;
+	}
+	
+	public   Coup saisirCoup( JoueurAbstract p, Echiquier chess )
+	{
+		String strCoup = null;
+		Coup monCoup = null;
+		boolean trouve = false;
+
+		while (trouve == false)
+		{
+			try
+			{
+				while(maFenetre.getChaine() == null)
+				{
+					Thread.sleep( 100 );
+				}
+				strCoup=maFenetre.getChaine();
+
+			} catch (InterruptedException monExecption)
+			{
+				monExecption.printStackTrace();
+			}
+			try
+			{
+					maFenetre.setChaine( null );
+					monCoup = Coup.parseStringToCoupCompl( strCoup, maPartie,p );
+			} catch (RuntimeException e)
+			{
+				continue;
+			}
+			for ( Coup c : maPartie.listOfAvailableMove( p ) )
+			{
+				if ( monCoup.equals( c ) )
+				{
+					trouve = true;
+					break;
+				}
+			}
+		}
+		return monCoup;
 	}
 
 	public Fenetre getMaFenetre()
@@ -192,6 +237,12 @@ public class Graphique extends Interface
 	public void setJop1( JOptionPane jop1 )
 	{
 		this.jop1 = jop1;
+	}
+	
+	@Override
+	public Graphique clone()  
+	{
+		return new Graphique(maPartie.clone());
 	}
  
 }

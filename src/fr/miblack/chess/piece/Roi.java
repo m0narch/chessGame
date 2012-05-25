@@ -12,7 +12,6 @@ public class Roi extends Piece
 
 	public Roi( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
-		setDisplay('♚');
 	}
 
 	public LinkedList<Position> positionAccessible()
@@ -71,11 +70,9 @@ public class Roi extends Piece
 	public String toString()
 	{
 		if ( this.color.getColor() == 1 )
-			// return "♚";
 			return "R";
 		else
 			return "r";
-		// return "♔";
 	}
 
 	public String getNom()

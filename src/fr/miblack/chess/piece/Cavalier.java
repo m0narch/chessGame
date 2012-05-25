@@ -11,7 +11,6 @@ public class Cavalier extends Piece
 	public Cavalier( Couleur color, Position pos, int valeur ) 
 	{
 		super( color, pos, valeur );
-		setDisplay('♞');
 	}
 
 	
@@ -87,11 +86,9 @@ public class Cavalier extends Piece
 	public String toString()
 	{
 		if ( this.color.getColor() == 1 )
-			// return "♞";
 			return "C";
 		else
 			return "c";
-		// return "♘";
 	}
 
 	public String getNom()
