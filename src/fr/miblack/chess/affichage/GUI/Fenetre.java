@@ -21,11 +21,13 @@ import javax.swing.ScrollPaneConstants;
 
 import fr.miblack.chess.Partie;
 import fr.miblack.chess.affichage.Graphique;
-
+/**
+ * @author mi-black
+ *
+ */
 public class Fenetre extends JFrame
 {
-
-	private static final long	serialVersionUID	= 2097605447320723308L;
+ 	private static final long	serialVersionUID	= 2097605447320723308L;
 	private JTextArea zoneSaisie=new JTextArea(1, 8);
 	Partie maPartie;
 	private JPanel monPanel=new JPanel( new BorderLayout() );
@@ -38,7 +40,13 @@ public class Fenetre extends JFrame
 	private JMenuBar jmenu=new JMenuBar();
 	private JMenuItem save=new JMenuItem("Sauvegarder");
 	private JMenuItem load=new JMenuItem("Charger");
+	/**
+	 * le texte de la liste des coups
+	 */
 	public static JTextArea msg;
+	/**
+	 * le texte de  la liste des coups jouables
+     */
 	public static JTextArea txt;
 
 	private TextPanel listeCoup=new TextPanel();
@@ -48,7 +56,9 @@ public class Fenetre extends JFrame
 	private EchiquierGraphique monEchiquier;
 	private String chaine;
 
-
+/**
+ * @param maPartie
+ */
 	public Fenetre(Partie maPartie)
 	{
 		this.maPartie=maPartie;
@@ -104,165 +114,241 @@ public class Fenetre extends JFrame
 	}
 
 
-
+/**
+ * @return
+ */
 	public EchiquierGraphique getMonEchiquier()
 	{
 		return monEchiquier;
 	}
-
+/**
+ * @param monEchiquier
+ */
 	public void setMonEchiquier( EchiquierGraphique monEchiquier )
 	{
 		this.monEchiquier = monEchiquier;
 	}
-
+/**
+ * @return
+ */
 	public JTextArea getZoneSaisie()
 	{
 		return zoneSaisie;
 	}
-
+/**
+ * @param zoneSaisie
+ */
 	public void setZoneSaisie( JTextArea zoneSaisie )
 	{
 		this.zoneSaisie = zoneSaisie;
 	}
-
+/**
+ * @return
+ */
 	public Partie getMaPartie()
 	{
 		return maPartie;
 	}
-
+/**
+ * @param maPartie
+ */
 	public void setMaPartie( Partie maPartie )
 	{
 		this.maPartie = maPartie;
 	}
-
+/**
+ * @return
+ */
 	public JPanel getMonPanel()
 	{
 		return monPanel;
 	}
-
+/**
+ * @param monPanel
+ */
 	public void setMonPanel( JPanel monPanel )
 	{
 		this.monPanel = monPanel;
 	}
-
+/**
+ * @return
+ */
 	public JPanel getSud()
 	{
 		return sud;
 	}
-
+/**
+ * @param sud
+ */
 	public void setSud( JPanel sud )
 	{
 		this.sud = sud;
 	}
-
+/**
+ * @return
+ */
 	public JButton getBoutonSend()
 	{
 		return boutonSend;
 	}
-
+/**
+ * @param boutonSend
+ */
 	public void setBoutonSend( JButton boutonSend )
 	{
 		this.boutonSend = boutonSend;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getChaine()
 	{
 		return chaine;
 	}
 
+	/**
+	 * @param chaine
+	 */
 	public void setChaine( String chaine )
 	{
 		this.chaine = chaine;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getNord()
 	{
 		return nord;
 	}
 
+	/**
+	 * @return
+	 */
 	public PanneauAffichageJoueur getPanneauAffichage()
 	{
 		return panneauAffichage;
 	}
 
+	/**
+	 * @param panneauAffichage
+	 */
 	public void setPanneauAffichage( PanneauAffichageJoueur panneauAffichage )
 	{
 		this.panneauAffichage = panneauAffichage;
 	}
 
+	/**
+	 * @param nord
+	 */
 	public void setNord( JPanel nord )
 	{
 		this.nord = nord;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getEst()
 	{
 		return est;
 	}
 
+	/**
+	 * @param est
+	 */
 	public void setEst( JPanel est )
 	{
 		this.est = est;
 	}
 
 
-
+/**
+ * @return
+ */
 	public JMenuItem getSave()
 	{
 		return save;
 	}
 
+	/**
+	 * @param save
+	 */
 	public void setSave( JMenuItem save )
 	{
 		this.save = save;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextArea getMsg()
 	{
 		return msg;
 	}
 
+	/**
+	 * @param msg
+	 */
 	@SuppressWarnings( "static-access" )
 	public void setMsg( JTextArea msg )
 	{
 		this.msg = msg;
 	}
 
+	/**
+	 * @return
+	 */
 	public JTextArea getTxt()
 	{
 		return txt;
 	}
 
+	/**
+	 * @param msg
+	 */
 	@SuppressWarnings( "static-access" )
 	public void setTxt( JTextArea msg )
 	{
 		this.txt = msg;
 	}
 	
-	
+	/**
+	 * @return
+	 */
 	public Fenetre clone()
 	{
 		//return null;
 		return new Fenetre(this.maPartie.clone());
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getOuest()
 	{
 		return ouest;
 	}
 
-
+/**
+ * @param ouest
+ */
 	public void setOuest( JPanel ouest )
 	{
 		this.ouest = ouest;
 	}
-
+	/**
+	 * @return
+	 */
 	public TextPanel2 getListeCoupJouable()
 	{
 		return listeCoupJouable;
 	}
 
-
+	/**
+	 * @param listeCoupJouable
+	 */
 	public void setListeCoupJouable( TextPanel2 listeCoupJouable )
 	{
 		this.listeCoupJouable = listeCoupJouable;

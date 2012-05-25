@@ -7,7 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import fr.miblack.chess.Partie;
-
+/**
+ * @author mi-black
+ *
+ */
 public class PanneauAffichageJoueur extends JPanel
 {
 
@@ -15,6 +18,9 @@ public class PanneauAffichageJoueur extends JPanel
 	private Partie	maPartie;
 	JTextArea jtext=new JTextArea("...");
 
+	/**
+	 * @param maPartie
+	 */
 	public PanneauAffichageJoueur(Partie maPartie) 
 	{
 		this.setMaPartie( maPartie );
@@ -22,27 +28,41 @@ public class PanneauAffichageJoueur extends JPanel
 		jtext.setEditable( false );
 	}
 
+	/**
+	 * @return
+	 */
 	public Partie getMaPartie()
 	{
 		return maPartie;
 	}
 
+	/**
+	 * 
+	 * @param maPartie
+	 */
 	public void setMaPartie( Partie maPartie )
 	{
 		this.maPartie = maPartie;
 	}
-	
-	
+
+	/**
+	 * @return
+	 */
 	public JTextArea getJtext()
 	{
 		return jtext;
 	}
 
+	/**
+	 * @param jtext
+	 */
 	public void setJtext( JTextArea jtext )
 	{
 		this.jtext = jtext;
 	}
-
+	/**
+	 * param g
+	 */
 	@Override
 	public void paintComponents( Graphics g )
 	{

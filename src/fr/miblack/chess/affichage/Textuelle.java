@@ -8,7 +8,10 @@ import fr.miblack.chess.Partie;
 import fr.miblack.chess.Position;
 import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
-
+/**
+ * @author mi-black
+ *
+ */
 public class Textuelle extends Interface
 {
 
@@ -16,12 +19,18 @@ public class Textuelle extends Interface
 		menuPrincipal();
 	}
 
+/**
+ * @param p1
+ * @param p2
+ */
 	public Textuelle( String p1, String p2 ) {
 		menuLocal( p1, p2 );
 	}
 
 
-
+/**
+ * le déroulement de la partie
+ */
 	public void jouerPartie()
 	{
 		Coup monCoup;
@@ -153,6 +162,11 @@ public class Textuelle extends Interface
 		return m;
 	}
 	
+	/**
+	 * @param p le joueur
+	 * @param chess l'echiquier
+	 * @return le coup saisi en textuelle
+	 */
 	public Coup saisirCoup( JoueurAbstract p, Echiquier chess )
 	{
 		Scanner sc = new Scanner( System.in );

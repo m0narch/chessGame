@@ -6,9 +6,17 @@ import fr.miblack.chess.Partie;
 import fr.miblack.chess.affichage.Interface;
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * @author mi-black
+ */
 public class JoueurHumain extends JoueurAbstract
 {
 
+	/**
+	 * @param p1
+	 * @param a la couleur
+	 * @param monInterface
+	 */
 	public JoueurHumain( String p1, Couleur a, Interface monInterface ) 
 	{
 		super( p1, a, monInterface );

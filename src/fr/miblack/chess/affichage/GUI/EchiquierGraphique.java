@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 import fr.miblack.chess.Partie;
 
 
-
+/**
+ * @author mi-black
+ */
 public class EchiquierGraphique extends JPanel
 {
 	private static final long	serialVersionUID	= 1L;
@@ -21,6 +23,9 @@ public class EchiquierGraphique extends JPanel
 	Partie maPartie;
 	Image fond = null;
 
+	/**
+	 * @param maPartie
+	 */
 	public EchiquierGraphique(Partie maPartie) 
 	{
 		this.maPartie=maPartie;
@@ -54,6 +59,9 @@ public class EchiquierGraphique extends JPanel
 	
 	}
 	
+	/**
+	 * @param g 
+	 */
     public void paintComponent(Graphics g)
     {
     	Image imgN = null;
@@ -110,15 +118,6 @@ public class EchiquierGraphique extends JPanel
 			monExecption.printStackTrace();
 		}
     }
-
-	public HashMap<String,Image> getLaHashMap()
-	{
-		return laHashMap;
-	}
-
-	public void setLaHashMap( HashMap<String,Image> laHashMap )
-	{
-		this.laHashMap = laHashMap;
-	}   
+ 
 	
 }

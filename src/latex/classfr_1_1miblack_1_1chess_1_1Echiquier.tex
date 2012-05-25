@@ -1,0 +1,313 @@
+\section{fr.\-miblack.\-chess.\-Echiquier Class Reference}
+\label{classfr_1_1miblack_1_1chess_1_1Echiquier}\index{fr.\-miblack.\-chess.\-Echiquier@{fr.\-miblack.\-chess.\-Echiquier}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Piece} {\bf get\-Piece\-Position} ({\bf Position} pos)
+\item 
+{\bf Piece} {\bf get\-Piece\-Position} (int x, int y)
+\item 
+boolean {\bf realiser\-Coup} ({\bf Piece} piece\-Depart, {\bf Position} pos\-Arrivee)
+\item 
+boolean {\bf deplacer\-Piece\-Pour\-Test} ({\bf Position} pos\-Depart, {\bf Position} pos\-Arrivee)
+\item 
+void {\bf annuler\-Deplacer\-Piece\-Pour\-Test} ({\bf Position} pos\-Depart, {\bf Position} pos\-Arrivee, boolean is\-Prise)
+\item 
+boolean {\bf realiser\-Coup} ({\bf Coup} my\-Coup)
+\item 
+void {\bf realiser\-Roque} ({\bf Coup} my\-Coup)
+\item 
+void {\bf realiser\-Promotion} ({\bf Coup} my\-Coup)
+\item 
+int {\bf size} ()
+\item 
+boolean {\bf add\-Pawn} ({\bf Pion} pawn)
+\item 
+boolean {\bf add\-Rook} (Tour rook)
+\item 
+boolean {\bf add\-Bishop} (Fou bishop)
+\item 
+boolean {\bf add\-King} (Roi king)
+\item 
+boolean {\bf add\-Knight} (Cavalier knight)
+\item 
+boolean {\bf add\-Queen} (Dame queen)
+\item 
+{\bf Position} {\bf get\-Position} (int x, int y)
+\item 
+Linked\-List$<$ {\bf Piece} $>$ {\bf get\-Piece\-List} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Un echiquier est composé d'une liste de piece et d'une piece bidon (pour les test de déplacement
+
+\begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-Bishop@{add\-Bishop}}
+\index{add\-Bishop@{add\-Bishop}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-Bishop}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-Bishop (
+\begin{DoxyParamCaption}
+\item[{Fou}]{bishop}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a4da0881ba43b423f06c4508de8be6eab}
+
+\begin{DoxyParams}{Parameters}
+{\em bishop} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add un fou a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-King@{add\-King}}
+\index{add\-King@{add\-King}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-King}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-King (
+\begin{DoxyParamCaption}
+\item[{Roi}]{king}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a8b5289564f41260ee69e5ab07ec3a40a}
+
+\begin{DoxyParams}{Parameters}
+{\em king} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add un roi a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-Knight@{add\-Knight}}
+\index{add\-Knight@{add\-Knight}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-Knight}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-Knight (
+\begin{DoxyParamCaption}
+\item[{Cavalier}]{knight}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a06f442c6f0091c26747f27d39396c998}
+
+\begin{DoxyParams}{Parameters}
+{\em knight} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add un cavalier a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-Pawn@{add\-Pawn}}
+\index{add\-Pawn@{add\-Pawn}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-Pawn}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-Pawn (
+\begin{DoxyParamCaption}
+\item[{{\bf Pion}}]{pawn}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a41400178a45844e34127af4763a201b9}
+
+\begin{DoxyParams}{Parameters}
+{\em pawn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add un pion a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-Queen@{add\-Queen}}
+\index{add\-Queen@{add\-Queen}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-Queen}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-Queen (
+\begin{DoxyParamCaption}
+\item[{Dame}]{queen}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a418ecee6543da45a8b7090be0bce0452}
+
+\begin{DoxyParams}{Parameters}
+{\em queen} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add une dame a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!add\-Rook@{add\-Rook}}
+\index{add\-Rook@{add\-Rook}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{add\-Rook}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-add\-Rook (
+\begin{DoxyParamCaption}
+\item[{Tour}]{rook}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a0732e2375a473b31c5a5d9bd6aa1d344}
+
+\begin{DoxyParams}{Parameters}
+{\em rook} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+add une tour a la Linked\-List de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!annuler\-Deplacer\-Piece\-Pour\-Test@{annuler\-Deplacer\-Piece\-Pour\-Test}}
+\index{annuler\-Deplacer\-Piece\-Pour\-Test@{annuler\-Deplacer\-Piece\-Pour\-Test}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{annuler\-Deplacer\-Piece\-Pour\-Test}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Echiquier.\-annuler\-Deplacer\-Piece\-Pour\-Test (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{pos\-Depart, }
+\item[{{\bf Position}}]{pos\-Arrivee, }
+\item[{boolean}]{is\-Prise}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a12f3a1f72412b772eb8beb6f50431c56}
+
+\begin{DoxyParams}{Parameters}
+{\em pos\-Depart} & \\
+\hline
+{\em pos\-Arrivee} & \\
+\hline
+{\em is\-Prise} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!deplacer\-Piece\-Pour\-Test@{deplacer\-Piece\-Pour\-Test}}
+\index{deplacer\-Piece\-Pour\-Test@{deplacer\-Piece\-Pour\-Test}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{deplacer\-Piece\-Pour\-Test}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-deplacer\-Piece\-Pour\-Test (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{pos\-Depart, }
+\item[{{\bf Position}}]{pos\-Arrivee}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a309c20c7c38cedb96d3b2c386d11ab4e}
+Deplace une piece sans faire de test
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\-Depart} & \\
+\hline
+{\em pos\-Arrivee} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+s'il y a une prise de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!get\-Piece\-List@{get\-Piece\-List}}
+\index{get\-Piece\-List@{get\-Piece\-List}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{get\-Piece\-List}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Piece}$>$ fr.\-miblack.\-chess.\-Echiquier.\-get\-Piece\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a06b5c21ea48b6a8655c093e9d502d308}
+\begin{DoxyReturn}{Returns}
+get la liste de piece 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!get\-Piece\-Position@{get\-Piece\-Position}}
+\index{get\-Piece\-Position@{get\-Piece\-Position}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{get\-Piece\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Piece} fr.\-miblack.\-chess.\-Echiquier.\-get\-Piece\-Position (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{pos}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_aa01d1868aefe9f4fe33a7b8955844867}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la piece a la position donnee , null si la position est vide 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!get\-Piece\-Position@{get\-Piece\-Position}}
+\index{get\-Piece\-Position@{get\-Piece\-Position}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{get\-Piece\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Piece} fr.\-miblack.\-chess.\-Echiquier.\-get\-Piece\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_aa0fa7c0675f642cae8fbf881416ee854}
+Retourne la piece positionné a telle coordonnée x \& y 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la piece a la position donnee , null si la position est vide 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} fr.\-miblack.\-chess.\-Echiquier.\-get\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a22c73b19bc9e4333e79221799acb060e}
+Le fly-\/weight de position 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Position.\-get\-Position( x, y ) 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!realiser\-Coup@{realiser\-Coup}}
+\index{realiser\-Coup@{realiser\-Coup}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{realiser\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-realiser\-Coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Piece}}]{piece\-Depart, }
+\item[{{\bf Position}}]{pos\-Arrivee}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_acc1dce24fe3efb55bdd3c458385fdf43}
+Deplacer la piece un coup,
+
+
+\begin{DoxyParams}{Parameters}
+{\em piece\-Depart} & \\
+\hline
+{\em pos\-Arrivee} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!realiser\-Coup@{realiser\-Coup}}
+\index{realiser\-Coup@{realiser\-Coup}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{realiser\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Echiquier.\-realiser\-Coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{my\-Coup}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a7766d5a2d057c48cfffd6c3eab41dd83}
+Realise un déplacement 
+\begin{DoxyParams}{Parameters}
+{\em my\-Coup} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!realiser\-Promotion@{realiser\-Promotion}}
+\index{realiser\-Promotion@{realiser\-Promotion}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{realiser\-Promotion}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Echiquier.\-realiser\-Promotion (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{my\-Coup}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a8284522759957e949ff34b8730a41a76}
+Realise la promotion (change la piece) 
+\begin{DoxyParams}{Parameters}
+{\em my\-Coup} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!realiser\-Roque@{realiser\-Roque}}
+\index{realiser\-Roque@{realiser\-Roque}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{realiser\-Roque}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Echiquier.\-realiser\-Roque (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{my\-Coup}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a2437836a49536775ad6e344ab176cfa3}
+Realise le roque (deplace les pieces) 
+\begin{DoxyParams}{Parameters}
+{\em my\-Coup} & (le coup joue) \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}!size@{size}}
+\index{size@{size}!fr::miblack::chess::Echiquier@{fr\-::miblack\-::chess\-::\-Echiquier}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Echiquier.\-size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Echiquier_a5093766638d061cd0b65f3a2f9e3bf0b}
+\begin{DoxyReturn}{Returns}
+piece\-List.\-size() 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+fr/miblack/chess/Echiquier.\-java\end{DoxyCompactItemize}

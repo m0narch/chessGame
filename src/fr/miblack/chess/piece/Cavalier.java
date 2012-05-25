@@ -6,17 +6,23 @@ import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * @author mi-black
+ */
 public class Cavalier extends Piece
 {
+	/**
+	 * @param color
+	 * @param pos
+	 * @param valeur
+	 */
 	public Cavalier( Couleur color, Position pos, int valeur ) 
 	{
 		super( color, pos, valeur );
 	}
 
 	
-	/**
-	 * 
-	 */
+	 
 	public LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -67,6 +73,10 @@ public class Cavalier extends Piece
 		return myList;
 	}
 
+	/**
+	 * @param chess l'echiquier
+	 * @return Liste des position capturables
+	 */
 	public LinkedList<Position> whatCanIEat( Echiquier chess )
 	{
 		LinkedList<Position> myList = positionAccessibleChessboard( chess );
@@ -82,6 +92,9 @@ public class Cavalier extends Piece
 		return myList;
 	}
 
+	/**
+	 * @return 
+	 */
 	@Override
 	public String toString()
 	{
@@ -90,12 +103,18 @@ public class Cavalier extends Piece
 		else
 			return "c";
 	}
-
+	
+	/**
+	 * @return 
+	 */
 	public String getNom()
 	{
 		return "C";
 	}
-
+	
+	/**
+	 * @return 
+	 */
 	public Piece clone()
 	{
 		Cavalier maPiece = new Cavalier( this.getColor(), this.getPos(),

@@ -1,7 +1,6 @@
 
 package fr.miblack.chess;
 
-import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,40 +8,103 @@ import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.piece.Piece;
 import fr.miblack.chess.piece.Pion;
-import fr.miblack.chess.piece.Roi;
 
+/**
+ * Cette classe regroupe tout les composant d'un coup
+ * @author mi-black
+ */
 public class Coup
 {
+	/**
+	 * maRegex  est une Regex (Comprendre Expréssion régulière) qui permet de déterminer si un coup est complet ou non
+	 */
 	static String maRegex= "^([FDRCT]?)([a-h][1-8])([-x])([a-h][1-8])(=?)([FDCT]?)[#+!?]*$";
+	
+	
+	/**
+	 * maRegexRoque  est une Regex (Comprendre Expréssion régulière) qui permet de déterminer si un coup st un roque
+	 */
 	static String maRegexRoque="^(O-O-O|O-O)?";
+	
+	
+	/**
+	 * 	myRegexComp est un parttern (une sorte de moule) ou l'on insère une regex ici maRegex
+	 */
 	protected static Pattern  myRegexComp = Pattern.compile(maRegex );
+	
+	
+	/**
+	 * 	myRegexRoque est un parttern (une sorte de moule) ou l'on insère une regex ici maRegexRoque
+	 */
 	protected static Pattern  myRegexRoque = Pattern.compile(maRegexRoque );
+	
+	/**
+	 *  La piece d'ou part le coup
+	 */
 	protected Piece		pieceDepart;
+	
+	/**
+	 *  La position d'ou part le coup
+	 */
 	protected Position	posDepart;
+	
+	/**
+	 *  La position d'arrivée du coup
+	 */
 	protected Position	posArrivee;
+	
+	/**
+	 *  Le coup est une prise ?
+	 */
 	protected boolean		estPrise;
+	
+	/**
+	 *  Dans le cas d'une prise , on stock la piece
+	 */
 	protected Piece		PiecePrise;
+	
+	/**
+	 *  En quoi la piece est promus D F T ou C 
+	 */
 	protected String		promotion;
+	
+	/**
+	 *  Le coup est un petit roque ?
+	 */
 	protected boolean estPetitRoque ;
+	
+	/**
+	 *  Le coup est un roque ?
+	 */
 	protected boolean estRoque ;
+	
+	/**
+	 *  Couleur du coup (utile pour le roque)
+	 */
 	protected Couleur couleur;
 	
 
 
+	/**
+	 * Constructeur du roque
+	 * @param petitRoque : un petit roque ?
+	 * @param couleur  : la couleur du roque
+	 */
 	public Coup(boolean petitRoque,Couleur couleur)
 	{	
 		this.estRoque=true;
 		this.couleur=couleur;
 		this.estPetitRoque=petitRoque;
 	}
+	
 
-	public Coup( Piece pieceDepart, Position posArrivee ) {
-		this.setPieceDepart( pieceDepart );
-		this.estRoque=false;
-		this.setPosDepart( pieceDepart.getPos().clone() );
-		this.setPosArrivee( posArrivee );
-	}
-
+	/**
+	 * Constructeur avancé d'un coup , il gère la promotion et la prise 
+	 * @param  pieceDepart
+	 * @param posArrivee 
+	 * @param prise
+	 * @param promotion
+	 */
 	public Coup( Piece pieceDepart, Position posArrivee, boolean prise,
 			String promotion ) {
 		this.setPieceDepart( pieceDepart );
@@ -52,7 +114,10 @@ public class Coup
 		this.setEstPrise( prise );
 		this.setPromotion( promotion );
 	}
-
+	
+	/**
+	 * Constructeur basique d'un coup avec possibilité de prise
+	 */
 	public Coup( Piece pieceDepart, Position posArrivee, boolean prise ) {
 		this.setPieceDepart( pieceDepart );
 		this.setPosDepart( pieceDepart.getPos().clone() );
@@ -61,6 +126,7 @@ public class Coup
 		this.estRoque=false;
 	}
 
+	
 	/**
 	 * @return the pieceDepart
 	 */
@@ -69,13 +135,18 @@ public class Coup
 		return pieceDepart;
 	}
 
+	/**
+	 *  Recupère si le coup est un roque
+	 * @return estRoque ?
+	 */
 	public boolean getRoque()
 	{
 		return this.estRoque;
 	}
+	
 	/**
-	 * @param pieceDepart
-	 *            the pieceDepart to set
+	 * the pieceDepart to set
+	 * @param piece
 	 */
 	public void setPieceDepart( Piece piece )
 	{
@@ -92,7 +163,7 @@ public class Coup
 
 	/**
 	 * @param posArrivee
-	 *            the posArrivee to set
+	 *  the posArrivee to set
 	 */
 	public void setPosArrivee( Position posArrivee )
 	{
@@ -122,7 +193,10 @@ public class Coup
 		else
 			throw new RuntimeException( posDepart.getX() + ", "+ posDepart.getY() + " : coordonnees  invalide" );
 	}
-
+	
+	/**
+	 * @return La chaine d'un coup , lisible par un homme
+	 */
 	public String toString()
 	{
 		if(estRoque==false)
@@ -152,8 +226,8 @@ public class Coup
 				return "O-O-O";
 		}
 	}
-
-	public boolean metEnEchec( JoueurAbstract p, Echiquier chess )
+	/*
+	 * public boolean metEnEchec( JoueurAbstract p, Echiquier chess )
 	{
 		boolean echec = false;
 		Piece maPiece = pieceDepart;
@@ -173,7 +247,15 @@ public class Coup
 		}
 		return echec;
 	}
-
+	 */
+	
+	/**
+	 * 
+	 * @param myString chaine style a2-a4
+	 * @param party la partie 
+	 * @param p	le joueur
+	 * @return a new Coup avec tout comme il faut !
+	 */
 	public static Coup parseStringToCoupCompl(String myString, Partie party,JoueurAbstract p )
 	{
 		Matcher matcher = myRegexComp.matcher( myString );
@@ -208,16 +290,28 @@ public class Coup
 		throw new RuntimeException( "coup invalide" );
 	}
 
+	/**
+	 * Le coup est une prise ?
+	 * @return estPrise 
+	 */
 	public boolean isEstPrise()
 	{
 		return estPrise;
 	}
-
+	
+	/**
+	 * Set estPrise
+	 */
 	public void setEstPrise( boolean estPrise )
 	{
 		this.estPrise = estPrise;
 	}
-
+	
+	/**
+	 * test si deux coups sont identiques 
+	 * @param autre un autre coup
+	 * @return true si equals , false sinon
+	 */
 	public boolean equals( Coup autre )
 	{
 		boolean equals;
@@ -232,30 +326,52 @@ public class Coup
 		return equals;
 	}
 
+	/**
+	 * La piece prise
+	 * @return piecePrise
+	 */
+	
 	public Piece getPiecePrise()
 	{
 		return PiecePrise;
 	}
-
+	
+	/**
+	 * Set piecePrise
+	 */
 	public void setPiecePrise( Piece piecePrise )
 	{
 		PiecePrise = piecePrise;
 	}
-
+	
+	/**
+	 * get Promotion
+	 */
 	public String getPromotion()
 	{
 		return promotion;
 	}
 
+	
+	/**
+	 * Set promotion
+	 */
 	public void setPromotion( String promotion )
 	{
 		this.promotion = promotion;
 	}
+	
+	/**
+	 * Get couleur
+	 */
 	public Couleur getCouleur()
 	{
 		return couleur;
 	}
-
+	
+	/**
+	 * Set couleur
+	 */
 	public void setCouleur( Couleur couleur )
 	{
 		this.couleur = couleur;

@@ -12,31 +12,57 @@ import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.joueurs.JoueurHumain;
 import fr.miblack.chess.joueurs.JoueurOrdinateur;
 import fr.miblack.chess.piece.Piece;
-
+/**
+ * @author mi-black
+ *	interfaces abstraite
+ */
 public abstract class Interface implements Jouer
 {
+	/**
+	 * la partie
+	 */
 	protected Partie			maPartie;
+	/**
+	 * le j1
+	 */
 	protected JoueurAbstract	player1;
+	/**
+	 * le j2
+	 */
 	protected JoueurAbstract	player2;
 
+
+	/**
+	 * @return
+	 */
 	public Partie getMaPartie()
 	{
 		return maPartie;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 * @return piece a la position
+	 */
 	public Piece getPiecePosition( int x, int y )
 	{
 		return this.getMaPartie().getMyChessboard().getPiecePosition( x, y );
 	}
 
+	/**
+	 * @return
+	 */
 	public Echiquier getMyChessboard()
 	{
 		return this.getMaPartie().getMyChessboard();
 	}
-
+	
 	@Override
 	public abstract Coup jouerCoup( Partie g );
-	
+	/**
+	 * Affichage menu principal 
+	 */
 	protected void menuPrincipal()
 	{
 		int i = 0;
@@ -56,6 +82,9 @@ public abstract class Interface implements Jouer
 
 	}
 
+	/**
+	 * le menu local
+	 */
 	protected int menuLocal()
 	{
 		int i = 0;
@@ -101,6 +130,11 @@ public abstract class Interface implements Jouer
 		return 0;
 	}
 
+	/**
+	 * @param p1
+	 * @param p2
+	 * @return 
+	 */
 	protected int menuLocal( String p1, String p2 )
 	{
 		int i = 0;
@@ -141,6 +175,9 @@ public abstract class Interface implements Jouer
 		return 0;
 	}
 
+	/**
+	 * @return
+	 */
 	public int affichageMenuPrincipal()
 	{
 		System.out.print( "Bienvenue !\n" );
@@ -150,7 +187,9 @@ public abstract class Interface implements Jouer
 		return 4;
 
 	}
-
+	/**
+	 * @return
+	 */
 	public int affichageMenuLocale()
 	{
 		System.out.print( "Faites votre choix :\n" );
@@ -163,7 +202,10 @@ public abstract class Interface implements Jouer
 	}
 
 	
-
+	/**
+	 * @param taille du menu
+	 * @return nbre saisi
+	 */
 	public int saisieMenu( int taille )
 	{
 		int i = taille + 1;

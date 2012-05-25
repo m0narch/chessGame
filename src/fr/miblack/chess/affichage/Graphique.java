@@ -12,13 +12,18 @@ import fr.miblack.chess.joueurs.JoueurAbstract;
 import fr.miblack.chess.Coup;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.Partie;
-
+/**
+ * @author mi-black
+ */
 public class Graphique extends Interface
 {
 	private Fenetre maFenetre=null ;
 	private JPanel monPanel;
 	private JOptionPane jop1 = new JOptionPane();
-
+/**
+ * @param p1
+ * @param p2
+ */
 	public Graphique( String p1, String p2 ) 
 	{
 		menuLocal( p1, p2 );
@@ -32,14 +37,16 @@ public class Graphique extends Interface
 		setMaFenetre( new Fenetre(getMaPartie()) );
 		this.setMonPanel( (JPanel) maFenetre.getContentPane() );
 	}
-	
+	/**
+	 * @param partie
+	 */
 	public Graphique(Partie partie) 
 	{
 		maPartie=partie;
 	}
- 
-	
-	
+/**
+ * déroulement de la partie en GUI	
+ */
 	public void jouerPartie()
 	{
 		Coup monCoup;
@@ -128,6 +135,9 @@ public class Graphique extends Interface
 		return maPartie;
 	}
 
+	/**
+	 * @param maPartie
+	 */
 	public void setMaPartie( Partie maPartie )
 	{
 		this.maPartie = maPartie;
@@ -168,7 +178,11 @@ public class Graphique extends Interface
 
 		return m;
 	}
-	
+	/**
+	 * @param p le joueur
+	 * @param chess l'echiquier
+	 * @return le coup saisi
+	 */
 	public   Coup saisirCoup( JoueurAbstract p, Echiquier chess )
 	{
 		String strCoup = null;
@@ -209,36 +223,54 @@ public class Graphique extends Interface
 		return monCoup;
 	}
 
+	/**
+	 * @return
+	 */
 	public Fenetre getMaFenetre()
 	{
 		return maFenetre;
 	}
 
+	/**
+	 * @param maFenetre
+	 */
 	public void setMaFenetre( Fenetre maFenetre )
 	{
 		this.maFenetre = maFenetre;
 	}
 
+	/**
+	 * @return
+	 */
 	public JPanel getMonPanel()
 	{
 		return monPanel;
 	}
 
+	/**
+	 * @param monPanel
+	 */
 	public void setMonPanel( JPanel monPanel )
 	{
 		this.monPanel = monPanel;
 	}
-
+	/**
+	 * @return
+	 */
 	public JOptionPane getJop1()
 	{
 		return jop1;
 	}
-
+	/**
+	 * @param jop1
+	 */
 	public void setJop1( JOptionPane jop1 )
 	{
 		this.jop1 = jop1;
 	}
-	
+	/**
+	 * @return 
+	 */
 	@Override
 	public Graphique clone()  
 	{

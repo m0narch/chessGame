@@ -6,6 +6,12 @@ import java.util.*;
 import fr.miblack.chess.Position;
 import fr.miblack.chess.piece.*;
 
+
+/**
+ * Un echiquier est composé d'une liste de piece et d'une piece bidon (pour les test de déplacement
+ * 
+ * @author mi-black
+ */
 public class Echiquier
 {
 
@@ -14,7 +20,6 @@ public class Echiquier
 
 	
 	/**
-	 * 
 	 * @param pos
 	 * @return la piece a la position donnee , null si la position est vide
 	 */
@@ -31,7 +36,7 @@ public class Echiquier
 	}
 
 	/**
-	 * 
+	 * Retourne la piece positionné a telle coordonnée x & y
 	 * @param x
 	 * @param y
 	 * @return la piece a la position donnee , null si la position est vide
@@ -52,7 +57,7 @@ public class Echiquier
 	 * Deplacer la piece un coup,
 	 * 
 	 * @param pieceDepart
-	 *            posArrivee
+	 * @param posArrivee
 	 * @return
 	 */
 	public boolean realiserCoup( Piece pieceDepart, Position posArrivee )
@@ -104,7 +109,7 @@ public class Echiquier
 	/**
 	 * @param posDepart
 	 * @param posArrivee
-	 * @param isPrise
+	 * @param isPrise 
 	 */
 	public void annulerDeplacerPiecePourTest( Position posDepart,Position posArrivee, boolean isPrise )
 	{
@@ -121,6 +126,11 @@ public class Echiquier
 		pieceList.add( pieceD );
 	}
 
+	/**
+	 * Realise un déplacement 
+	 * @param myCoup 
+	 * @return 
+	 */
 	@SuppressWarnings( "null" )
 	public boolean realiserCoup( Coup myCoup )
 	{
@@ -137,7 +147,7 @@ public class Echiquier
 		}
 		catch (NullPointerException e)
 		{
-			
+			e.getStackTrace();
 		}
 		if(myCoup.getRoque()==false)
 		{
@@ -172,7 +182,6 @@ public class Echiquier
 
 	/**
 	 * Realise le roque (deplace les pieces)
-	 * 
 	 * @param myCoup (le coup joue)
 	 */
 	public void realiserRoque(Coup myCoup)
@@ -217,7 +226,6 @@ public class Echiquier
 	
 	/**
 	 * Realise la promotion (change la piece)
-	 * 
 	 * @param myCoup
 	 */
 	
@@ -232,47 +240,83 @@ public class Echiquier
 		pieceList.add( pieceApres );
 	}
 
-
+	/**
+	 * @return pieceList.size()
+	 */
 	public int size()
 	{
 		return pieceList.size();
 	}
-
+	
+	/**
+	 * @param pawn
+	 * @return add un pion a la LinkedList de piece
+	 */
 	public boolean addPawn( Pion pawn )
 	{
 		return pieceList.add( pawn );
 	}
-
+	
+	/**
+	 * @param rook
+	 * @return add une tour a la LinkedList de piece
+	 */
 	public boolean addRook( Tour rook )
 	{
 		return pieceList.add( rook );
 	}
-
+	
+	/**
+	 * 
+	 * @param bishop
+	 * @return add un fou a la LinkedList de piece
+	 */
 	public boolean addBishop( Fou bishop )
 	{
 		return pieceList.add( bishop );
 	}
 
+	/**
+	 * @param king
+	 * @return add un roi a la LinkedList de piece
+	 */
 	public boolean addKing( Roi king )
 	{
 		return pieceList.add( king );
 	}
-
+	
+	/**
+	 * @param knight
+	 * @return add un cavalier a la LinkedList de piece
+	 */
 	public boolean addKnight( Cavalier knight )
 	{
 		return pieceList.add( knight );
 	}
 
+	/**
+	 * @param queen
+	 * @return add une dame a la LinkedList de piece
+	 */
 	public boolean addQueen( Dame queen )
 	{
 		return pieceList.add( queen );
 	}
 
+	/**
+	 * Le fly-weight de position
+	 * @param x
+	 * @param y
+	 * @return Position.getPosition( x, y )
+	 */
 	public Position getPosition( int x, int y )
 	{
 		return Position.getPosition( x, y );
 	}
 
+	/**
+	 * @return get la liste de piece
+	 */
 	public LinkedList<Piece> getPieceList()
 	{
 		return pieceList;

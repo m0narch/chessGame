@@ -1,0 +1,217 @@
+\section{fr.\-miblack.\-chess.\-piece.\-Pion Class Reference}
+\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion}\index{fr.\-miblack.\-chess.\-piece.\-Pion@{fr.\-miblack.\-chess.\-piece.\-Pion}}
+Inheritance diagram for fr.\-miblack.\-chess.\-piece.\-Pion\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Pion} ({\bf Couleur} {\bf color}, {\bf Position} {\bf pos}, int {\bf valeur})
+\item 
+Linked\-List$<$ {\bf Position} $>$ {\bf position\-Accessible\-Couleur} (int couleur)
+\item 
+{\bf Piece} {\bf promotion} (String str)
+\item 
+Linked\-List$<$ {\bf Coup} $>$ {\bf get\-Coup\-Possible} ({\bf Piece} Piece\-Depart, {\bf Partie} ma\-Partie)
+\item 
+Linked\-List$<$ {\bf Position} $>$ {\bf position\-Accessible} ()
+\item 
+Linked\-List$<$ {\bf Position} $>$ {\bf position\-Accessible\-Chessboard} ({\bf Echiquier} chess)
+\item 
+Linked\-List$<$ {\bf Position} $>$ {\bf what\-Can\-I\-Eat} ({\bf Echiquier} chess)
+\item 
+boolean {\bf met\-En\-Echec} ({\bf Echiquier} chess)
+\item 
+String {\bf to\-String} ()
+\item 
+String {\bf get\-Nom} ()
+\item 
+{\bf Piece} {\bf clone} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!Pion@{Pion}}
+\index{Pion@{Pion}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{Pion}]{\setlength{\rightskip}{0pt plus 5cm}fr.\-miblack.\-chess.\-piece.\-Pion.\-Pion (
+\begin{DoxyParamCaption}
+\item[{{\bf Couleur}}]{color, }
+\item[{{\bf Position}}]{pos, }
+\item[{int}]{valeur}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a0980ab8ca4af634d368a66293a413d1b}
+
+\begin{DoxyParams}{Parameters}
+{\em color} & \\
+\hline
+{\em pos} & \\
+\hline
+{\em valeur} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!clone@{clone}}
+\index{clone@{clone}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Piece} fr.\-miblack.\-chess.\-piece.\-Pion.\-clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_aca889774de79f97edff2d4d21bfcf77f}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!get\-Coup\-Possible@{get\-Coup\-Possible}}
+\index{get\-Coup\-Possible@{get\-Coup\-Possible}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{get\-Coup\-Possible}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Coup}$>$ fr.\-miblack.\-chess.\-piece.\-Pion.\-get\-Coup\-Possible (
+\begin{DoxyParamCaption}
+\item[{{\bf Piece}}]{Piece\-Depart, }
+\item[{{\bf Partie}}]{ma\-Partie}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a0480e38f7b6f027b01da4bef00f6f3f2}
+
+\begin{DoxyParams}{Parameters}
+{\em Piece\-Depart} & \\
+\hline
+{\em ma\-Partie} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf fr.\-miblack.\-chess.\-piece.\-Piece} \doxyref{}{p.}{classfr_1_1miblack_1_1chess_1_1piece_1_1Piece_ace5ed8c4d7f922076255d5aa0733e51e}.
+
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!get\-Nom@{get\-Nom}}
+\index{get\-Nom@{get\-Nom}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{get\-Nom}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-piece.\-Pion.\-get\-Nom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a6a0712e0005efb52ae3ccf7b96be4957}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf fr.\-miblack.\-chess.\-piece.\-Piece} \doxyref{}{p.}{classfr_1_1miblack_1_1chess_1_1piece_1_1Piece_a68bb44429e21b7f64511a91a0861dde4}.
+
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!met\-En\-Echec@{met\-En\-Echec}}
+\index{met\-En\-Echec@{met\-En\-Echec}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{met\-En\-Echec}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-piece.\-Pion.\-met\-En\-Echec (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a1f472efbefe3f2914bc24a934e774b31}
+
+\begin{DoxyParams}{Parameters}
+{\em chess} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!position\-Accessible@{position\-Accessible}}
+\index{position\-Accessible@{position\-Accessible}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{position\-Accessible}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-piece.\-Pion.\-position\-Accessible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_ad781b079c949af93e742badb99a47608}
+\begin{DoxyReturn}{Returns}
+List of position where one piece can be going 
+\end{DoxyReturn}
+
+
+Implements {\bf fr.\-miblack.\-chess.\-piece.\-Piece} \doxyref{}{p.}{classfr_1_1miblack_1_1chess_1_1piece_1_1Piece_ad5cdbd635ec706f16d57dccf1b8c456e}.
+
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!position\-Accessible\-Chessboard@{position\-Accessible\-Chessboard}}
+\index{position\-Accessible\-Chessboard@{position\-Accessible\-Chessboard}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{position\-Accessible\-Chessboard}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-piece.\-Pion.\-position\-Accessible\-Chessboard (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_afd1ccbe76aef6117fd63b985913c3a10}
+\begin{DoxyReturn}{Returns}
+List of position where one piece can be going with restriction of the chessboard 
+\end{DoxyReturn}
+
+
+Implements {\bf fr.\-miblack.\-chess.\-piece.\-Piece} \doxyref{}{p.}{classfr_1_1miblack_1_1chess_1_1piece_1_1Piece_ac1222bad9bf13533eecec2b8d99e24c6}.
+
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!position\-Accessible\-Couleur@{position\-Accessible\-Couleur}}
+\index{position\-Accessible\-Couleur@{position\-Accessible\-Couleur}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{position\-Accessible\-Couleur}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-piece.\-Pion.\-position\-Accessible\-Couleur (
+\begin{DoxyParamCaption}
+\item[{int}]{couleur}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a4a6114767d591a34ca479a24a14f6b8b}
+
+\begin{DoxyParams}{Parameters}
+{\em couleur} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!promotion@{promotion}}
+\index{promotion@{promotion}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{promotion}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Piece} fr.\-miblack.\-chess.\-piece.\-Pion.\-promotion (
+\begin{DoxyParamCaption}
+\item[{String}]{str}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_a4569bca3d9eeee097750d26270b12483}
+
+\begin{DoxyParams}{Parameters}
+{\em str} & chaine de promotion \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-piece.\-Pion.\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_abd08277b50a30a03e1dd50be63939b52}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::piece\-::\-Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}!what\-Can\-I\-Eat@{what\-Can\-I\-Eat}}
+\index{what\-Can\-I\-Eat@{what\-Can\-I\-Eat}!fr::miblack::chess::piece::Pion@{fr\-::miblack\-::chess\-::piece\-::\-Pion}}
+\subsubsection[{what\-Can\-I\-Eat}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-piece.\-Pion.\-what\-Can\-I\-Eat (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{classfr_1_1miblack_1_1chess_1_1piece_1_1Pion_af7b15f6d766ddc6ad0fec0af8041780a}
+
+\begin{DoxyParams}{Parameters}
+{\em chess} & l'echiquier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Liste des position capturables 
+\end{DoxyReturn}
+
+
+Implements {\bf fr.\-miblack.\-chess.\-piece.\-Piece} \doxyref{}{p.}{classfr_1_1miblack_1_1chess_1_1piece_1_1Piece_af18b3bc007e0e50740de39142a5b2919}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+fr/miblack/chess/piece/Pion.\-java\end{DoxyCompactItemize}

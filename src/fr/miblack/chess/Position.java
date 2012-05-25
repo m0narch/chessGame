@@ -6,6 +6,10 @@ import java.util.LinkedList;
 
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * Une position est consitué d'un x et d'un y
+ * @author mi-black
+ */
 public class Position
 {
 
@@ -14,11 +18,18 @@ public class Position
 	private int							x;
 	private int							y;
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Position( int x, int y ) {
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * @return la couleur d'une position (0 ou 1)
+	 */
 	public int getColor()
 	{
 		if ( ((x + y) % 2) == 1 )
@@ -31,33 +42,52 @@ public class Position
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public int getX()
 	{
 		return this.x;
 	}
-
+	/**
+	 * @return
+	 */
 	public int getY()
 	{
 		return this.y;
 	}
 
+	/**
+	 * 
+	 * @param x
+	 */
 	public void setX( int x )
 	{
 		if(x>=0 && x<8)
 			this.x = x;
 	}
 
-	public void setY( int a)
+	/**
+	 * @param y
+	 */
+	public void setY( int y)
 	{
-		if(a>=0 && a<8)
-		this.y = a;
+		if(y>=0 && y<8)
+		this.y = y;
 	}
 
+	/**
+	 * @param pos
+	 * @return
+	 */
 	public boolean equals( Position pos )
 	{
 		return ((this.getX() == pos.getX()) && (this.getY() == pos.getY()));
 	}
 
+	/**
+	 * @return
+	 */
 	public String toString()
 	{
 		if ( getColor() == 1 )
@@ -70,6 +100,12 @@ public class Position
 		}
 	}
 
+	/**
+	 * Fly weight
+	 * @param x
+	 * @param y
+	 * @return new Pos OU pos déjà existante
+	 */
 	public static Position getPosition( int x, int y )
 	{
 		Position a;
@@ -94,6 +130,10 @@ public class Position
 		throw new RuntimeException( x + ", " + y + " : coordonnees  invalide" );
 	}
 
+	/**
+	 * @param a
+	 * @return a>=0 && a<8
+	 */
 	public static boolean valValide( int a )
 	{
 		if ( (a >= 0) && (a < 8) )
@@ -103,11 +143,9 @@ public class Position
 		return false;
 	}
 
-	public static int instanceOfPos()
-	{
-		return listPos.size();
-	}
-
+	/**
+	 * @return chaine , 00 => a1
+	 */
 	public String toStringPos()
 	{
 		return "" + (char) (this.x + 97) + (this.y + 1);
@@ -134,11 +172,17 @@ public class Position
 		throw new RuntimeException( pos + " Position invalide" );
 	}
 
+	/**
+	 * @return la liste des positions
+	 */
 	public static LinkedList<Position> listPosit()
 	{
 		return listPos;
 	}
-
+	
+	/**
+	 * @return 
+	 */
 	public Position clone()
 	{
 		return new Position( this.x, this.y );

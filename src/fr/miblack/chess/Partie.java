@@ -20,12 +20,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
+/** 
+ * @author mi-black
+ * Une partie est définie par ...
+ * listOfMove :une liste de coup 
+ * listOfPlayer : une liste de joueurs
+ * playerEnCours : le joueur qui possède la main
+ * cpt_sans_prise : le nbre de coup sans 1 prise de piece
+ * cptSansMvmtPion : le nbre de coup dans déplacer un pion
+ * myChessboard : l'echiquier sur lequel se base la partie
+ */
 public class Partie
 {
 
 	private LinkedList<Coup>			listOfMove			= new LinkedList<Coup>();
 
-	private LinkedList<Coup>			listOfMoveCancelled	= new LinkedList<Coup>();
 	private LinkedList<JoueurAbstract>	listOfPlayer		= new LinkedList<JoueurAbstract>();
 
 	private JoueurAbstract				playerEnCours;
@@ -33,6 +42,11 @@ public class Partie
 	private int							cptSansMvmtPion		= 0;
 	private Echiquier					myChessboard		= new Echiquier();
 	
+	/**
+	 * Constructeur de partie
+	 * @param player1
+	 * @param player2
+	 */
 	public Partie( JoueurAbstract player1, JoueurAbstract player2 ) 
 	{
 		listOfPlayer.add( player2 );
@@ -40,31 +54,27 @@ public class Partie
 		letsPlay( player1 );
 	}
 
+	/**
+	 * @return
+	 */
 	public Partie clone()
 	{
 		Partie maPartie= new Partie( listOfPlayer.getFirst(), listOfPlayer.getLast() );
 		maPartie.setListOfMove( listOfMove );
 		return maPartie;
 	}
+	/**
+	 * @return myChessboard
+	 */
 	public Echiquier getMyChessboard()
 	{
 		return myChessboard;
 	}
 
-	public Coup annulerDernierCoup()
-	{
-		Coup last = listOfMove.getLast();
-		listOfMoveCancelled.add( listOfMove.getLast() );
-		last.getPieceDepart().setPos( last.getPosDepart() );
-		return listOfMove.removeLast();
-	}
-
-	public Coup rejouerDernierCoup()
-	{
-		listOfMove.add( listOfMoveCancelled.getLast() );
-		return listOfMoveCancelled.removeLast();
-	}
-
+	/**
+	 * @param p un joueur
+	 * @return p est pat ?
+	 */
 	public boolean estPat( JoueurAbstract p )
 	{
 		boolean stalemate = false;
@@ -95,12 +105,17 @@ public class Partie
 				}
 			} catch (ConcurrentModificationException e)
 			{
-
+				e.getStackTrace();
 			}
 		}
 		return stalemate;
 	}
 
+	/**
+	 * 
+	 * @param laPos la pos ou se de placer 
+	 * @return si on est en Echecs à laPos
+	 */
 	public boolean estEnEchec( Position laPos )
 	{
 		boolean check = false;
@@ -121,10 +136,20 @@ public class Partie
 		}
 		return check;
 	}
+	
+	/**
+	 * @param listOfMove
+	 */
 	public void setListOfMove( LinkedList<Coup> listOfMove )
 	{
 		this.listOfMove = listOfMove;
 	}
+	/**
+	 * Verifie si l'on est en echec si l'on bouge une piece d'une posD à une posA
+	 * @param laPosD
+	 * @param laPosA
+	 * @return si posD se libere et que la piece va en posA , y aura echec ?
+	 */
 	@SuppressWarnings( "null" )
 	public boolean seraEnEchec( Position laPosD, Position laPosA )
 	{
@@ -154,7 +179,7 @@ public class Partie
 				}
 				catch(NullPointerException e)
 				{
-					
+					e.getStackTrace();
 				}
 				if ( onePiece instanceof Pion )
 				{
@@ -166,6 +191,9 @@ public class Partie
 		return check;
 	}
 
+	/**
+	 * @return la position du Roi du joueur courant
+	 */
 	public Position getPosRoi( )
 	{
 		setPlayerEnCours();
@@ -186,6 +214,10 @@ public class Partie
 		return Position.getPosition( xRoi, yRoi );
 	}
 
+	/**
+	 * @param petitRoque
+	 * @return la position de la tour du joueur courant concernée par le roque
+	 */
 	public  Position getPosTour( boolean petitRoque)
 	{
 		setPlayerEnCours();
@@ -223,6 +255,12 @@ public class Partie
 		return Position.getPosition( xTour, yTour );
 	}
 	
+	/**
+	 * @param chess : l'echiquier
+	 * @param Roi	la position du roi
+	 * @param petitRoque
+	 * @return Si le trajet est possible entre le roi et le petit(ou grand) roque
+	 */
 	public boolean trajetLibre(Echiquier chess,Position Roi,boolean petitRoque)
 	{
 		int x1=Roi.getX()-1;
@@ -260,6 +298,10 @@ public class Partie
 		return false;
 	}
 	
+	/**
+	 * @param chess l'echiquier
+	 * @return Le petit roque est possible ?
+	 */
 	public boolean petitRoquePossible(Echiquier chess  )
 	{
 		boolean check=false;
@@ -292,6 +334,10 @@ public class Partie
 		}
 	}
 	
+	/**
+	 * @param chess : l'echiquier
+	 * @return	Le grand roque est possible ?
+	 */
 	public boolean grandRoquePossible(Echiquier chess )
 	{
 		boolean check=false;
@@ -330,8 +376,7 @@ public class Partie
 	/**
 	 * Verifie si une promotion est possible 
 	 * @author mi-black
-	 * @param chess l'echiquier
-	 * @return
+ 	 * @return
 	 */
 	public boolean promotionPossible(  )
 	{
@@ -485,7 +530,7 @@ public class Partie
 			}
 		} catch (ConcurrentModificationException e)
 		{
-
+			e.getStackTrace();
 		}
 
 		return mat;
@@ -717,33 +762,27 @@ public class Partie
 		initPositions();
 		this.playerEnCours = joueur1;
 	}
-
+	
+	/**
+	 * @param e un coup
+	 * @return
+	 */
 	public boolean addMove( Coup e )
 	{
 		return listOfMove.add( e );
 	}
+ 
 
 	/**
-	 * @return the listOfMoveCancelled
+	 * @param i 
+	 * @return
 	 */
-	public LinkedList<Coup> getListOfMoveCancelled()
-	{
-		return listOfMoveCancelled;
-	}
-
 	public JoueurAbstract getJoueur( int i )
 	{
 		return this.listOfPlayer.get( i );
 	}
 
-	/**
-	 * @param listOfMoveCancelled
-	 *            the listOfMoveCancelled to set
-	 */
-	public void setListOfMoveCancelled( LinkedList<Coup> listOfMoveCancelled )
-	{
-		this.listOfMoveCancelled = listOfMoveCancelled;
-	}
+ 
 
 	/**
 	 * met en forme la liste des coups joués pour posseder une syntaxe comme
@@ -766,37 +805,56 @@ public class Partie
 		}
 		return msg;
 	}
-	
+	/**
+	 * @return
+	 */
 	public int getCpt_sans_prise()
 	{
 		return cpt_sans_prise;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public void upCpt_sans_prise()
 	{
 		this.cpt_sans_prise++;
 	}
 
+	/**
+	 * @return
+	 */
 	public void setCpt_sans_prise()
 	{
 		this.cpt_sans_prise = 0;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public void downCpt_sans_prise()
 	{
 		this.cpt_sans_prise--;
 	}
 	
+	/**
+	 * @return
+	 */
 	public void setCptSansMvmtPion()
 	{
 		this.cptSansMvmtPion=0;
 	}
-	
+	/**
+	 * @return
+	 */
 	public void upCptSansMvmtPion()
 	{
 		this.cptSansMvmtPion++;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public JoueurAbstract getPlayerEnCours()
 	{
 		return playerEnCours;
@@ -815,12 +873,18 @@ public class Partie
 		else
 			this.playerEnCours = listOfPlayer.getFirst();
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public LinkedList<JoueurAbstract> getListOfPlayer()
 	{
 		return listOfPlayer;
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public LinkedList<Coup> getListOfMove()
 	{
 		return listOfMove;

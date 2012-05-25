@@ -8,18 +8,31 @@ import fr.miblack.chess.Coup;
 import fr.miblack.chess.Partie;
 import fr.miblack.chess.affichage.Interface;
 import fr.miblack.chess.color.Couleur;
-
+/**
+ * @author mi-black
+ */
 public class JoueurOrdinateur extends JoueurAbstract
 {
 
 	private int	niveau;
 
+	/**
+	 * @param p1
+	 * @param a couleur
+	 * @param monInterface
+	 */
 	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface ) 
 	{
 		super( p1, a, monInterface );
 		type = "Ordinateur";
 	}
-
+	
+	/**
+	 * @param p1
+	 * @param a
+	 * @param monInterface
+	 * @param niveau
+	 */
 	public JoueurOrdinateur( String p1, Couleur a, Interface monInterface,int niveau ) 
 	{
 		super( p1, a, monInterface );
@@ -67,9 +80,9 @@ public class JoueurOrdinateur extends JoueurAbstract
 	}
 
 	/**
-	 * IA de niveau 1 , selection aleatoire
-	 * @param a , la partie
+	 * @param a :la partie
 	 * @return un coup aleatoire parmis la liste de coup jouable
+	 * IA de niveau 1 , selection aleatoire
 	 */
 	public Coup selectionCoupAleatoire( Partie a )
 	{
@@ -95,11 +108,17 @@ public class JoueurOrdinateur extends JoueurAbstract
 		throw new RuntimeException( "Plus de coups possible !" );
 	}
 
+	/**
+	 * @return
+	 */
 	public int getNiveau()
 	{
 		return niveau;
 	}
 
+	/**
+	 * @param niveau
+	 */
 	public void setNiveau( int niveau )
 	{
 		this.niveau = niveau;

@@ -8,8 +8,16 @@ import fr.miblack.chess.color.Couleur;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.interfaceDeplacement.Diagonale;
 
+/**
+ * @author mi-black
+ */
 public class Fou extends Piece implements Diagonale
 {
+	/**
+	 * @param color
+	 * @param pos
+	 * @param valeur
+	 */
 	public Fou( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
 	}
@@ -56,6 +64,11 @@ public class Fou extends Piece implements Diagonale
 		return myList;
 	}
 
+	/**
+	 * @param a au dessus ou au dessous
+	 * @param chess
+	 * @return
+	 */
 	public LinkedList<Position> diagonaleDrt( int a, Echiquier chess )
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -86,7 +99,11 @@ public class Fou extends Piece implements Diagonale
 		}
 		return myList;
 	}
-
+	/**
+	 * @param a au dessus ou au dessous
+	 * @param chess
+	 * @return
+	 */
 	public LinkedList<Position> diagonaleGch( int a, Echiquier chess )
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -133,6 +150,9 @@ public class Fou extends Piece implements Diagonale
 		return myList;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -146,7 +166,10 @@ public class Fou extends Piece implements Diagonale
 	{
 		return "F";
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public Piece clone()
 	{
 		Fou maPiece = new Fou( this.getColor(), this.getPos(), this.getValeur() );

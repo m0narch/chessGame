@@ -8,9 +8,17 @@ import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.interfaceDeplacement.Ligne;
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * @author mi-black
+ */
 public class Tour extends Piece implements Ligne
 {
 
+	/**
+	 * @param color
+	 * @param pos
+	 * @param valeur
+	 */
 	public Tour( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
 	}
@@ -55,6 +63,11 @@ public class Tour extends Piece implements Ligne
 		return myList;
 	}
 
+	/**
+	 * @param a avant ou après
+	 * @param chess 
+	 * @return
+	 */
 	public LinkedList<Position> positionAccessibleHoriz( int a, Echiquier chess )
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -106,6 +119,11 @@ public class Tour extends Piece implements Ligne
 		return myList;
 	}
 
+	/**
+	 * @param a au dessus et en dessous
+	 * @param chess
+	 * @return
+	 */
 	public LinkedList<Position> positionAccessibleVert( int a, Echiquier chess )
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -171,6 +189,9 @@ public class Tour extends Piece implements Ligne
 		return myList;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -185,6 +206,9 @@ public class Tour extends Piece implements Ligne
 		return "T";
 	}
 
+	/**
+	 * @return
+	 */
 	public Piece clone()
 	{
 		Tour maPiece = new Tour( this.getColor(), this.getPos(),

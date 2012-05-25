@@ -9,13 +9,26 @@ import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * @author mi-black
+ *
+ */
 public class Pion extends Piece
 {
 
+	/**
+	 * @param color
+	 * @param pos
+	 * @param valeur
+	 */
 	public Pion( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
 	}
 
+	/**
+	 * @param couleur
+	 * @return
+	 */
 	public LinkedList<Position> positionAccessibleCouleur( int couleur )
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
@@ -40,11 +53,16 @@ public class Pion extends Piece
 				myList.add( Position.getPosition( getX(), getY() + (2 * mult) ) );
 			} catch (Exception e)
 			{
+				e.getStackTrace();
 			}
 		}
 		return myList;
 	}
 
+	/**
+	 * @param str chaine de promotion
+	 * @return
+	 */
 	public Piece promotion( String str )
 	{
 		if ( str.equals( "F" ) )
@@ -184,6 +202,10 @@ public class Pion extends Piece
 		return myList;
 	}
 
+	/**
+	 * @param chess
+	 * @return
+	 */
 	public boolean metEnEchec( Echiquier chess )
 	{
 		boolean check = false;
@@ -230,6 +252,9 @@ public class Pion extends Piece
 		return check;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -243,7 +268,10 @@ public class Pion extends Piece
 	{
 		return "";
 	}
-
+	
+	/**
+	 * @return
+	 */
 	public Piece clone()
 	{
 		Pion maPiece = new Pion( this.getColor(), this.getPos(),

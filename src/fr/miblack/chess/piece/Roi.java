@@ -7,9 +7,17 @@ import fr.miblack.chess.Position;
 import fr.miblack.chess.Echiquier;
 import fr.miblack.chess.color.Couleur;
 
+/**
+ * @author mi-black
+ *
+ */
 public class Roi extends Piece
 {
-
+/**
+ * @param color
+ * @param pos
+ * @param valeur
+ */
 	public Roi( Couleur color, Position pos, int valeur ) {
 		super( color, pos, valeur );
 	}
@@ -17,15 +25,9 @@ public class Roi extends Piece
 	public LinkedList<Position> positionAccessible()
 	{
 		LinkedList<Position> myList = new LinkedList<Position>();
-		for ( int xx = (getX() - 1) ; xx <= (getX() + 1) ; ++xx ) /*
-																 * parcours
-																 * colonne
-																 */
+		for ( int xx = (getX() - 1) ; xx <= (getX() + 1) ; ++xx ) /*parcours colonne  */
 		{
-			for ( int yy = (getY() - 1) ; yy <= (getY() + 1) ; ++yy ) /*
-																	 * parcours
-																	 * ligne
-																	 */
+			for ( int yy = (getY() - 1) ; yy <= (getY() + 1) ; ++yy ) /*  parcours ligne */
 			{
 				if ( !((xx == getX()) && (yy == getY())) && estValide( xx )
 						&& estValide( yy ) )
@@ -66,6 +68,9 @@ public class Roi extends Piece
 		return myList;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public String toString()
 	{
@@ -80,6 +85,9 @@ public class Roi extends Piece
 		return "R";
 	}
 
+	/**
+	 * @return 
+	 */
 	public Piece clone()
 	{
 		Roi maPiece = new Roi( this.getColor(), this.getPos(), this.getValeur() );
