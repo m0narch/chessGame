@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html" title="{fr.miblack.chess.piece.Piece\n|# color\l# pos\l# valeur\l# asPlayed\l|+ Piece()\l+ getColor()\l+ setColor()\l+ getPlayed()\l+ setPlayed()\l+ unSetPlayed()\l+ setPos()\l+ setPos()\l+ getPos()\l+ getValeur()\land 11 more...\l}" alt="" coords="25,131,224,399"/>
+<area shape="rect" id="node4" href="$classCloneable.html" title="{Cloneable\n||}" alt="" coords="83,5,168,83"/>
+</map>

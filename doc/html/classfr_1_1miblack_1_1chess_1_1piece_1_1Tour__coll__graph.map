@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html" title="{fr.miblack.chess.piece.Piece\n|# valeur\l# asPlayed\l|+ Piece()\l+ getColor()\l+ setColor()\l+ getPlayed()\l+ setPlayed()\l+ unSetPlayed()\l+ setPos()\l+ setPos()\l+ getPos()\l+ getValeur()\land 11 more...\l}" alt="" coords="220,753,419,991"/>
+<area shape="rect" id="node4" href="$classCloneable.html" title="{Cloneable\n||}" alt="" coords="5,508,91,585"/>
+<area shape="rect" id="node6" href="$classfr_1_1miblack_1_1chess_1_1color_1_1Couleur.html" title="{fr.miblack.chess.color.Couleur\n|+ ANSI_RESET\l+ ANSI_BLACK\l+ ANSI_RED\l+ ANSI_GREEN\l+ ANSI_YELLOW\l+ ANSI_BLUE\l+ ANSI_PURPLE\l+ ANSI_CYAN\l+ ANSI_WHITE\l|+ Couleur()\l+ setColor()\l+ getColor()\l+ equals()\l}" alt="" coords="115,427,324,666"/>
+<area shape="rect" id="node13" href="$classfr_1_1miblack_1_1chess_1_1Position.html" title="{fr.miblack.chess.Position\n|&#45; x\l&#45; y\l|+ Position()\l+ getColor()\l+ getX()\l+ getY()\l+ setX()\l+ setY()\l+ equals()\l+ toString()\l+ toStringPos()\l+ clone()\l+ getPosition()\l+ valValide()\l+ stringToPos()\l+ listPosit()\l}" alt="" coords="455,405,633,688"/>
+<area shape="rect" id="node20" href="$interfacefr_1_1miblack_1_1chess_1_1interfaceDeplacement_1_1Ligne.html" title="{fr.miblack.chess.interface\lDeplacement.Ligne\n||+ positionLigne()\l}" alt="" coords="444,826,628,918"/>
+</map>

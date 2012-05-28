@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Interface.html" title="{fr.miblack.chess.affichage.\lInterface\n|# maPartie\l# player1\l# player2\l|+ getMaPartie()\l+ getPiecePosition()\l+ getMyChessboard()\l+ jouerCoup()\l+ affichageMenuPrincipal()\l+ affichageMenuLocale()\l+ saisieMenu()\l# menuPrincipal()\l# menuLocal()\l# menuLocal()\l}" alt="" coords="5,131,197,384"/>
+<area shape="rect" id="node4" href="$interfacefr_1_1miblack_1_1chess_1_1Jouer.html" title="{fr.miblack.chess.Jouer\n||+ jouerCoup()\l}" alt="" coords="21,5,180,83"/>
+</map>

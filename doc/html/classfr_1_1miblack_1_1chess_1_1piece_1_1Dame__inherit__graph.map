@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html" title="{fr.miblack.chess.piece.Piece\n|# color\l# pos\l# valeur\l# asPlayed\l|+ Piece()\l+ getColor()\l+ setColor()\l+ getPlayed()\l+ setPlayed()\l+ unSetPlayed()\l+ setPos()\l+ setPos()\l+ getPos()\l+ getValeur()\land 11 more...\l}" alt="" coords="4,131,203,399"/>
+<area shape="rect" id="node4" href="$classCloneable.html" title="{Cloneable\n||}" alt="" coords="61,5,147,83"/>
+<area shape="rect" id="node6" href="$interfacefr_1_1miblack_1_1chess_1_1interfaceDeplacement_1_1Diagonale.html" title="{fr.miblack.chess.interface\lDeplacement.Diagonale\n||+ positionDiagonale()\l}" alt="" coords="228,219,412,311"/>
+<area shape="rect" id="node8" href="$interfacefr_1_1miblack_1_1chess_1_1interfaceDeplacement_1_1Ligne.html" title="{fr.miblack.chess.interface\lDeplacement.Ligne\n||+ positionLigne()\l}" alt="" coords="436,219,620,311"/>
+</map>

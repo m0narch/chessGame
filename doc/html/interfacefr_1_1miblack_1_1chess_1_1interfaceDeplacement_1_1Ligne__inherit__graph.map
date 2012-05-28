@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Dame.html" title="{fr.miblack.chess.piece.Dame\n|&#45; tour\l&#45; fou\l|+ Dame()\l+ positionAccessible()\l+ positionAccessibleChessboard()\l+ whatCanIEat()\l+ positionDiagonale()\l+ positionLigne()\l+ toString()\l+ getNom()\l+ clone()\l}" alt="" coords="5,147,245,357"/>
+<area shape="rect" id="node5" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Tour.html" title="{fr.miblack.chess.piece.Tour\n||+ Tour()\l+ positionAccessible()\l+ positionLigne()\l+ positionAccessibleChessboard()\l+ positionAccessibleHoriz()\l+ positionAccessibleVert()\l+ whatCanIEat()\l+ toString()\l+ getNom()\l+ clone()\l}" alt="" coords="269,147,509,357"/>
+</map>

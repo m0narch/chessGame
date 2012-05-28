@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurHumain.html" title="{fr.miblack.chess.joueurs.\lJoueurHumain\n||+ JoueurHumain()\l+ getName()\l+ setName()\l+ jouerCoup()\l}" alt="" coords="5,507,184,643"/>
+<area shape="rect" id="node7" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurOrdinateur.html" title="{fr.miblack.chess.joueurs.\lJoueurOrdinateur\n|&#45; niveau\l|+ JoueurOrdinateur()\l+ JoueurOrdinateur()\l+ getName()\l+ setName()\l+ jouerCoup()\l+ selectionCoupAleatoire()\l+ getNiveau()\l+ setNiveau()\l}" alt="" coords="208,477,403,672"/>
+<area shape="rect" id="node2" href="$interfacefr_1_1miblack_1_1chess_1_1Jouer.html" title="{fr.miblack.chess.Jouer\n||+ jouerCoup()\l}" alt="" coords="120,5,279,83"/>
+</map>

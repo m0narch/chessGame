@@ -1,0 +1,259 @@
+\section{fr.\-miblack.\-chess.\-Position Class Reference}
+\label{classfr_1_1miblack_1_1chess_1_1Position}\index{fr.\-miblack.\-chess.\-Position@{fr.\-miblack.\-chess.\-Position}}
+
+
+Collaboration diagram for fr.\-miblack.\-chess.\-Position\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{classfr_1_1miblack_1_1chess_1_1Position__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Position} (int {\bf x}, int {\bf y})
+\item 
+int {\bf get\-Color} ()
+\item 
+int {\bf get\-X} ()
+\item 
+int {\bf get\-Y} ()
+\item 
+void {\bf set\-X} (int {\bf x})
+\item 
+void {\bf set\-Y} (int {\bf y})
+\item 
+boolean {\bf equals} ({\bf Position} pos)
+\item 
+String {\bf to\-String} ()
+\item 
+String {\bf to\-String\-Pos} ()
+\item 
+{\bf Position} {\bf clone} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf Position} {\bf get\-Position} (int {\bf x}, int {\bf y})
+\item 
+static boolean {\bf val\-Valide} (int a)
+\item 
+static {\bf Position} {\bf string\-To\-Pos} (String pos)
+\item 
+static Linked\-List$<$ {\bf Position} $>$ {\bf list\-Posit} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bf x}
+\item 
+int {\bf y}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Linked\-List$<$ {\bf Position} $>$ {\bf list\-Pos} = new Linked\-List$<${\bf Position}$>$()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Une position est consitué d'un x et d'un y \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!Position@{Position}}
+\index{Position@{Position}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{Position}]{\setlength{\rightskip}{0pt plus 5cm}fr.\-miblack.\-chess.\-Position.\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a6514886f36a1df66a40e32206b9f79c3}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!clone@{clone}}
+\index{clone@{clone}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} fr.\-miblack.\-chess.\-Position.\-clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a902970b0770548326225ff2fa4cc38ff}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!equals@{equals}}
+\index{equals@{equals}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Position.\-equals (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{pos}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a7094a3453cb88d76d010800c74abf8b8}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!get\-Color@{get\-Color}}
+\index{get\-Color@{get\-Color}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{get\-Color}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Position.\-get\-Color (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_afdc733da38581f0def274843362b8775}
+\begin{DoxyReturn}{Returns}
+la couleur d'une position (0 ou 1) 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Position} fr.\-miblack.\-chess.\-Position.\-get\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a10c462c32e918cfdd8a4f3daaa48f53c}
+Fly weight 
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new Pos O\-U pos déjà existante 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!get\-X@{get\-X}}
+\index{get\-X@{get\-X}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Position.\-get\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_af16ee79dc63b76cd2260e5c42a4db8c1}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!get\-Y@{get\-Y}}
+\index{get\-Y@{get\-Y}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Position.\-get\-Y (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a5b6fe6685e7ee195bb072f418cfc5cc9}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!list\-Posit@{list\-Posit}}
+\index{list\-Posit@{list\-Posit}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{list\-Posit}]{\setlength{\rightskip}{0pt plus 5cm}static Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-Position.\-list\-Posit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a966c06c686030c93205e9d1da686903c}
+\begin{DoxyReturn}{Returns}
+la liste des positions 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!set\-X@{set\-X}}
+\index{set\-X@{set\-X}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{set\-X}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Position.\-set\-X (
+\begin{DoxyParamCaption}
+\item[{int}]{x}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a1d05bbfd5db8b338545ead0a6a9b49a7}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!set\-Y@{set\-Y}}
+\index{set\-Y@{set\-Y}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{set\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Position.\-set\-Y (
+\begin{DoxyParamCaption}
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a5329284c5a0421535f2bf04244a48048}
+
+\begin{DoxyParams}{Parameters}
+{\em y} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!string\-To\-Pos@{string\-To\-Pos}}
+\index{string\-To\-Pos@{string\-To\-Pos}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{string\-To\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Position} fr.\-miblack.\-chess.\-Position.\-string\-To\-Pos (
+\begin{DoxyParamCaption}
+\item[{String}]{pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a1b5984f9a313ac741ff740b432196f47}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la position equivalante a la chaine passee 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-Position.\-to\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a0610d0d0830d94a03887303c9edef19d}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!to\-String\-Pos@{to\-String\-Pos}}
+\index{to\-String\-Pos@{to\-String\-Pos}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{to\-String\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-Position.\-to\-String\-Pos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Position_a1ed78d1d48c962a5261257e4c49cfe3a}
+\begin{DoxyReturn}{Returns}
+chaine , 00 =$>$ a1 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!val\-Valide@{val\-Valide}}
+\index{val\-Valide@{val\-Valide}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{val\-Valide}]{\setlength{\rightskip}{0pt plus 5cm}static boolean fr.\-miblack.\-chess.\-Position.\-val\-Valide (
+\begin{DoxyParamCaption}
+\item[{int}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a81852eae590f3d87038794b53e88e59d}
+
+\begin{DoxyParams}{Parameters}
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a$>$=0 \&\& a$<$8 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!list\-Pos@{list\-Pos}}
+\index{list\-Pos@{list\-Pos}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{list\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Position}$>$ fr.\-miblack.\-chess.\-Position.\-list\-Pos = new Linked\-List$<${\bf Position}$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a2969a21255714dbb7ebcacb104b4a86c}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!x@{x}}
+\index{x@{x}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Position.\-x\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a1479cde5381c4b42e7efeeff29d33645}
+\index{fr\-::miblack\-::chess\-::\-Position@{fr\-::miblack\-::chess\-::\-Position}!y@{y}}
+\index{y@{y}!fr::miblack::chess::Position@{fr\-::miblack\-::chess\-::\-Position}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Position.\-y\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Position_a58e2521bb0bd5fb9163418ce7b0e400f}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+fr/miblack/chess/{\bf Position.\-java}\end{DoxyCompactItemize}

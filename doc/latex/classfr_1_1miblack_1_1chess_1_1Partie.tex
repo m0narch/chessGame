@@ -1,0 +1,602 @@
+\section{fr.\-miblack.\-chess.\-Partie Class Reference}
+\label{classfr_1_1miblack_1_1chess_1_1Partie}\index{fr.\-miblack.\-chess.\-Partie@{fr.\-miblack.\-chess.\-Partie}}
+
+
+Collaboration diagram for fr.\-miblack.\-chess.\-Partie\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classfr_1_1miblack_1_1chess_1_1Partie__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Partie} ({\bf Joueur\-Abstract} player1, {\bf Joueur\-Abstract} player2)
+\item 
+{\bf Partie} {\bf clone} ()
+\item 
+{\bf Echiquier} {\bf get\-My\-Chessboard} ()
+\item 
+boolean {\bf est\-Pat} ({\bf Joueur\-Abstract} p)
+\item 
+boolean {\bf est\-En\-Echec} ({\bf Position} la\-Pos)
+\item 
+void {\bf set\-List\-Of\-Move} (Linked\-List$<$ {\bf Coup} $>$ {\bf list\-Of\-Move})
+\item 
+boolean {\bf sera\-En\-Echec} ({\bf Position} la\-Pos\-D, {\bf Position} la\-Pos\-A)
+\item 
+{\bf Position} {\bf get\-Pos\-Roi} ()
+\item 
+{\bf Position} {\bf get\-Pos\-Tour} (boolean petit\-Roque)
+\item 
+boolean {\bf trajet\-Libre} ({\bf Echiquier} chess, {\bf Position} Roi, boolean petit\-Roque)
+\item 
+boolean {\bf petit\-Roque\-Possible} ({\bf Echiquier} chess)
+\item 
+boolean {\bf grand\-Roque\-Possible} ({\bf Echiquier} chess)
+\item 
+boolean {\bf promotion\-Possible} ()
+\item 
+void {\bf realiser\-Coup} ({\bf Coup} m)
+\item 
+boolean {\bf est\-En\-Echec} ({\bf Joueur\-Abstract} p)
+\item 
+boolean {\bf est\-Echec\-Et\-Mat} ({\bf Joueur\-Abstract} p)
+\item 
+boolean {\bf is\-Draw} ()
+\item 
+void {\bf save\-Game} (String path\-Of\-File)
+\item 
+void {\bf load\-Game} (String path\-Of\-File, {\bf Interface} mon\-Interface)
+\item 
+Linked\-List$<$ {\bf Coup} $>$ {\bf list\-Of\-Available\-Move} ({\bf Joueur\-Abstract} p)
+\item 
+void {\bf init\-Positions} ()
+\item 
+void {\bf lets\-Play} ({\bf Joueur\-Abstract} joueur1)
+\item 
+boolean {\bf add\-Move} ({\bf Coup} e)
+\item 
+{\bf Joueur\-Abstract} {\bf get\-Joueur} (int i)
+\item 
+String {\bf mise\-En\-Forme\-List\-Coup} ()
+\item 
+int {\bf get\-Cpt\-\_\-sans\-\_\-prise} ()
+\item 
+void {\bf up\-Cpt\-\_\-sans\-\_\-prise} ()
+\item 
+void {\bf set\-Cpt\-\_\-sans\-\_\-prise} ()
+\item 
+void {\bf down\-Cpt\-\_\-sans\-\_\-prise} ()
+\item 
+void {\bf set\-Cpt\-Sans\-Mvmt\-Pion} ()
+\item 
+void {\bf up\-Cpt\-Sans\-Mvmt\-Pion} ()
+\item 
+{\bf Joueur\-Abstract} {\bf get\-Player\-En\-Cours} ()
+\item 
+void {\bf set\-Player\-En\-Cours} ()
+\item 
+Linked\-List$<$ {\bf Joueur\-Abstract} $>$ {\bf get\-List\-Of\-Player} ()
+\item 
+Linked\-List$<$ {\bf Coup} $>$ {\bf get\-List\-Of\-Move} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Linked\-List$<$ {\bf Coup} $>$ {\bf list\-Of\-Move} = new Linked\-List$<${\bf Coup}$>$()
+\item 
+Linked\-List$<$ {\bf Joueur\-Abstract} $>$ {\bf list\-Of\-Player} = new Linked\-List$<${\bf Joueur\-Abstract}$>$()
+\item 
+{\bf Joueur\-Abstract} {\bf player\-En\-Cours}
+\item 
+int {\bf cpt\-\_\-sans\-\_\-prise} = 0
+\item 
+int {\bf cpt\-Sans\-Mvmt\-Pion} = 0
+\item 
+{\bf Echiquier} {\bf my\-Chessboard} = new {\bf Echiquier}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+mi-\/black Une partie est définie par ... list\-Of\-Move \-:une liste de coup list\-Of\-Player \-: une liste de joueurs player\-En\-Cours \-: le joueur qui possède la main cpt\-\_\-sans\-\_\-prise \-: le nbre de coup sans 1 prise de piece cpt\-Sans\-Mvmt\-Pion \-: le nbre de coup dans déplacer un pion my\-Chessboard \-: l'echiquier sur lequel se base la partie 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!Partie@{Partie}}
+\index{Partie@{Partie}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{Partie}]{\setlength{\rightskip}{0pt plus 5cm}fr.\-miblack.\-chess.\-Partie.\-Partie (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{player1, }
+\item[{{\bf Joueur\-Abstract}}]{player2}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aae0ab79f06e9db0beeabb34b8b0b9274}
+Constructeur de partie 
+\begin{DoxyParams}{Parameters}
+{\em player1} & \\
+\hline
+{\em player2} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!add\-Move@{add\-Move}}
+\index{add\-Move@{add\-Move}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{add\-Move}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-add\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{e}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a0260b2175f3ff632058ed93b8a44318c}
+
+\begin{DoxyParams}{Parameters}
+{\em e} & un coup \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!clone@{clone}}
+\index{clone@{clone}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Partie} fr.\-miblack.\-chess.\-Partie.\-clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a614f741d4b077fa6fc9212df602c8089}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!down\-Cpt\-\_\-sans\-\_\-prise@{down\-Cpt\-\_\-sans\-\_\-prise}}
+\index{down\-Cpt\-\_\-sans\-\_\-prise@{down\-Cpt\-\_\-sans\-\_\-prise}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{down\-Cpt\-\_\-sans\-\_\-prise}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-down\-Cpt\-\_\-sans\-\_\-prise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_ad6a84f7041546f8fa42d459e96f9d524}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!est\-Echec\-Et\-Mat@{est\-Echec\-Et\-Mat}}
+\index{est\-Echec\-Et\-Mat@{est\-Echec\-Et\-Mat}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{est\-Echec\-Et\-Mat}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-est\-Echec\-Et\-Mat (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{p}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_ae81041ee017051a6172035d38a681690}
+\begin{DoxyAuthor}{Author}
+mi-\/black Cette fonction vérifie pour chaque piece si son déplacement mettera le joueur p en Echec , si c'est le cas pour tout les coups alors p est mat 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & le joueur à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si le joueur p est réelement Echecs \& mat 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!est\-En\-Echec@{est\-En\-Echec}}
+\index{est\-En\-Echec@{est\-En\-Echec}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{est\-En\-Echec}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-est\-En\-Echec (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{la\-Pos}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aeb8236bf742e1bc190caee47081ea146}
+
+\begin{DoxyParams}{Parameters}
+{\em la\-Pos} & la pos ou se de placer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si on est en Echecs à la\-Pos 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!est\-En\-Echec@{est\-En\-Echec}}
+\index{est\-En\-Echec@{est\-En\-Echec}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{est\-En\-Echec}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-est\-En\-Echec (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{p}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aa5c237b281720ebc21a3fe5d58234908}
+Cette fonction vérifie si le roi de p est dans la liste de déplacement d'une des pieces de l'adversaire \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & le joueur à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si le joueur p est en Echecs 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!est\-Pat@{est\-Pat}}
+\index{est\-Pat@{est\-Pat}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{est\-Pat}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-est\-Pat (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{p}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aec95dd8e1705acd6546a7656a0fcc3e6}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & un joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+p est pat ? 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-Cpt\-\_\-sans\-\_\-prise@{get\-Cpt\-\_\-sans\-\_\-prise}}
+\index{get\-Cpt\-\_\-sans\-\_\-prise@{get\-Cpt\-\_\-sans\-\_\-prise}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-Cpt\-\_\-sans\-\_\-prise}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Partie.\-get\-Cpt\-\_\-sans\-\_\-prise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a5d9e63c06b95ddd8b754931703dd0802}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-Joueur@{get\-Joueur}}
+\index{get\-Joueur@{get\-Joueur}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-Joueur}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Joueur\-Abstract} fr.\-miblack.\-chess.\-Partie.\-get\-Joueur (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a9ae173396bc76d15bf1cb19462e0b75c}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-List\-Of\-Move@{get\-List\-Of\-Move}}
+\index{get\-List\-Of\-Move@{get\-List\-Of\-Move}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-List\-Of\-Move}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Coup}$>$ fr.\-miblack.\-chess.\-Partie.\-get\-List\-Of\-Move (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a17c7aadcfffcfb380c2b6d78482cc31a}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-List\-Of\-Player@{get\-List\-Of\-Player}}
+\index{get\-List\-Of\-Player@{get\-List\-Of\-Player}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-List\-Of\-Player}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Joueur\-Abstract}$>$ fr.\-miblack.\-chess.\-Partie.\-get\-List\-Of\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a284bff812e7f1467f0440ac95ea9d7a9}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-My\-Chessboard@{get\-My\-Chessboard}}
+\index{get\-My\-Chessboard@{get\-My\-Chessboard}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-My\-Chessboard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Echiquier} fr.\-miblack.\-chess.\-Partie.\-get\-My\-Chessboard (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_ae03ae63661645b4bd92d050a95e9ce2b}
+\begin{DoxyReturn}{Returns}
+my\-Chessboard 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-Player\-En\-Cours@{get\-Player\-En\-Cours}}
+\index{get\-Player\-En\-Cours@{get\-Player\-En\-Cours}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-Player\-En\-Cours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Joueur\-Abstract} fr.\-miblack.\-chess.\-Partie.\-get\-Player\-En\-Cours (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a60717616379766685cf80416bd8b6ddb}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-Pos\-Roi@{get\-Pos\-Roi}}
+\index{get\-Pos\-Roi@{get\-Pos\-Roi}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-Pos\-Roi}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} fr.\-miblack.\-chess.\-Partie.\-get\-Pos\-Roi (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a9081a121faa69d7b217a8ef3aefe0764}
+\begin{DoxyReturn}{Returns}
+la position du Roi du joueur courant 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!get\-Pos\-Tour@{get\-Pos\-Tour}}
+\index{get\-Pos\-Tour@{get\-Pos\-Tour}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{get\-Pos\-Tour}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Position} fr.\-miblack.\-chess.\-Partie.\-get\-Pos\-Tour (
+\begin{DoxyParamCaption}
+\item[{boolean}]{petit\-Roque}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a800eec6aecc7e524de40344d743c3240}
+
+\begin{DoxyParams}{Parameters}
+{\em petit\-Roque} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+la position de la tour du joueur courant concernée par le roque 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!grand\-Roque\-Possible@{grand\-Roque\-Possible}}
+\index{grand\-Roque\-Possible@{grand\-Roque\-Possible}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{grand\-Roque\-Possible}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-grand\-Roque\-Possible (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a574c3a8f41cc8f17a36d401cc559b700}
+
+\begin{DoxyParams}{Parameters}
+{\em chess} & \-: l'echiquier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le grand roque est possible ? 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!init\-Positions@{init\-Positions}}
+\index{init\-Positions@{init\-Positions}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{init\-Positions}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-init\-Positions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aa59868a6a3766d85c76fbe8a65e9527a}
+Place chaque piece sur l'échiquier \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!is\-Draw@{is\-Draw}}
+\index{is\-Draw@{is\-Draw}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{is\-Draw}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-is\-Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a38650fb7d5af87daa0676c1467e93b09}
+Verifie s'il y a une partie nulle \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+draw , une partie est considérée comme nulle si cpt\-Sans\-Mvmt\-Pion ou cpt\-\_\-sans\-\_\-prise sont $>$50 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!lets\-Play@{lets\-Play}}
+\index{lets\-Play@{lets\-Play}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{lets\-Play}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-lets\-Play (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{joueur1}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a9d5461bb171d95f76f386e1226db285c}
+initialise les positions puis affecte le joueurs au blanc \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em joueur1} & le joueur jouant les blancs \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!list\-Of\-Available\-Move@{list\-Of\-Available\-Move}}
+\index{list\-Of\-Available\-Move@{list\-Of\-Available\-Move}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{list\-Of\-Available\-Move}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Coup}$>$ fr.\-miblack.\-chess.\-Partie.\-list\-Of\-Available\-Move (
+\begin{DoxyParamCaption}
+\item[{{\bf Joueur\-Abstract}}]{p}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a2055825bdb1ad2b81ea83e4a9cfd8f29}
+\begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em p} & le joueur dont on veux la liste \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Liste des coups possibles 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!load\-Game@{load\-Game}}
+\index{load\-Game@{load\-Game}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{load\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-load\-Game (
+\begin{DoxyParamCaption}
+\item[{String}]{path\-Of\-File, }
+\item[{{\bf Interface}}]{mon\-Interface}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a67fa9ce7f203402e6958ec8e6383382b}
+Cette fonction permet de charger une partie , elle reprend une partie de zéro et effectue chaque coups un par un \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em path\-Of\-File} & Le fichier à charger \\
+\hline
+{\em mon\-Interface} & L'interface à charger \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!mise\-En\-Forme\-List\-Coup@{mise\-En\-Forme\-List\-Coup}}
+\index{mise\-En\-Forme\-List\-Coup@{mise\-En\-Forme\-List\-Coup}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{mise\-En\-Forme\-List\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-Partie.\-mise\-En\-Forme\-List\-Coup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a7ee5b382b78b2b976762c791347f3d35}
+met en forme la liste des coups joués pour posseder une syntaxe comme a2-\/a4 a7-\/a5 Ta1-\/a3 \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+la liste des coups avec une syntaxe correcte 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!petit\-Roque\-Possible@{petit\-Roque\-Possible}}
+\index{petit\-Roque\-Possible@{petit\-Roque\-Possible}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{petit\-Roque\-Possible}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-petit\-Roque\-Possible (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a6ae7bfbaeccfa7790fe3dcd8c790c1a9}
+
+\begin{DoxyParams}{Parameters}
+{\em chess} & l'echiquier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Le petit roque est possible ? 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!promotion\-Possible@{promotion\-Possible}}
+\index{promotion\-Possible@{promotion\-Possible}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{promotion\-Possible}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-promotion\-Possible (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a27612ab3eb4a9b64a792357c61b5d129}
+Verifie si une promotion est possible \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!realiser\-Coup@{realiser\-Coup}}
+\index{realiser\-Coup@{realiser\-Coup}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{realiser\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-realiser\-Coup (
+\begin{DoxyParamCaption}
+\item[{{\bf Coup}}]{m}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a54371190badace613e8028e2f15e4088}
+augmente les compteurs de partie nulle puis réalise un coup sur l'échiquier et ajoute enfin le coup à la liste des coups 
+\begin{DoxyParams}{Parameters}
+{\em m} & le coup à réaliser \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!save\-Game@{save\-Game}}
+\index{save\-Game@{save\-Game}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{save\-Game}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-save\-Game (
+\begin{DoxyParamCaption}
+\item[{String}]{path\-Of\-File}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_ab52cf6d86b2e76e462620c09ab69adbb}
+Cette fonction permet donc d'enregistrer une partie dans un fichier texte \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+\begin{DoxyParams}{Parameters}
+{\em path\-Of\-File} & Le fichier où sauvegarder \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!sera\-En\-Echec@{sera\-En\-Echec}}
+\index{sera\-En\-Echec@{sera\-En\-Echec}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{sera\-En\-Echec}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-sera\-En\-Echec (
+\begin{DoxyParamCaption}
+\item[{{\bf Position}}]{la\-Pos\-D, }
+\item[{{\bf Position}}]{la\-Pos\-A}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a40ebcd05ee064686fc1dfe84d826e9ea}
+Verifie si l'on est en echec si l'on bouge une piece d'une pos\-D à une pos\-A 
+\begin{DoxyParams}{Parameters}
+{\em la\-Pos\-D} & \\
+\hline
+{\em la\-Pos\-A} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+si pos\-D se libere et que la piece va en pos\-A , y aura echec ? 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!set\-Cpt\-\_\-sans\-\_\-prise@{set\-Cpt\-\_\-sans\-\_\-prise}}
+\index{set\-Cpt\-\_\-sans\-\_\-prise@{set\-Cpt\-\_\-sans\-\_\-prise}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{set\-Cpt\-\_\-sans\-\_\-prise}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-set\-Cpt\-\_\-sans\-\_\-prise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a75c7c35eb2d94d8793644670b7ac4f38}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!set\-Cpt\-Sans\-Mvmt\-Pion@{set\-Cpt\-Sans\-Mvmt\-Pion}}
+\index{set\-Cpt\-Sans\-Mvmt\-Pion@{set\-Cpt\-Sans\-Mvmt\-Pion}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{set\-Cpt\-Sans\-Mvmt\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-set\-Cpt\-Sans\-Mvmt\-Pion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a805df7c45719eb765e1ca3f3addcfac1}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!set\-List\-Of\-Move@{set\-List\-Of\-Move}}
+\index{set\-List\-Of\-Move@{set\-List\-Of\-Move}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{set\-List\-Of\-Move}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-set\-List\-Of\-Move (
+\begin{DoxyParamCaption}
+\item[{Linked\-List$<$ {\bf Coup} $>$}]{list\-Of\-Move}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a56b250bd48deeddcfbd0c993dfc6b22f}
+
+\begin{DoxyParams}{Parameters}
+{\em list\-Of\-Move} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!set\-Player\-En\-Cours@{set\-Player\-En\-Cours}}
+\index{set\-Player\-En\-Cours@{set\-Player\-En\-Cours}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{set\-Player\-En\-Cours}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-set\-Player\-En\-Cours (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a7bce7c2629ff6fe43042d2510bac653f}
+Change le joueur en cours \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!trajet\-Libre@{trajet\-Libre}}
+\index{trajet\-Libre@{trajet\-Libre}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{trajet\-Libre}]{\setlength{\rightskip}{0pt plus 5cm}boolean fr.\-miblack.\-chess.\-Partie.\-trajet\-Libre (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier}}]{chess, }
+\item[{{\bf Position}}]{Roi, }
+\item[{boolean}]{petit\-Roque}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aa851c80dc1f060fe6c8e15f60bdd33d1}
+
+\begin{DoxyParams}{Parameters}
+{\em chess} & \-: l'echiquier \\
+\hline
+{\em Roi} & la position du roi \\
+\hline
+{\em petit\-Roque} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Si le trajet est possible entre le roi et le petit(ou grand) roque 
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!up\-Cpt\-\_\-sans\-\_\-prise@{up\-Cpt\-\_\-sans\-\_\-prise}}
+\index{up\-Cpt\-\_\-sans\-\_\-prise@{up\-Cpt\-\_\-sans\-\_\-prise}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{up\-Cpt\-\_\-sans\-\_\-prise}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-up\-Cpt\-\_\-sans\-\_\-prise (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_aefa51d77b5014414e456f001c49fdd13}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!up\-Cpt\-Sans\-Mvmt\-Pion@{up\-Cpt\-Sans\-Mvmt\-Pion}}
+\index{up\-Cpt\-Sans\-Mvmt\-Pion@{up\-Cpt\-Sans\-Mvmt\-Pion}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{up\-Cpt\-Sans\-Mvmt\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-Partie.\-up\-Cpt\-Sans\-Mvmt\-Pion (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1Partie_a876344260a5933bbb27384c72fb453b3}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!cpt\-\_\-sans\-\_\-prise@{cpt\-\_\-sans\-\_\-prise}}
+\index{cpt\-\_\-sans\-\_\-prise@{cpt\-\_\-sans\-\_\-prise}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{cpt\-\_\-sans\-\_\-prise}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Partie.\-cpt\-\_\-sans\-\_\-prise = 0\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_afde063107e9f9554cbff000014b8aa2d}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!cpt\-Sans\-Mvmt\-Pion@{cpt\-Sans\-Mvmt\-Pion}}
+\index{cpt\-Sans\-Mvmt\-Pion@{cpt\-Sans\-Mvmt\-Pion}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{cpt\-Sans\-Mvmt\-Pion}]{\setlength{\rightskip}{0pt plus 5cm}int fr.\-miblack.\-chess.\-Partie.\-cpt\-Sans\-Mvmt\-Pion = 0\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_a2cd20fb38f8a14403fbbb0a62b37c168}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!list\-Of\-Move@{list\-Of\-Move}}
+\index{list\-Of\-Move@{list\-Of\-Move}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{list\-Of\-Move}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Coup}$>$ fr.\-miblack.\-chess.\-Partie.\-list\-Of\-Move = new Linked\-List$<${\bf Coup}$>$()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_ac2665b4240c8cc909df293efc77911ed}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!list\-Of\-Player@{list\-Of\-Player}}
+\index{list\-Of\-Player@{list\-Of\-Player}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{list\-Of\-Player}]{\setlength{\rightskip}{0pt plus 5cm}Linked\-List$<${\bf Joueur\-Abstract}$>$ fr.\-miblack.\-chess.\-Partie.\-list\-Of\-Player = new Linked\-List$<${\bf Joueur\-Abstract}$>$()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_a370713391a70c1be0a4aaf86ac59c51d}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!my\-Chessboard@{my\-Chessboard}}
+\index{my\-Chessboard@{my\-Chessboard}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{my\-Chessboard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Echiquier} fr.\-miblack.\-chess.\-Partie.\-my\-Chessboard = new {\bf Echiquier}()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_a2b2f23904c30f1de785f81d6bcd785ff}
+\index{fr\-::miblack\-::chess\-::\-Partie@{fr\-::miblack\-::chess\-::\-Partie}!player\-En\-Cours@{player\-En\-Cours}}
+\index{player\-En\-Cours@{player\-En\-Cours}!fr::miblack::chess::Partie@{fr\-::miblack\-::chess\-::\-Partie}}
+\subsubsection[{player\-En\-Cours}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Joueur\-Abstract} fr.\-miblack.\-chess.\-Partie.\-player\-En\-Cours\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1Partie_a6a394463790440d08962247acd554185}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+fr/miblack/chess/{\bf Partie.\-java}\end{DoxyCompactItemize}

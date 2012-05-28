@@ -2,7 +2,6 @@ package fr.miblack.chess.affichage.GUI;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 import java.util.ConcurrentModificationException;
 import java.util.HashMap;
@@ -31,25 +30,25 @@ public class EchiquierGraphique extends JPanel
 		this.maPartie=maPartie;
 		try
 		{
-			fond = ImageIO.read(new File("src/images/fond.png"));
+			fond = ImageIO.read(getClass().getResource("../ressources/fond.png"));
 		} catch (IOException monExecption)
 		{
 			monExecption.printStackTrace();
 		}
 		try
 		{
-			laHashMap.put( "P", ImageIO.read(new File("src/images/P.gif" )));
-			laHashMap.put( "p", ImageIO.read(new File("src/images/p.gif" )));
-			laHashMap.put( "C", ImageIO.read(new File("src/images/C.gif" )));
-			laHashMap.put( "c", ImageIO.read(new File("src/images/c.gif" )));
-			laHashMap.put( "R", ImageIO.read(new File("src/images/R.gif" )));
-			laHashMap.put( "r", ImageIO.read(new File("src/images/r.gif" )));
-			laHashMap.put( "T", ImageIO.read(new File("src/images/T.gif" )));
-			laHashMap.put( "t", ImageIO.read(new File("src/images/t.gif" )));
-			laHashMap.put( "F", ImageIO.read(new File("src/images/F.gif" )));
-			laHashMap.put( "f", ImageIO.read(new File("src/images/f.gif" )));
-			laHashMap.put( "D", ImageIO.read(new File("src/images/D.gif" )));
-			laHashMap.put( "d", ImageIO.read(new File("src/images/d.gif" )));
+			laHashMap.put( "P", ImageIO.read(getClass().getResource("../ressources/P.gif" )));
+			laHashMap.put( "p", ImageIO.read(getClass().getResource("../ressources/p.gif" )));
+			laHashMap.put( "C", ImageIO.read(getClass().getResource("../ressources/C.gif" )));
+			laHashMap.put( "c", ImageIO.read(getClass().getResource("../ressources/c.gif" )));
+			laHashMap.put( "R", ImageIO.read(getClass().getResource("../ressources/R.gif" )));
+			laHashMap.put( "r", ImageIO.read(getClass().getResource("../ressources/r.gif" )));
+			laHashMap.put( "T", ImageIO.read(getClass().getResource("../ressources/T.gif" )));
+			laHashMap.put( "t", ImageIO.read(getClass().getResource("../ressources/t.gif" )));
+			laHashMap.put( "F", ImageIO.read(getClass().getResource("../ressources/F.gif" )));
+			laHashMap.put( "f", ImageIO.read(getClass().getResource("../ressources/f.gif" )));
+			laHashMap.put( "D", ImageIO.read(getClass().getResource("../ressources/D.gif" )));
+			laHashMap.put( "d", ImageIO.read(getClass().getResource("../ressources/d.gif" )));
 			
 		}
 		catch (IOException monExecption)
@@ -69,8 +68,8 @@ public class EchiquierGraphique extends JPanel
     	String chaine = null;
     	try
 		{
-			imgN = ImageIO.read(new File("src/images/caseN.png"));
-			imgB = ImageIO.read(new File("src/images/caseB.png"));
+			imgN = ImageIO.read(getClass().getResource("../ressources/caseN.png"));
+			imgB = ImageIO.read(getClass().getResource("../ressources/caseB.png"));
 		} catch (IOException monExecption)
 		{
 			monExecption.printStackTrace();

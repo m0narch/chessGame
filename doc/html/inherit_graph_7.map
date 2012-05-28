@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$classCloneable.html" title="Cloneable" alt="" coords="5,135,91,161"/>
+<area shape="rect" id="node3" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html" title="fr.miblack.chess.piece.Piece" alt="" coords="139,135,339,161"/>
+<area shape="rect" id="node5" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Cavalier.html" title="fr.miblack.chess.piece.Cavalier" alt="" coords="387,56,605,83"/>
+<area shape="rect" id="node7" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Dame.html" title="fr.miblack.chess.piece.Dame" alt="" coords="393,107,599,133"/>
+<area shape="rect" id="node9" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Fou.html" title="fr.miblack.chess.piece.Fou" alt="" coords="401,5,591,32"/>
+<area shape="rect" id="node11" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Pion.html" title="fr.miblack.chess.piece.Pion" alt="" coords="399,157,593,184"/>
+<area shape="rect" id="node13" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Roi.html" title="fr.miblack.chess.piece.Roi" alt="" coords="404,208,588,235"/>
+<area shape="rect" id="node15" href="$classfr_1_1miblack_1_1chess_1_1piece_1_1Tour.html" title="fr.miblack.chess.piece.Tour" alt="" coords="400,259,592,285"/>
+<area shape="rect" id="node16" href="$interfacefr_1_1miblack_1_1chess_1_1interfaceDeplacement_1_1Diagonale.html" title="fr.miblack.chess.interface\lDeplacement.Diagonale" alt="" coords="147,22,331,63"/>
+<area shape="rect" id="node19" href="$interfacefr_1_1miblack_1_1chess_1_1interfaceDeplacement_1_1Ligne.html" title="fr.miblack.chess.interface\lDeplacement.Ligne" alt="" coords="147,207,331,249"/>
+</map>

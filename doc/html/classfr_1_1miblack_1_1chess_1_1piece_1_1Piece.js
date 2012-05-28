@@ -1,0 +1,28 @@
+var classfr_1_1miblack_1_1chess_1_1piece_1_1Piece =
+[
+    [ "Piece", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a599465960a009ce31e418d1fd8dc6701", null ],
+    [ "equals", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a2734fcebeb40ed0bd2960264330c13d9", null ],
+    [ "estValide", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ab76e28fdddb07543b0142450ca865b6d", null ],
+    [ "getColor", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#af4b9ae158c7008c6f6c295d1ed3e128f", null ],
+    [ "getCoupPossible", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ace5ed8c4d7f922076255d5aa0733e51e", null ],
+    [ "getNom", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a68bb44429e21b7f64511a91a0861dde4", null ],
+    [ "getPlayed", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#aa0a7d12150182ab9ca0e5f18542d68b4", null ],
+    [ "getPos", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a0332d6385641e98c16cf7775be3a621e", null ],
+    [ "getValeur", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ab46c5a8d83657fc3494caa0dff079673", null ],
+    [ "getX", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#aa4f681128cf40c505c341647e58e2db9", null ],
+    [ "getY", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#aba2fd4b64da2ee4a1fdd323901f383ea", null ],
+    [ "positionAccessible", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ad5cdbd635ec706f16d57dccf1b8c456e", null ],
+    [ "positionAccessibleChessboard", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ac1222bad9bf13533eecec2b8d99e24c6", null ],
+    [ "setColor", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a7185598e9dbdc51c08c08eb6fecd432e", null ],
+    [ "setPlayed", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#af2e2bce56fe5bf4938732fcf23572bb8", null ],
+    [ "setPos", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a830a6927a549ae1dcf6119a23c6bfdb4", null ],
+    [ "setPos", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a2a2d8b8bd0c09465dbff5585d4f6dd8d", null ],
+    [ "unSetPlayed", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#aeec8104ea8b99ca552eea26f14027e5d", null ],
+    [ "verifColor", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a3e06a0d17e50f5dd93d1181e9b4adb88", null ],
+    [ "verifColor", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#ad6468e239db7ecca3a2adfc0fc5b65d1", null ],
+    [ "whatCanIEat", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#af18b3bc007e0e50740de39142a5b2919", null ],
+    [ "asPlayed", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#af3a44be13ac4d888f1f24ae361c981c6", null ],
+    [ "color", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#aabdd39757e8ce5efc3b596a77893fdb6", null ],
+    [ "pos", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a68a76e5920409049dcaff5780c5e1e26", null ],
+    [ "valeur", "classfr_1_1miblack_1_1chess_1_1piece_1_1Piece.html#a49a7c029623471a3544adbb5cc05de4c", null ]
+];

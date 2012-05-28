@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurAbstract.html" title="{fr.miblack.chess.joueurs.\lJoueurAbstract\n|# name\l# color\l# monInterface\l# type\l|+ getName()\l+ setName()\l+ getType()\l+ setType()\l+ getColor()\l+ JoueurAbstract()\l+ JoueurAbstract()\l+ toString()\l+ equals()\l+ jouerCoup()\l+ getMyInterface()\l+ setMyInterface()\l}" alt="" coords="5,131,184,429"/>
+<area shape="rect" id="node4" href="$interfacefr_1_1miblack_1_1chess_1_1Jouer.html" title="{fr.miblack.chess.Jouer\n||+ jouerCoup()\l}" alt="" coords="15,5,173,83"/>
+</map>

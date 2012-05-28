@@ -1,0 +1,589 @@
+\section{fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre Class Reference}
+\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre}\index{fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre@{fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre}}
+
+
+Inheritance diagram for fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Afficher\-Astuce}
+\item 
+class {\bfseries Bouton\-Listener}
+\item 
+class {\bfseries Charger\-Partie}
+\item 
+class {\bfseries Clavier\-Listener}
+\item 
+class {\bfseries Sauvegarder\-Partie}
+\item 
+class {\bfseries Text\-Panel}
+\item 
+class {\bfseries Text\-Panel2}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Fenetre} ({\bf Partie} ma\-Partie)
+\item 
+void {\bf initialiser\-Fenetre} ()
+\item 
+{\bf Echiquier\-Graphique} {\bf get\-Mon\-Echiquier} ()
+\item 
+void {\bf set\-Mon\-Echiquier} ({\bf Echiquier\-Graphique} {\bf mon\-Echiquier})
+\item 
+J\-Text\-Area {\bf get\-Zone\-Saisie} ()
+\item 
+void {\bf set\-Zone\-Saisie} (J\-Text\-Area {\bf zone\-Saisie})
+\item 
+{\bf Partie} {\bf get\-Ma\-Partie} ()
+\item 
+void {\bf set\-Ma\-Partie} ({\bf Partie} ma\-Partie)
+\item 
+J\-Panel {\bf get\-Mon\-Panel} ()
+\item 
+void {\bf set\-Mon\-Panel} (J\-Panel {\bf mon\-Panel})
+\item 
+J\-Panel {\bf get\-Sud} ()
+\item 
+void {\bf set\-Sud} (J\-Panel {\bf sud})
+\item 
+J\-Button {\bf get\-Bouton\-Send} ()
+\item 
+void {\bf set\-Bouton\-Send} (J\-Button {\bf bouton\-Send})
+\item 
+String {\bf get\-Chaine} ()
+\item 
+void {\bf set\-Chaine} (String {\bf chaine})
+\item 
+J\-Panel {\bf get\-Nord} ()
+\item 
+{\bf Panneau\-Affichage\-Joueur} {\bf get\-Panneau\-Affichage} ()
+\item 
+void {\bf set\-Panneau\-Affichage} ({\bf Panneau\-Affichage\-Joueur} {\bf panneau\-Affichage})
+\item 
+void {\bf set\-Nord} (J\-Panel {\bf nord})
+\item 
+J\-Panel {\bf get\-Est} ()
+\item 
+void {\bf set\-Est} (J\-Panel {\bf est})
+\item 
+J\-Menu\-Item {\bf get\-Save} ()
+\item 
+void {\bf set\-Save} (J\-Menu\-Item {\bf save})
+\item 
+J\-Text\-Area {\bf get\-Msg} ()
+\item 
+void {\bf set\-Msg} (J\-Text\-Area {\bf msg})
+\item 
+J\-Text\-Area {\bf get\-Txt} ()
+\item 
+void {\bf set\-Txt} (J\-Text\-Area {\bf msg})
+\item 
+{\bf Fenetre} {\bf clone} ()
+\item 
+J\-Panel {\bf get\-Ouest} ()
+\item 
+void {\bf set\-Ouest} (J\-Panel {\bf ouest})
+\item 
+Text\-Panel2 {\bf get\-Liste\-Coup\-Jouable} ()
+\item 
+void {\bf set\-Liste\-Coup\-Jouable} (Text\-Panel2 {\bf liste\-Coup\-Jouable})
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static J\-Text\-Area {\bf msg}
+\item 
+static J\-Text\-Area {\bf txt}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+J\-Text\-Area {\bf zone\-Saisie} = new J\-Text\-Area(1, 8)
+\item 
+J\-Panel {\bf mon\-Panel} = new J\-Panel( new Border\-Layout() )
+\item 
+J\-Panel {\bf sud} = new J\-Panel(new Border\-Layout())
+\item 
+J\-Panel {\bf est} = new J\-Panel(new Border\-Layout())
+\item 
+J\-Panel {\bf nord} = new J\-Panel(new Border\-Layout())
+\item 
+J\-Panel {\bf ouest} = new J\-Panel(new Border\-Layout())
+\item 
+J\-Button {\bf bouton\-Send}
+\item 
+{\bf Panneau\-Affichage\-Joueur} {\bf panneau\-Affichage}
+\item 
+J\-Menu\-Bar {\bf jmenu} = new J\-Menu\-Bar()
+\item 
+J\-Menu\-Item {\bf save} = new J\-Menu\-Item(\char`\"{}Sauvegarder\char`\"{})
+\item 
+J\-Menu\-Item {\bf load} = new J\-Menu\-Item(\char`\"{}Charger\char`\"{})
+\item 
+Text\-Panel {\bf liste\-Coup} = new Text\-Panel()
+\item 
+Text\-Panel2 {\bf liste\-Coup\-Jouable} = new Text\-Panel2()
+\item 
+{\bf Echiquier\-Graphique} {\bf mon\-Echiquier}
+\item 
+String {\bf chaine}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final long {\bf serial\-Version\-U\-I\-D} = 2097605447320723308\-L
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!Fenetre@{Fenetre}}
+\index{Fenetre@{Fenetre}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{Fenetre}]{\setlength{\rightskip}{0pt plus 5cm}fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-Fenetre (
+\begin{DoxyParamCaption}
+\item[{{\bf Partie}}]{ma\-Partie}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ac2cdb21e0c225a0765d4d2ae5869bb8c}
+
+\begin{DoxyParams}{Parameters}
+{\em ma\-Partie} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!clone@{clone}}
+\index{clone@{clone}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fenetre} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-clone (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ab6a7c3d38491135f6f3bdd19863a8508}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Bouton\-Send@{get\-Bouton\-Send}}
+\index{get\-Bouton\-Send@{get\-Bouton\-Send}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Bouton\-Send}]{\setlength{\rightskip}{0pt plus 5cm}J\-Button fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Bouton\-Send (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a030194e558cf30046313402fbf542287}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Chaine@{get\-Chaine}}
+\index{get\-Chaine@{get\-Chaine}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Chaine}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Chaine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a436bf3df28e6f6b9a121e87d932d8791}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Est@{get\-Est}}
+\index{get\-Est@{get\-Est}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Est}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Est (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a2cbbd3d5b8e12ec960a63ab9173b0202}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Liste\-Coup\-Jouable@{get\-Liste\-Coup\-Jouable}}
+\index{get\-Liste\-Coup\-Jouable@{get\-Liste\-Coup\-Jouable}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Liste\-Coup\-Jouable}]{\setlength{\rightskip}{0pt plus 5cm}Text\-Panel2 fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Liste\-Coup\-Jouable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a745b9e97b06b22585ccda7d37250a9ff}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Ma\-Partie@{get\-Ma\-Partie}}
+\index{get\-Ma\-Partie@{get\-Ma\-Partie}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Ma\-Partie}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Partie} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Ma\-Partie (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a307375f348e5961857099ba375274c21}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Mon\-Echiquier@{get\-Mon\-Echiquier}}
+\index{get\-Mon\-Echiquier@{get\-Mon\-Echiquier}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Mon\-Echiquier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Echiquier\-Graphique} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Mon\-Echiquier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a4bbee0bf22537db4545d34d3166cf9d1}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Mon\-Panel@{get\-Mon\-Panel}}
+\index{get\-Mon\-Panel@{get\-Mon\-Panel}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Mon\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Mon\-Panel (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a721c9ae9711d2f13f5d32f181097860d}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Msg@{get\-Msg}}
+\index{get\-Msg@{get\-Msg}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Msg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ae90625a1555c60851f900f8756bfdb64}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Nord@{get\-Nord}}
+\index{get\-Nord@{get\-Nord}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Nord}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Nord (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_aa376971a1a96b2d8b74602307bd88bec}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Ouest@{get\-Ouest}}
+\index{get\-Ouest@{get\-Ouest}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Ouest}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Ouest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a134520d36b0221f9dfff1ba11210b4c3}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Panneau\-Affichage@{get\-Panneau\-Affichage}}
+\index{get\-Panneau\-Affichage@{get\-Panneau\-Affichage}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Panneau\-Affichage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Panneau\-Affichage\-Joueur} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Panneau\-Affichage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a1c72a65a5828ce8da964aa2f3bb906f4}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Save@{get\-Save}}
+\index{get\-Save@{get\-Save}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Save}]{\setlength{\rightskip}{0pt plus 5cm}J\-Menu\-Item fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Save (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a52bce4be83c658dc05a37357dd10e301}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Sud@{get\-Sud}}
+\index{get\-Sud@{get\-Sud}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Sud}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Sud (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a58d69410158d707401fb4bc04e8cd74b}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Txt@{get\-Txt}}
+\index{get\-Txt@{get\-Txt}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Txt}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Txt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_af5f3d8c66ef220f21b2327ec09283389}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!get\-Zone\-Saisie@{get\-Zone\-Saisie}}
+\index{get\-Zone\-Saisie@{get\-Zone\-Saisie}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{get\-Zone\-Saisie}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-get\-Zone\-Saisie (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_add085c0ff821f3fb7cbedc81dbb8109f}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!initialiser\-Fenetre@{initialiser\-Fenetre}}
+\index{initialiser\-Fenetre@{initialiser\-Fenetre}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{initialiser\-Fenetre}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-initialiser\-Fenetre (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ac95cee170dbc0f45015804173ff9031d}
+Cette fonction initialise la fenetre pour la rendre utilisable , ajout des Listeners \& des Panels \begin{DoxyAuthor}{Author}
+mi-\/black 
+\end{DoxyAuthor}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Bouton\-Send@{set\-Bouton\-Send}}
+\index{set\-Bouton\-Send@{set\-Bouton\-Send}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Bouton\-Send}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Bouton\-Send (
+\begin{DoxyParamCaption}
+\item[{J\-Button}]{bouton\-Send}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a52216e32fd7cdf2a4ac0d1c2be270ba9}
+
+\begin{DoxyParams}{Parameters}
+{\em bouton\-Send} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Chaine@{set\-Chaine}}
+\index{set\-Chaine@{set\-Chaine}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Chaine}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Chaine (
+\begin{DoxyParamCaption}
+\item[{String}]{chaine}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a7706671ce45dcbb8bb105e2c855e9772}
+
+\begin{DoxyParams}{Parameters}
+{\em chaine} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Est@{set\-Est}}
+\index{set\-Est@{set\-Est}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Est}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Est (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{est}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_aaa7847ea2983d20890b8810ad1d512c5}
+
+\begin{DoxyParams}{Parameters}
+{\em est} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Liste\-Coup\-Jouable@{set\-Liste\-Coup\-Jouable}}
+\index{set\-Liste\-Coup\-Jouable@{set\-Liste\-Coup\-Jouable}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Liste\-Coup\-Jouable}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Liste\-Coup\-Jouable (
+\begin{DoxyParamCaption}
+\item[{Text\-Panel2}]{liste\-Coup\-Jouable}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_aaf53ffef8f3fb416a92db64803914cfe}
+
+\begin{DoxyParams}{Parameters}
+{\em liste\-Coup\-Jouable} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Ma\-Partie@{set\-Ma\-Partie}}
+\index{set\-Ma\-Partie@{set\-Ma\-Partie}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Ma\-Partie}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Ma\-Partie (
+\begin{DoxyParamCaption}
+\item[{{\bf Partie}}]{ma\-Partie}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_adf96e434921b7c54a5e7b0a746f9d999}
+
+\begin{DoxyParams}{Parameters}
+{\em ma\-Partie} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Mon\-Echiquier@{set\-Mon\-Echiquier}}
+\index{set\-Mon\-Echiquier@{set\-Mon\-Echiquier}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Mon\-Echiquier}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Mon\-Echiquier (
+\begin{DoxyParamCaption}
+\item[{{\bf Echiquier\-Graphique}}]{mon\-Echiquier}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a9d685ca78b8d7cb73c8d99aec29c4994}
+
+\begin{DoxyParams}{Parameters}
+{\em mon\-Echiquier} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Mon\-Panel@{set\-Mon\-Panel}}
+\index{set\-Mon\-Panel@{set\-Mon\-Panel}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Mon\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Mon\-Panel (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{mon\-Panel}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_aa6bc9e824c8b61abbba34cc8097fd1a6}
+
+\begin{DoxyParams}{Parameters}
+{\em mon\-Panel} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Msg@{set\-Msg}}
+\index{set\-Msg@{set\-Msg}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Msg}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Msg (
+\begin{DoxyParamCaption}
+\item[{J\-Text\-Area}]{msg}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ac5a888467abe9bd04afd4127d057d802}
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Nord@{set\-Nord}}
+\index{set\-Nord@{set\-Nord}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Nord}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Nord (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{nord}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a8fc2533438ddd070199d0821eb18cf6b}
+
+\begin{DoxyParams}{Parameters}
+{\em nord} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Ouest@{set\-Ouest}}
+\index{set\-Ouest@{set\-Ouest}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Ouest}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Ouest (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{ouest}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a3b7ad1296c8c30961ee4c9ff7d39b145}
+
+\begin{DoxyParams}{Parameters}
+{\em ouest} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Panneau\-Affichage@{set\-Panneau\-Affichage}}
+\index{set\-Panneau\-Affichage@{set\-Panneau\-Affichage}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Panneau\-Affichage}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Panneau\-Affichage (
+\begin{DoxyParamCaption}
+\item[{{\bf Panneau\-Affichage\-Joueur}}]{panneau\-Affichage}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_afd472fcf6e16120f29a1d47321ffb72c}
+
+\begin{DoxyParams}{Parameters}
+{\em panneau\-Affichage} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Save@{set\-Save}}
+\index{set\-Save@{set\-Save}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Save}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Save (
+\begin{DoxyParamCaption}
+\item[{J\-Menu\-Item}]{save}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_af94de86eae49943727db4fa0a493976c}
+
+\begin{DoxyParams}{Parameters}
+{\em save} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Sud@{set\-Sud}}
+\index{set\-Sud@{set\-Sud}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Sud}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Sud (
+\begin{DoxyParamCaption}
+\item[{J\-Panel}]{sud}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ad1551f01e347b5d5610e9505bbdb0a43}
+
+\begin{DoxyParams}{Parameters}
+{\em sud} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Txt@{set\-Txt}}
+\index{set\-Txt@{set\-Txt}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Txt}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Txt (
+\begin{DoxyParamCaption}
+\item[{J\-Text\-Area}]{msg}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a0c7102ac0715341fe16d8e77905c89d1}
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!set\-Zone\-Saisie@{set\-Zone\-Saisie}}
+\index{set\-Zone\-Saisie@{set\-Zone\-Saisie}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{set\-Zone\-Saisie}]{\setlength{\rightskip}{0pt plus 5cm}void fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-set\-Zone\-Saisie (
+\begin{DoxyParamCaption}
+\item[{J\-Text\-Area}]{zone\-Saisie}
+\end{DoxyParamCaption}
+)}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a6d4292ec8807010b8102b7ec04cb2068}
+
+\begin{DoxyParams}{Parameters}
+{\em zone\-Saisie} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!bouton\-Send@{bouton\-Send}}
+\index{bouton\-Send@{bouton\-Send}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{bouton\-Send}]{\setlength{\rightskip}{0pt plus 5cm}J\-Button fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-bouton\-Send\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ac1ab136566dc0df36b95cd430aec8f4e}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!chaine@{chaine}}
+\index{chaine@{chaine}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{chaine}]{\setlength{\rightskip}{0pt plus 5cm}String fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-chaine\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a8612bcec33001d776e64d7eaf887e6e4}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!est@{est}}
+\index{est@{est}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{est}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-est = new J\-Panel(new Border\-Layout())\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a59c467e3a38e7a1fa174215fa99abd05}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!jmenu@{jmenu}}
+\index{jmenu@{jmenu}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{jmenu}]{\setlength{\rightskip}{0pt plus 5cm}J\-Menu\-Bar fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-jmenu = new J\-Menu\-Bar()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a5f473e69e86f7b99e986ef2572a4222d}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!liste\-Coup@{liste\-Coup}}
+\index{liste\-Coup@{liste\-Coup}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{liste\-Coup}]{\setlength{\rightskip}{0pt plus 5cm}Text\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-liste\-Coup = new Text\-Panel()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_aaf4e2ac4ed3ad9e400c23e63cd362e74}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!liste\-Coup\-Jouable@{liste\-Coup\-Jouable}}
+\index{liste\-Coup\-Jouable@{liste\-Coup\-Jouable}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{liste\-Coup\-Jouable}]{\setlength{\rightskip}{0pt plus 5cm}Text\-Panel2 fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-liste\-Coup\-Jouable = new Text\-Panel2()\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_abdcdd2e38579db7d1be6e94f82d20546}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!load@{load}}
+\index{load@{load}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}J\-Menu\-Item fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-load = new J\-Menu\-Item(\char`\"{}Charger\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_af572665f3ceb9d8a40d348c7532f8a2c}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!mon\-Echiquier@{mon\-Echiquier}}
+\index{mon\-Echiquier@{mon\-Echiquier}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{mon\-Echiquier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Echiquier\-Graphique} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-mon\-Echiquier\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ade1c5c6016a59decbeb08f9fa71868a1}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!mon\-Panel@{mon\-Panel}}
+\index{mon\-Panel@{mon\-Panel}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{mon\-Panel}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-mon\-Panel = new J\-Panel( new Border\-Layout() )\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_ac16913bac1607a6eeb57b2af23a65e41}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!msg@{msg}}
+\index{msg@{msg}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{msg}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-msg\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a6bb1704c299ee15fe2f6f58296f3d054}
+le texte de la liste des coups \index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!nord@{nord}}
+\index{nord@{nord}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{nord}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-nord = new J\-Panel(new Border\-Layout())\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a941ab5ed91240e4774f0194665a65022}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!ouest@{ouest}}
+\index{ouest@{ouest}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{ouest}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-ouest = new J\-Panel(new Border\-Layout())\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a9e025cd1adbfef4595a475ba4c1a3d24}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!panneau\-Affichage@{panneau\-Affichage}}
+\index{panneau\-Affichage@{panneau\-Affichage}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{panneau\-Affichage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Panneau\-Affichage\-Joueur} fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-panneau\-Affichage\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a58a6bf259a9dfe4e69e7141359d32ab2}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!save@{save}}
+\index{save@{save}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{save}]{\setlength{\rightskip}{0pt plus 5cm}J\-Menu\-Item fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-save = new J\-Menu\-Item(\char`\"{}Sauvegarder\char`\"{})\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a534ab15086f70ae95657dd89b41f1960}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!serial\-Version\-U\-I\-D@{serial\-Version\-U\-I\-D}}
+\index{serial\-Version\-U\-I\-D@{serial\-Version\-U\-I\-D}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{serial\-Version\-U\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}final long fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-serial\-Version\-U\-I\-D = 2097605447320723308\-L\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a352099d39f5a44bbb065a5be6c0df321}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!sud@{sud}}
+\index{sud@{sud}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{sud}]{\setlength{\rightskip}{0pt plus 5cm}J\-Panel fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-sud = new J\-Panel(new Border\-Layout())\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_a83e7c97fd8455e9e11557f64406be39e}
+\index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!txt@{txt}}
+\index{txt@{txt}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{txt}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-txt\hspace{0.3cm}{\ttfamily [static]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_acaf405fbc0ff8294083e70f115aab4ea}
+le texte de la liste des coups jouables \index{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}!zone\-Saisie@{zone\-Saisie}}
+\index{zone\-Saisie@{zone\-Saisie}!fr::miblack::chess::affichage::GUI::Fenetre@{fr\-::miblack\-::chess\-::affichage\-::\-G\-U\-I\-::\-Fenetre}}
+\subsubsection[{zone\-Saisie}]{\setlength{\rightskip}{0pt plus 5cm}J\-Text\-Area fr.\-miblack.\-chess.\-affichage.\-G\-U\-I.\-Fenetre.\-zone\-Saisie = new J\-Text\-Area(1, 8)\hspace{0.3cm}{\ttfamily [private]}}\label{classfr_1_1miblack_1_1chess_1_1affichage_1_1GUI_1_1Fenetre_add243305169fd62b2c60526aff77fe5e}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+fr/miblack/chess/affichage/\-G\-U\-I/{\bf Fenetre.\-java}\end{DoxyCompactItemize}

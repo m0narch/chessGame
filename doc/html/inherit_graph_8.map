@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$interfacefr_1_1miblack_1_1chess_1_1Jouer.html" title="fr.miblack.chess.Jouer" alt="" coords="5,111,165,137"/>
+<area shape="rect" id="node3" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Interface.html" title="fr.miblack.chess.affichage.\lInterface" alt="" coords="214,70,405,111"/>
+<area shape="rect" id="node9" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurAbstract.html" title="fr.miblack.chess.joueurs.\lJoueurAbstract" alt="" coords="220,135,399,177"/>
+<area shape="rect" id="node5" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Graphique.html" title="fr.miblack.chess.affichage.\lGraphique" alt="" coords="454,5,645,46"/>
+<area shape="rect" id="node7" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Textuelle.html" title="fr.miblack.chess.affichage.\lTextuelle" alt="" coords="454,70,645,111"/>
+<area shape="rect" id="node11" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurHumain.html" title="fr.miblack.chess.joueurs.\lJoueurHumain" alt="" coords="460,135,639,177"/>
+<area shape="rect" id="node13" href="$classfr_1_1miblack_1_1chess_1_1joueurs_1_1JoueurOrdinateur.html" title="fr.miblack.chess.joueurs.\lJoueurOrdinateur" alt="" coords="460,201,639,242"/>
+</map>

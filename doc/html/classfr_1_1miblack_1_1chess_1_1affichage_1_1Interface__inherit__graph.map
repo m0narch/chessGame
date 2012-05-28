@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Graphique.html" title="{fr.miblack.chess.affichage.\lGraphique\n|~ myurl\l~ monSplash\l&#45; maFenetre\l&#45; monPanel\l&#45; jop1\l|+ Graphique()\l+ Graphique()\l+ Graphique()\l+ jouerPartie()\l+ getMaPartie()\l+ setMaPartie()\l+ jouerCoup()\l+ saisirCoup()\l+ getMaFenetre()\l+ setMaFenetre()\l+ getMonPanel()\l+ setMonPanel()\l+ getJop1()\l+ setJop1()\l+ clone()\l}" alt="" coords="5,433,195,789"/>
+<area shape="rect" id="node7" href="$classfr_1_1miblack_1_1chess_1_1affichage_1_1Textuelle.html" title="{fr.miblack.chess.affichage.\lTextuelle\n||+ Textuelle()\l+ Textuelle()\l+ jouerPartie()\l+ proposerSave()\l+ afficherEchiquier()\l+ jouerCoup()\l+ saisirCoup()\l}" alt="" coords="219,521,409,701"/>
+<area shape="rect" id="node2" href="$interfacefr_1_1miblack_1_1chess_1_1Jouer.html" title="{fr.miblack.chess.Jouer\n||+ jouerCoup()\l}" alt="" coords="127,5,285,83"/>
+</map>
