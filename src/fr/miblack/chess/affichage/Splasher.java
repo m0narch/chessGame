@@ -67,7 +67,7 @@ public class Splasher extends Window
 	}
 
 	/**
-	 * Affiche l'image passé
+	 * Affiche
 	 * @param image
 	 */
 	public static void splash( Image image )

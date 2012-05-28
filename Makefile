@@ -37,10 +37,10 @@ clean:
 	rm -fr $(BINDIR)
 	rm -fr fr resources *.html *.css package-list html latex
 
-manifest:
+manifest: clean compile
 	mkdir $(BINDIR)/META-INF && touch $(BINDIR)/META-INF/MANIFEST.MF && echo "Main-Class: $(TARGET) " > $(BINDIR)/META-INF/MANIFEST.MF
 
-jar:
+jar:manifest
 	(cd $(BINDIR) && jar cvmf META-INF/MANIFEST.MF ../$(PROJECT).jar $(TARGETDIR)/* )
 
 javadoc:
