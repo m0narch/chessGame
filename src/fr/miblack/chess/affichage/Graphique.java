@@ -2,12 +2,8 @@
 package fr.miblack.chess.affichage;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ConcurrentModificationException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -24,22 +20,13 @@ public class Graphique extends Interface
 	private Fenetre maFenetre=null ;
 	private JPanel monPanel;
 	private JOptionPane jop1 = new JOptionPane();
-	URL myurl =getClass().getResource("./ressources/4.jpg");
- 	Image monSplash;
 /**
  * @param p1 joueur 1
  * @param p2 joueur 2
  */
 	public Graphique( String p1, String p2 ) 
 	{
-		try
-		{
-			monSplash= ImageIO.read(myurl);
-		} catch (IOException monExecption)
-		{
-			monExecption.printStackTrace();
-		}
-		Splasher.splash( monSplash );
+		Splasher.splash( "src/images/4.jpg" );
 		menuLocal( p1, p2 );
 		setMaFenetre( new Fenetre(getMaPartie()) );
 		this.setMonPanel( (JPanel) maFenetre.getContentPane() );
@@ -47,14 +34,7 @@ public class Graphique extends Interface
 
 	public Graphique() 
 	{
-		try
-		{
-			monSplash= ImageIO.read(myurl);
-		} catch (IOException monExecption)
-		{
-			monExecption.printStackTrace();
-		}
-		Splasher.splash( monSplash );
+		Splasher.splash( "src/images/4.jpg" );
 		menuPrincipal();
 		setMaFenetre( new Fenetre(getMaPartie()) );
 		this.setMonPanel( (JPanel) maFenetre.getContentPane() );
